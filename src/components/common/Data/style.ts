@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { color } from "../../../styles/theme";
 
 const DataContainer = styled.div`
@@ -15,15 +15,26 @@ export const UserSearchContainer = styled(DataContainer)<{
   padding: 8px 20px;
   background-color: ${color.White};
   font-size: 16px;
-  cursor: ${({ type }) => (type === "search" ? "pointer" : "auto")};
+  ${({ type }) =>
+    type === "search"
+      ? css`
+          cursor: pointer;
+          min-width: 1004px;
+        `
+      : css`
+          min-width: 488px;
+        `};
   &:hover {
     background-color: ${color.Blue[9]};
   }
 `;
 
-export const IndexContainer = styled(DataContainer)`
+export const IndexContainer = styled(DataContainer)<{
+  type: "search" | "user";
+}>`
   padding: 4px 20px;
   background-color: ${color.Gray[95]};
+  min-width: ${({ type }) => (type === "search" ? "1004px" : "488px")};
 `;
 
 export const Name = styled.div`
@@ -39,6 +50,11 @@ export const PhoneNumber = styled.div`
 export const Department = styled.div`
   width: 144px;
 `;
+
+export const OccipationTenure = styled.div`
+  width: 220px;
+`;
+
 export const Icon = styled.div`
   width: 24px;
   height: 24px;

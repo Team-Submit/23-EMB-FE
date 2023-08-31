@@ -5,6 +5,8 @@ interface SearchDataProps {
   birthdate: string;
   manager: string;
   department: string;
+  occupation: string;
+  tenure: string;
 }
 interface UserDataProps {
   name: string;
@@ -21,6 +23,8 @@ export const SearchData = ({
   birthdate,
   manager,
   department,
+  occupation,
+  tenure,
 }: SearchDataProps) => {
   return (
     <S.UserSearchContainer type="search">
@@ -28,6 +32,8 @@ export const SearchData = ({
       <S.BirthDay>{birthdate}</S.BirthDay>
       <S.Name>{manager}</S.Name>
       <DepartmentBadge department={department} />
+      <S.OccipationTenure>{occupation}</S.OccipationTenure>
+      <S.OccipationTenure>{tenure}</S.OccipationTenure>
     </S.UserSearchContainer>
   );
 };
@@ -47,13 +53,15 @@ export const UserData = ({ name, department, phoneNumber }: UserDataProps) => {
 /** 사용법 < IndexData type="search | user" /> */
 export const IndexData = ({ type }: IndexDataProps) => {
   return (
-    <S.IndexContainer>
+    <S.IndexContainer type={type}>
       {type === "search" ? (
         <>
           <S.Name>성명</S.Name>
           <S.BirthDay>생년월일</S.BirthDay>
           <S.Name>담당자</S.Name>
           <S.Department>담당 부서</S.Department>
+          <S.OccipationTenure>근무기간</S.OccipationTenure>
+          <S.OccipationTenure>직종</S.OccipationTenure>
         </>
       ) : (
         <>
