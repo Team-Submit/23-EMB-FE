@@ -1,15 +1,15 @@
 import { IconProps } from "../../types/IconProps";
 
-/** 기본 사이즈 24px (small입력시 20px) */
-export const Search = ({small}:IconProps) => {
+/** 기본 사이즈 24px (small입력시 20px) (fill="색") */
+export const Search = ({ small, fill = "currentColor" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="currentColor"
-      width={small?20:24}
+      stroke={fill}
+      width={small ? 20 : 24}
       className="w-6 h-6"
     >
       <path
