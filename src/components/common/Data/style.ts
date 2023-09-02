@@ -23,6 +23,7 @@ export const UserSearchContainer = styled(DataContainer)<{
         `
       : css`
           min-width: 488px;
+          position: relative;
         `};
   &:hover {
     background-color: ${color.Blue[9]};
@@ -55,7 +56,37 @@ export const OccipationTenure = styled.div`
   width: 220px;
 `;
 
-export const Icon = styled.div`
+export const TransparentDiv = styled.div`
   width: 24px;
   height: 24px;
 `;
+
+export const Icon = styled(TransparentDiv)`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const SettingDropContainer = styled.div`
+  position: absolute;
+  top:30px;
+  left: 40px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 6px 12px;
+  gap: 4px;
+  width: 120px;
+
+  background-color: ${color.White};
+  border: 1px solid ${color.Gray[75]};
+  border-radius: 4px;
+
+  >div{
+    cursor: pointer;
+  }
+  >hr{
+    border: 1px solid ${color.Gray[85]};
+  }
+`
