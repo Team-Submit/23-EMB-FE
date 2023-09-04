@@ -9,6 +9,7 @@ export const ChevronDown = ({ small, fill = "currentColor" }: IconProps) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       width={small ? 20 : 24}
+      height={small ? 20 : 24}
       stroke={fill}
       className="w-6 h-6"
     >

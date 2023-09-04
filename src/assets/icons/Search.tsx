@@ -10,6 +10,7 @@ export const Search = ({ small, fill = "currentColor" }: IconProps) => {
       strokeWidth={1.5}
       stroke={fill}
       width={small ? 20 : 24}
+      height={small ? 20 : 24}
       className="w-6 h-6"
     >
       <path
