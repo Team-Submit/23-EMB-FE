@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { color } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -9,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
     -webkit-touch-callout: none;
     box-sizing: border-box;
+    color: ${color.Black.Text};
   }
 
   *::-webkit-scrollbar {
