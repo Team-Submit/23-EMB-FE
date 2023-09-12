@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 12px 40px;
   min-width: 700px;
+  border-bottom: 1px solid ${color.Gray[75]};
 `
 
 export const UserContainer = styled.div`
