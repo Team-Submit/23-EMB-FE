@@ -1,7 +1,7 @@
 import { IconProps } from "../../types/IconProps";
 
 /**20px (fill="색") */
-export const Search_20 = ({ fill = "currentColor" }: IconProps) => {
+export const Search20 = ({ fill = "currentColor" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
