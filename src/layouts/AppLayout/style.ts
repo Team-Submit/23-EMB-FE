@@ -6,4 +6,7 @@ export const Container = styled.div`
 `
 export const ContentContainer = styled.div`
   overflow: auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 `
