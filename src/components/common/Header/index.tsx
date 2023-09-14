@@ -5,16 +5,10 @@ import { ChevronDown } from "../../../assets/icons/ChevronDown";
 import Tab from "../Tap";
 import { useLocation } from "react-router-dom";
 
-interface HeaderProps {
-  name: string;
-  department: string;
-  logout: React.MouseEventHandler<HTMLDivElement>;
-  user: "User" | "Manager";
-}
-
-/** 사용법 : < Header name={이름} department={부서명} logout={logout시 일어나는 함수} user={"User"|"Manager"} /> */
-export const Header = ({ name, department, logout, user }: HeaderProps) => {
+/** 사용법 : < Header /> */
+export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [user, setUser] = useState<"User"|"Manager">("User")
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname;
 
@@ -60,14 +54,14 @@ export const Header = ({ name, department, logout, user }: HeaderProps) => {
         </S.MenuContainer>
       )}
       <S.UserContainer>
-        <DepartmentBadge department={department} />
+        <DepartmentBadge department={"분활정복 및 재정8부"} />
         <S.Name ref={dropMenuRef} onClick={() => setIsOpen(!isOpen)}>
           {isOpen && (
             <S.SettingDropContainer>
-              <div onClick={logout}>로그아웃</div>
+              <div onClick={()=>alert("로그아웃")}>로그아웃</div>
             </S.SettingDropContainer>
           )}
-          <p>{name}</p>
+          <p>김밥봉</p>
           <ChevronDown />
         </S.Name>
       </S.UserContainer>
