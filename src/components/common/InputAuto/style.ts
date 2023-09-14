@@ -7,16 +7,17 @@ export const Container = styled.div`
 `;
 
 export const ListContainer = styled.div`
+  overflow: hidden;
   position: absolute;
   top: 100%;
   width: 100%;
-  z-index: 1;
   background-color: ${color.White};
   border: 1px solid ${color.Gray[75]};
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 
   display: flex;
+  z-index: 1;
   flex-direction: column;
   gap: 4px;
   padding: 4px;

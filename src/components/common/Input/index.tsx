@@ -29,6 +29,7 @@ export const Input = ({
     <S.Container>
       <S.Label htmlFor={label}>{label}</S.Label>
       <S.Einput
+        autoComplete="off"
         id={label}
         type="text"
         placeholder={placeholder}
