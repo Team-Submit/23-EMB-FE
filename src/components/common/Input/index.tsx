@@ -7,14 +7,13 @@ interface InputProps {
   bottomMessage?: string;
   disabled?: boolean;
   label: string;
-  placeholder: string;
+  placeholder?: string;
 
   value: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+/** < Input value={값} onChange={함수} label={label} placeholder?={placeholder} bottomMessage?={하단문구} error? disabeled? /> */
 export const Input = ({
   error = false,
   bottomMessage,
@@ -26,8 +25,9 @@ export const Input = ({
 }: InputProps) => {
   return (
     <S.Container>
-      <S.Label>{label}</S.Label>
+      <S.Label htmlFor={label}>{label}</S.Label>
       <S.Einput
+        id={label}
         type="text"
         placeholder={placeholder}
         disabled={disabled}
@@ -35,14 +35,8 @@ export const Input = ({
         onChange={onChange}
       />
       <S.Bind>
-        {error && (
-          <Excalmation
-            fill={color.Red}
-          />
-        )}
-        <S.BottomMessage error={error}>
-          {bottomMessage}
-        </S.BottomMessage>
+        {error && <Excalmation fill={color.Red} />}
+        <S.BottomMessage error={error}>{bottomMessage}</S.BottomMessage>
       </S.Bind>
     </S.Container>
   );

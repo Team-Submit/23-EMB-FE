@@ -7,11 +7,13 @@ export const Container = styled.div`
   gap: 8px;
 `;
 
-export const Label = styled.p`
+export const Label = styled.label`
   gap: 20px;
+  font-size: 20px;
 `;
 
 export const Einput = styled.input`
+  font-size: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
