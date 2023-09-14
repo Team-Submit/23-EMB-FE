@@ -37,6 +37,7 @@ export const Einput = styled.input`
 export const BottomMessage = styled.p<{
   error: boolean;
 }>`
+  font-size: 20px;
   color: ${({ error }) =>
     error ? "red" : "black"};
 `;
