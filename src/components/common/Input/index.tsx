@@ -11,9 +11,10 @@ interface InputProps {
 
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?:()=>void;
 }
 
-/** < Input value={값} onChange={함수} label={label} placeholder?={placeholder} bottomMessage?={하단문구} error? disabeled? /> */
+/** < Input value={값} onChange={함수} label={label} placeholder?={placeholder} bottomMessage?={하단문구} error? disabeled? onFocus?={()=>void}/> */
 export const Input = ({
   error = false,
   bottomMessage,
@@ -22,6 +23,7 @@ export const Input = ({
   placeholder,
   onChange,
   value,
+  onFocus
 }: InputProps) => {
   return (
     <S.Container>
@@ -33,6 +35,7 @@ export const Input = ({
         disabled={disabled}
         value={value}
         onChange={onChange}
+        onFocus={onFocus}
       />
       <S.Bind>
         {error && <Excalmation fill={color.Red} />}

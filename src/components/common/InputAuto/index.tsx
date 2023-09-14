@@ -41,9 +41,6 @@ export const InputAuto = ({
 
   return (
     <S.Container
-      onClick={() => {
-        setIsOpen(true);
-      }}
       ref={selectListRef}
     >
       <Input
@@ -53,6 +50,7 @@ export const InputAuto = ({
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
+        onFocus={()=>setIsOpen(true)}
       />
       {isOpen && (
         <S.ListContainer>
