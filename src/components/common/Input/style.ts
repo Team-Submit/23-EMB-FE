@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 import { color } from "../../../styles/theme";
 
-export const Container = styled.div`
+export const Container = styled.div<{ width: string }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: ${({ width }) => width};
 `;
 
 export const Label = styled.label`
@@ -38,8 +39,7 @@ export const BottomMessage = styled.p<{
   error: boolean;
 }>`
   font-size: 20px;
-  color: ${({ error }) =>
-    error ? "red" : "black"};
+  color: ${({ error }) => (error ? "red" : "black")};
 `;
 
 export const Bind = styled.div`
