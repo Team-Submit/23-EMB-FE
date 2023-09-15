@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { DepartmentBadge } from "../DepartmentBadge";
 import * as S from "./style";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
-import Tab from "../Tap";
+import Tab from "../Tab/EachTab";
 import { useLocation } from "react-router-dom";
 
 /** 사용법 : < Header /> */

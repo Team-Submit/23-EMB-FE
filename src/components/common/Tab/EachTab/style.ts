@@ -2,7 +2,7 @@ import {
   css,
   styled,
 } from "styled-components";
-import { color } from "./../../../styles/theme";
+import { color } from "../../../../styles/theme";
 
 export const Container = styled.div<{
   disabled: boolean;
