@@ -16,15 +16,6 @@ export const Logo = styled.img`
     width: 20%;
 `;
 
-export const InputFlex = styled.div`
-    background-color: ${color.Gray[95]};
-    display: flex;
-    align-items: center;
-    padding: 16px 17px;
-    gap: 17px;
-    border-radius: 5px;
-`;
-
 export const ErrorMessage = styled.div`
     font-size: 20px;
     color: ${color.Red};
