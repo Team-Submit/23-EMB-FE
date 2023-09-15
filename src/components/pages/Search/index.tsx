@@ -39,6 +39,7 @@ export const Search = () => {
                     <Search24 fill={color.White} />
                 </Button>
             </S.InputFlex>
+            <S.ErrorMessage>검색하기 전 정보가 정확한지 확인하세요</S.ErrorMessage>
         </S.Background>
     );
 }

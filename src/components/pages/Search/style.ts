@@ -24,3 +24,8 @@ export const InputFlex = styled.div`
     gap: 17px;
     border-radius: 5px;
 `;
+
+export const ErrorMessage = styled.div`
+    font-size: 20px;
+    color: ${color.Red};
+`;
