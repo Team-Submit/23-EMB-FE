@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { DepartmentBadge } from "../DepartmentBadge";
 import * as S from "./style";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
-import Tab from "../Tab/EachTab";
 import { useLocation } from "react-router-dom";
+import { EachTab } from "../Tab/EachTab";
 
 /** 사용법 : < Header /> */
 export const Header = () => {
@@ -31,25 +31,25 @@ export const Header = () => {
       {user === "User" ? (
         <S.MenuContainer>
           <S.TabLink to="/">
-            <Tab value="검색" selected={pathname === "/"} />
+            <EachTab value="검색" selected={pathname === "/"} />
           </S.TabLink>
           <S.TabLink to="/a">
-            <Tab value="계정관리" selected={pathname === "/a"} />
+            <EachTab value="계정관리" selected={pathname === "/a"} />
           </S.TabLink>
           <S.TabLink to="/b">
-            <Tab value="인적사항 업로드" selected={pathname === "/b"} />
+            <EachTab value="인적사항 업로드" selected={pathname === "/b"} />
           </S.TabLink>
         </S.MenuContainer>
       ) : (
         <S.MenuContainer>
           <S.TabLink to="/">
-            <Tab value="검색" selected={pathname === "/"} />
+            <EachTab value="검색" selected={pathname === "/"} />
           </S.TabLink>
           <S.TabLink to="/">
-            <Tab value="계정관리" selected={pathname === "/"} />
+            <EachTab value="계정관리" selected={pathname === "/"} />
           </S.TabLink>
           <S.TabLink to="/">
-            <Tab value="문서 업로드" selected={pathname === "/"} />
+            <EachTab value="문서 업로드" selected={pathname === "/"} />
           </S.TabLink>
         </S.MenuContainer>
       )}
