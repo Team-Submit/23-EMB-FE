@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { Search } from "./components/pages/Search";
 import { AppLayout } from "./layouts/AppLayout";
+import { SearchList } from "./pages/SearchList";
 
 function App() {
   return (
