@@ -8,4 +8,5 @@ export const InputFlex = styled.div`
     padding: 16px 17px;
     gap: 17px;
     border-radius: 5px;
+    min-width: 600px;
 `;
