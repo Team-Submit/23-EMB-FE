@@ -1,16 +1,16 @@
+import * as S from "./style";
 import { useEffect, useRef, useState } from "react";
 import { DepartmentBadge } from "../DepartmentBadge";
-import * as S from "./style";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
 import { useLocation } from "react-router-dom";
-import { EachTab } from "../Tab/EachTab";
+import { Tab } from "../Tab";
 
 /** 사용법 : < Header /> */
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<"User"|"Manager">("User")
+  const [user, setUser] = useState<"User" | "Manager">("User");
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
-  const pathname = useLocation().pathname;
+  const pathname = useLocation().pathname.split("/")[1];
 
   useEffect(() => {
     const handleOutsideClose = (e: { target: any }) => {
@@ -25,32 +25,29 @@ export const Header = () => {
 
     return () => document.removeEventListener("click", handleOutsideClose);
   }, [isOpen]);
+  console.log(pathname)
 
   return (
     <S.Container>
       {user === "User" ? (
         <S.MenuContainer>
-          <S.TabLink to="/">
-            <EachTab value="검색" selected={pathname === "/"} />
-          </S.TabLink>
-          <S.TabLink to="/a">
-            <EachTab value="계정관리" selected={pathname === "/a"} />
-          </S.TabLink>
-          <S.TabLink to="/b">
-            <EachTab value="인적사항 업로드" selected={pathname === "/b"} />
-          </S.TabLink>
+          <Tab
+            list={[
+              { text: "검색", link: "/home", path: "home" },
+              { text: "인적사항 업로드", link: "/upload", path: "upload" },
+            ]}
+            selected={pathname}
+          />
         </S.MenuContainer>
       ) : (
         <S.MenuContainer>
-          <S.TabLink to="/">
-            <EachTab value="검색" selected={pathname === "/"} />
-          </S.TabLink>
-          <S.TabLink to="/">
-            <EachTab value="계정관리" selected={pathname === "/"} />
-          </S.TabLink>
-          <S.TabLink to="/">
-            <EachTab value="문서 업로드" selected={pathname === "/"} />
-          </S.TabLink>
+          <Tab
+            list={[
+              { text: "검색", link: "/home", path: "home" },
+              { text: "계정관리", link: "/admin", path: "admin" },
+            ]}
+            selected={pathname}
+          />
         </S.MenuContainer>
       )}
       <S.UserContainer>
@@ -58,7 +55,7 @@ export const Header = () => {
         <S.Name ref={dropMenuRef} onClick={() => setIsOpen(!isOpen)}>
           {isOpen && (
             <S.SettingDropContainer>
-              <div onClick={()=>alert("로그아웃")}>로그아웃</div>
+              <div onClick={() => alert("로그아웃")}>로그아웃</div>
             </S.SettingDropContainer>
           )}
           <p>김밥봉</p>
