@@ -72,6 +72,7 @@ export const SettingDropContainer = styled.div`
   position: absolute;
   top:30px;
   left: 40px;
+  z-index: 10;
 
   display: flex;
   flex-direction: column;
