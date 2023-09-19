@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { DepartmentBadge } from "../DepartmentBadge";
 
 import * as S from "./style";
+import { Bar } from "../../../assets/icons/Bar";
 
 interface UserDataProps {
   name: string;
@@ -44,7 +45,9 @@ export const UserData = ({
           <div onClick={userDelete}>계정 삭제</div>
         </S.SettingDropContainer>
       )}
-      <S.Icon onClick={() => setIsOpen(!isOpen)} ref={dropMenuRef}>|||</S.Icon>
+      <S.Icon onClick={() => setIsOpen(!isOpen)} ref={dropMenuRef}>
+        <Bar/>
+      </S.Icon>
       {/* 아이콘 문제 해결하면 수정하기 */}
       <S.Name>{name}</S.Name>
       <DepartmentBadge department={department} />
