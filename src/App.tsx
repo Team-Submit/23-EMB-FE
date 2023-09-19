@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AppLayout } from "./layouts/AppLayout";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/upload" />
         <Route path="/my/profile" />
         <Route path="/my/password" />
+        <Route path="*" element={<NotFound/>}/>
       </Route>
     </Routes>
   );
