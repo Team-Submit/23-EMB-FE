@@ -6,7 +6,7 @@ import { FlexContainer, Title, Description } from "./style";
 export default function NotFound(){
     return(
         <FlexContainer>
-            <Title>오 쉬엣 프로블람 히어 헤업 미</Title>
+            <Title>문제가 발생했습니다</Title>
             <Description>
                 페이지가 존재하지 않거나,
                 <br/>
