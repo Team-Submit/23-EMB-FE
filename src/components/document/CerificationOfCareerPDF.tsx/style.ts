@@ -1,20 +1,20 @@
-import { Font } from "@react-pdf/renderer"
+import { Font, StyleSheet } from "@react-pdf/renderer"
 
 export const FontNSPDF = Font.register({
     family: 'NanumSquare',
     fonts: [
-        {src: '/fonts/NanumSquareEB.ttf', fontWeight: 'ultrabold'},
-        {src: '/fonts/NanumSquareB.ttf', fontWeight: 'bold'},
-        {src: '/fonts/NanumSquareR.ttf', fontWeight: 'normal'},
-        {src: '/fonts/NanumSquareL.ttf', fontWeight: 'light'},
+        {src: '/fonts/NanumSquare/NanumSquareEB.ttf', fontWeight: 'ultrabold'},
+        {src: '/fonts/NanumSquare/NanumSquareB.ttf', fontWeight: 'bold'},
+        {src: '/fonts/NanumSquare/NanumSquareR.ttf', fontWeight: 'normal'},
+        {src: '/fonts/NanumSquare/NanumSquareL.ttf', fontWeight: 'light'},
     ]
 })
 
 export const FontNMPDF = Font.register({
     family: 'NanumMyeongjo',
     fonts: [
-        {src: '/fonts/NanumMyeongjo.ttf', fontWeight: 'normal'},
-        {src: '/fonts/NanumMyeongjoBold.ttf', fontWeight: 'bold'},
-        {src: '/fonts/NanumMyeongjoExtraBold.ttf', fontWeight: 'ultrabold'},
+        {src: '/fonts/NanumMyeongjo/NanumMyeongjo.ttf', fontWeight: 'normal'},
+        {src: '/fonts/NanumMyeongjo/NanumMyeongjoBold.ttf', fontWeight: 'bold'},
+        {src: '/fonts/NanumMyeongjo/NanumMyeongjoExtraBold.ttf', fontWeight: 'ultrabold'},
     ]
 })
