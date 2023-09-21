@@ -1,7 +1,16 @@
 import { Document, Page, Text, View } from "@react-pdf/renderer"
 import { PdfStyle } from "./style"
 
-export default function CerificationOfCareerPDF(){
+interface CerfOfCareerType{
+    name: string;
+    birthdate: string;
+    address: string;
+    firstTenure: string;
+    lastTenure: string;
+    occupation: string;
+}
+
+export default function CerificationOfCareerPDF({name, address, birthdate ,firstTenure, lastTenure, occupation}:CerfOfCareerType){
     const s = PdfStyle;
     const day = new Date()
 
@@ -29,13 +38,13 @@ export default function CerificationOfCareerPDF(){
                                         <Text>① 성   명</Text>
                                     </View>
                                     <View style={[s.innerBorder,{width: '34.63mm'}]}>
-                                        <Text>김밥버거</Text>
+                                        <Text>{name}</Text>
                                     </View>
                                     <View style={[s.innerBorder,{width: '40mm'}]}>
                                         <Text>② 생년월일</Text>
                                     </View>
                                     <View style={[s.innerBorder,{width: '52.59mm'}]}>
-                                        <Text>3080.09.27.</Text>
+                                        <Text>{birthdate}</Text>
                                     </View>
                                 </View>
                                 <View style={[s.flexRow, {height: '28mm'}]}>
@@ -43,7 +52,7 @@ export default function CerificationOfCareerPDF(){
                                         <Text>③ 주   소</Text>
                                     </View>
                                     <View style={[s.innerBorder, {width: '127mm'}]}>
-                                        <Text>대전광역시 동구 중앙로 215 (대전역)</Text>
+                                        <Text>{address}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -62,7 +71,7 @@ export default function CerificationOfCareerPDF(){
                                         <Text>④ 직   종</Text>
                                     </View>
                                     <View style={[s.innerBorder, {width: '127mm'}]}>
-                                        <Text>콤퓨타 프로그램</Text>
+                                        <Text>{occupation}</Text>
                                     </View>
                                 </View>
                                 <View style={[s.flexRow, {height: '37.32mm'}]}>
@@ -70,7 +79,7 @@ export default function CerificationOfCareerPDF(){
                                         <Text>⑤ 재직기간</Text>
                                     </View>
                                     <View style={[s.innerBorder, {width: '127mm'}]}>
-                                        <Text>2023.09.12 ~ 3019.02.82</Text>
+                                        <Text>{firstTenure} ~ {lastTenure}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -81,7 +90,7 @@ export default function CerificationOfCareerPDF(){
                                 <Text>⑥ 용     도</Text>
                             </View>
                             <View style={[s.innerBorder, {width: '100%'}]}>
-                                <Text>부모제출용</Text>
+                                <Text>제출용</Text>
                             </View>
                         </View>
 
