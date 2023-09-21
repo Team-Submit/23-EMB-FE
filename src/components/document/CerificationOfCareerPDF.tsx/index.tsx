@@ -3,6 +3,9 @@ import { PdfStyle } from "./style"
 
 export default function CerificationOfCareerPDF(){
     const s = PdfStyle;
+    const day = new Date()
+
+    const todayYMD = `${day.getFullYear()}년 ${day.getMonth()+1}월 ${day.getDate()}일`
 
     return(
         <Document language="한국어" title="경력증명서">
@@ -87,7 +90,7 @@ export default function CerificationOfCareerPDF(){
                                 상기와 같이 근무하였음을 확인합니다.
                             </Text>
                             <Text>
-                                2023년 7월 21일
+                                {todayYMD}
                             </Text>
                             <Text style={s.head}>
                                 대전광역시 유성구청장
