@@ -11,6 +11,7 @@ export const Container = styled.div`
   position: sticky;
   top:0;
   background-color: ${color.White};
+  z-index: 100;
 `
 
 export const UserContainer = styled.div`

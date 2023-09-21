@@ -6,15 +6,17 @@ interface InputProps {
   error?: boolean;
   bottomMessage?: string;
   disabled?: boolean;
-  label: string;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
+  type?: string;
+  width?: string;
 
   value: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: () => void;
 }
 
+/** < Input value={값} onChange={함수} label?={label} placeholder?={placeholder} width?={string (기본 100%)} bottomMessage?={하단문구} error? disabeled? onFocus?={()=>void} type?={string}/> */
 export const Input = ({
   error = false,
   bottomMessage,
@@ -23,26 +25,26 @@ export const Input = ({
   placeholder,
   onChange,
   value,
+  onFocus,
+  type,
+  width = "100%",
 }: InputProps) => {
   return (
-    <S.Container>
-      <S.Label>{label}</S.Label>
+    <S.Container width={width}>
+      <S.Label htmlFor={label}>{label}</S.Label>
       <S.Einput
-        type="text"
+        autoComplete="off"
+        id={label}
+        type={type}
         placeholder={placeholder}
         disabled={disabled}
         value={value}
         onChange={onChange}
+        onFocus={onFocus}
       />
       <S.Bind>
-        {error && (
-          <Excalmation
-            fill={color.Red}
-          />
-        )}
-        <S.BottomMessage error={error}>
-          {bottomMessage}
-        </S.BottomMessage>
+        {error && <Excalmation fill={color.Red} />}
+        <S.BottomMessage error={error}>{bottomMessage}</S.BottomMessage>
       </S.Bind>
     </S.Container>
   );

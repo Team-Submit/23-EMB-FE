@@ -1,17 +1,20 @@
 import { styled } from "styled-components";
 import { color } from "../../../styles/theme";
 
-export const Container = styled.div`
+export const Container = styled.div<{ width: string }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: ${({ width }) => width};
 `;
 
-export const Label = styled.p`
+export const Label = styled.label`
   gap: 20px;
+  font-size: 20px;
 `;
 
 export const Einput = styled.input`
+  font-size: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -35,8 +38,8 @@ export const Einput = styled.input`
 export const BottomMessage = styled.p<{
   error: boolean;
 }>`
-  color: ${({ error }) =>
-    error ? "red" : "black"};
+  font-size: 20px;
+  color: ${({ error }) => (error ? "red" : "black")};
 `;
 
 export const Bind = styled.div`
