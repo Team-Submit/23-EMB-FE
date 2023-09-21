@@ -1,4 +1,4 @@
-import { Document, Page, Text, View } from "@react-pdf/renderer"
+import { Document, Page, Text, View, Image } from "@react-pdf/renderer"
 import { PdfStyle } from "./style"
 
 interface CerfOfCareerType{
@@ -104,6 +104,7 @@ export default function CerificationOfCareerPDF({name, address, birthdate ,first
                             <Text style={s.head}>
                                 대전광역시 유성구청장
                             </Text>
+                            <Image src="/대전광역시유성구청장인.jpg" style={s.stemp}></Image>
                         </View>
 
                     </View>

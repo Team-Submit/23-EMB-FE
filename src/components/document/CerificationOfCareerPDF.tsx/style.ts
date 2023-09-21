@@ -73,5 +73,13 @@ export const PdfStyle = StyleSheet.create({
     flexCol:{
         display: 'flex',
         flexDirection: 'column',
+    },
+    stemp:{
+        width: '30mm',
+        height: '30mm',
+        left: '130.68mm',
+        top: '16mm',
+        zIndex: 2,
+        position: 'absolute',
     }
 })
