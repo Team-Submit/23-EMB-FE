@@ -18,3 +18,60 @@ export const FontNMPDF = Font.register({
         {src: '/fonts/NanumMyeongjo/NanumMyeongjoExtraBold.ttf', fontWeight: 'ultrabold'},
     ]
 })
+
+export const PdfStyle = StyleSheet.create({
+    body:{
+        margin: '30mm 15mm',
+        fontFamily: 'NanumSquare',
+    },
+    title:{
+        fontWeight: 'ultrabold',
+        fontSize: '24pt',
+        letterSpacing: '20pt',
+        height: '28mm',
+        textAlign: 'center',
+        paddingTop: '10mm'
+    },
+    head:{
+        fontFamily: 'NanumSquare',
+        fontWeight: 'ultrabold',
+        fontSize: '28pt',
+        letterSpacing: '10pt',
+    },
+    outerTable:{
+        borderWidth: '0.5mm',
+        borderColor: 'black',
+        borderStyle: 'solid',
+        fontFamily: 'NanumMyeongjo',
+        fontSize: '13pt',
+    },
+    rowLV:{
+        width: '20mm',
+        gap: '2mm'
+    },
+    innerBorder:{
+        border:'0.1mm black solid',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+    rowLeft:{
+        border: '0.1mm black solid',
+        flex: '1 0 0'
+    },
+    tail:{
+        fontFamily: 'NanumMyeongjo',
+        lineHeight: '3pt',
+        textAlign: 'center',
+        marginTop: '48pt'
+    },
+    flexRow:{
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    flexCol:{
+        display: 'flex',
+        flexDirection: 'column',
+    }
+})
