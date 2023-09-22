@@ -2,7 +2,7 @@ import {
   css,
   styled,
 } from "styled-components";
-import { color } from "./../../../styles/theme";
+import { color } from "../../../../styles/theme";
 
 export const Container = styled.div<{
   disabled: boolean;
@@ -34,7 +34,7 @@ export const Container = styled.div<{
     border: 2px solid
       ${({ selected }) =>
         selected
-          ? "blue"
+          ? color.Blue[0]
           : color.Gray[75]};
     opacity: ${({ selected }) =>
       selected ? "1" : "0"};
