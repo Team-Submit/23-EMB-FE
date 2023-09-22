@@ -1,8 +1,8 @@
 import * as S from './style'
-import { Logo } from '../../../assets';
-import { SearchInput } from '../../common/SearchInput';
+import { Logo } from '../../assets';
+import { SearchInput } from '../../components/common/SearchInput';
 
-export const Search = () => {
+export const SearchPage = () => {
 
     return (
         <S.Background>

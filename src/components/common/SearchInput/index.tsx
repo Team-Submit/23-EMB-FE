@@ -15,16 +15,18 @@ export const SearchInput = () => {
             <Input
                 placeholder='성명을 입력해주세요'
                 value={nameState}
+                width="220px"
+                type='text'
                 onChange={(e) => setNameState(e.target.value)}
-                label=''
                 disabled={false}
                 {...(inputError && { error: true, bottomMessage: "검색하기 전 정보가 정확한지 확인하세요" })}
             />
             <Input
                 placeholder='생년월일 0000 / 00 / 00'
                 value={nameState}
+                width="380px"
+                type='date'
                 onChange={(e) => setNameState(e.target.value)}
-                label=''
                 disabled={false}
                 {...(inputError && { error: true, bottomMessage: "검색하기 전 정보가 정확한지 확인하세요" })}
             />
