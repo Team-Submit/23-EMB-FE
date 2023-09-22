@@ -7,17 +7,6 @@ export const Background = styled.div`
   align-items: center;
 `;
 
-// export const profileWarp = styled.div`
-//   padding: 48px;
-//   border: 1px solid #d9d9d9;
-//   border-radius: 16px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 32px;
-//   box-shadow: 0px 2px 4px 0px color(display-p3 0 0 0 / 0.25);
-//   width: 500px;
-// `;
-
 export const profileInputWarp = styled.div`
   padding: 48px;
   border: 1px solid #d9d9d9;

@@ -1,24 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../../../styles/common/Button";
 import { Input } from "../../../common/Input";
 import { Tab } from "../../../common/Tab";
-import { EachTab } from "../../../common/Tab/EachTab";
 import * as S from "./style";
 
-export const Proflie = () => {
-  const [nameValue, nameSetValue] = useState("");
-  const [callValue, callSetValue] = useState("");
-  const [partValue, partSetValue] = useState("");
-  const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    nameSetValue(e.target.value);
-  };
-  const changecall = (e: React.ChangeEvent<HTMLInputElement>) => {
-    callSetValue(e.target.value);
-  };
-  const changePart = (e: React.ChangeEvent<HTMLInputElement>) => {
-    partSetValue(e.target.value);
+interface changeProfileType {
+  newDepartment: string;
+  newUserName: string;
+  newUserNumber: string;
+}
+
+export const Profile = () => {
+  const [changeProfile, setChangeProfile] = useState<changeProfileType>({
+    newDepartment: "",
+    newUserName: "",
+    newUserNumber: "",
+  });
+
+  const onChangeProfile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setChangeProfile({
+      ...changeProfile,
+      [name]: value,
+    });
   };
 
+  useEffect(() => {
+    console.log(changeProfile);
+  }, [changeProfile]);
   return (
     <S.Background>
       <S.profileTabWarp>
@@ -30,15 +40,39 @@ export const Proflie = () => {
               path: "/my/password",
             },
           ]}
-          selected="지금 선택된 경로 문자로"
+          selected=""
         />
-        <EachTab selected={true} value="개인정보 수정" />
+        <Tab
+          list={[
+            {
+              text: "개인정보 수정",
+              link: "/my/profile",
+              path: "/my/profile",
+            },
+          ]}
+          selected="/my/profile"
+        />
       </S.profileTabWarp>
       <S.profileInputWarp>
         <S.personalText>개인정보 수정</S.personalText>
-        <Input value={nameValue} onChange={changeName} label="이름" />
-        <Input value={callValue} onChange={changecall} label="연락처" />
-        <Input value={partValue} onChange={changePart} label="부서" />
+        <Input
+          onChange={onChangeProfile}
+          value={changeProfile.newUserName}
+          label="이름"
+          name="newUserName"
+        />
+        <Input
+          onChange={onChangeProfile}
+          value={changeProfile.newUserNumber}
+          label="연락처"
+          name="newUserNumber"
+        />
+        <Input
+          onChange={onChangeProfile}
+          value={changeProfile.newDepartment}
+          label="부서"
+          name="newDepartment"
+        />
         <Button size="XL" colorType="Point">
           완료
         </Button>

@@ -1,60 +1,84 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../../../styles/common/Button";
 import * as S from "./style";
 import { Input } from "../../../common/Input";
 import { Tab } from "../../../common/Tab";
-import { EachTab } from "../../../common/Tab/EachTab";
+
+interface changePasswordType {
+  password: string;
+  newPassword: string;
+  rePassword: string;
+}
 
 export const PassWord = () => {
-  const [nowValue, nowSetValue] = useState("");
-  const [newValue, newSetValue] = useState("");
-  const [reValue, reSetValue] = useState("");
-  const nowPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    nowSetValue(e.target.value);
+  const [changePassword, setChangePassword] = useState<changePasswordType>({
+    password: "",
+    newPassword: "",
+    rePassword: "",
+  });
+
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setChangePassword({
+      ...changePassword,
+      [name]: value,
+    });
   };
-  const NewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    newSetValue(e.target.value);
-  };
-  const ReNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    reSetValue(e.target.value);
-  };
+
+  useEffect(() => {
+    console.log(changePassword);
+  }, [changePassword]);
+
   return (
     <S.Background>
       <S.passwordTabWarp>
-        <EachTab selected={true} value="비밀번호 변경" />
+        <Tab
+          list={[
+            {
+              text: "비밀번호 변경",
+              link: "/my/password",
+              path: "/my/password",
+            },
+          ]}
+          selected="/my/password"
+        />
         <Tab
           list={[
             {
               text: "개인정보 수정",
               link: "/my/profile",
-              path: "/my/password",
+              path: "/my/profile",
             },
           ]}
-          selected="지금 선택된 경로 문자로"
+          selected=""
         />
       </S.passwordTabWarp>
       <S.PassWordWarp>
         <S.PassWordText>비밀번호 변경</S.PassWordText>
         <Input
-          value={nowValue}
-          onChange={nowPassword}
+          value={changePassword.password}
+          onChange={onChangePassword}
           label="현재 비밀번호"
           bottomMessage="비밀번호 다시 확인 바람"
+          name="password"
           error
         />
         <Input
-          value={newValue}
-          onChange={NewPassword}
+          value={changePassword.newPassword}
+          onChange={onChangePassword}
           label="새 비밀번호"
           bottomMessage="길이는 8 ~ 30자 이내여야 합니다"
           type="password"
+          name="newPassword"
         />
         <Input
-          value={reValue}
+          value={changePassword.rePassword}
           placeholder="새 비밀번호를 다시 한 번 입력해 주세요"
-          onChange={ReNewPassword}
+          onChange={onChangePassword}
           label="새 비밀번호 확인"
           type="password"
+          name="rePassword"
         />
         <Button size="XL" colorType="Point">
           완료
