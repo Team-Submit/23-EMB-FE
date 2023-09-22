@@ -3,6 +3,7 @@ import { AppLayout } from "./layouts/AppLayout";
 import NotFound from "./pages/NotFound";
 import { SearchPage } from "./pages/Search";
 import { SearchListPage } from "./pages/SearchList";
+import { AdminPage } from "./pages/Admin";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" />
         <Route path="/home" />
-        <Route path="/admin" />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/new" />
         <Route path="/admin/edit" />
         <Route path="/search" element={<SearchPage />} />
