@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { ChevronLeft20 } from "../../../assets/icons/ChevronLeft20";
+import styled, { css } from "styled-components";
 import { color } from "../../../styles/theme";
 
 export const Container = styled.div`
@@ -39,15 +38,18 @@ export const PagesContainer = styled.div`
   gap: 12px;
 `;
 
-export const Page = styled(DefaultButton)`
+export const Page = styled(DefaultButton)<{ selected: boolean }>`
   border-radius: 50%;
-  &:disabled {
-    pointer-events: none;
-    background-color: ${color.Gray[95]};
-  }
-  color: ${color.Blue[0]};
+
   &:hover {
-    color: ${color.White};
-    background-color: ${color.Blue[0]};
+    background-color: ${color.Gray[95]};
+    color: ${color.Blue[0]};
   }
+  ${({ selected }) =>
+    selected &&
+    css`
+      pointer-events: none;
+      color: ${color.White};
+      background-color: ${color.Blue[0]};
+    `}
 `;

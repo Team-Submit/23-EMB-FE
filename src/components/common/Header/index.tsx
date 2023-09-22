@@ -2,7 +2,7 @@ import * as S from "./style";
 import { useEffect, useRef, useState } from "react";
 import { DepartmentBadge } from "../DepartmentBadge";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "../Tab";
 
 /** 사용법 : < Header /> */
@@ -11,6 +11,7 @@ export const Header = () => {
   const [user, setUser] = useState<"User" | "Manager">("User");
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleOutsideClose = (e: { target: any }) => {
@@ -25,7 +26,6 @@ export const Header = () => {
 
     return () => document.removeEventListener("click", handleOutsideClose);
   }, [isOpen]);
-  console.log(pathname)
 
   return (
     <S.Container>
@@ -56,6 +56,12 @@ export const Header = () => {
           {isOpen && (
             <S.SettingDropContainer>
               <div onClick={() => alert("로그아웃")}>로그아웃</div>
+              {user === "User" && (
+                <>
+                  <hr />
+                  <div onClick={() => navigate("/my/profile")}>마이페이지</div>
+                </>
+              )}
             </S.SettingDropContainer>
           )}
           <p>김밥봉</p>
