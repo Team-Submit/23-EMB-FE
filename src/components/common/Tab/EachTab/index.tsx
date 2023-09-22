@@ -5,8 +5,8 @@ interface TabProps {
   disabled?: boolean;
   selected: boolean;
 }
-/** 사용법 : < Tab selected={true / false} value="값" disalbed? />*/
-export const Tab = ({
+/** 사용법 : < EachTab selected={true / false} value="값" disalbed? />*/
+export const EachTab = ({
   disabled = false,
   selected,
   value,
@@ -21,5 +21,3 @@ export const Tab = ({
     </S.Container>
   );
 };
-
-export default Tab;

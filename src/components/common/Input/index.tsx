@@ -6,15 +6,17 @@ interface InputProps {
   error?: boolean;
   bottomMessage?: string;
   disabled?: boolean;
-  label: string;
+  label?: string;
   placeholder?: string;
+  type?: string;
+  width?: string;
 
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?:()=>void;
+  onFocus?: () => void;
 }
 
-/** < Input value={값} onChange={함수} label={label} placeholder?={placeholder} bottomMessage?={하단문구} error? disabeled? onFocus?={()=>void}/> */
+/** < Input value={값} onChange={함수} label?={label} placeholder?={placeholder} width?={string (기본 100%)} bottomMessage?={하단문구} error? disabeled? onFocus?={()=>void} type?={string}/> */
 export const Input = ({
   error = false,
   bottomMessage,
@@ -23,15 +25,17 @@ export const Input = ({
   placeholder,
   onChange,
   value,
-  onFocus
+  onFocus,
+  type,
+  width = "100%",
 }: InputProps) => {
   return (
-    <S.Container>
+    <S.Container width={width}>
       <S.Label htmlFor={label}>{label}</S.Label>
       <S.Einput
         autoComplete="off"
         id={label}
-        type="text"
+        type={type}
         placeholder={placeholder}
         disabled={disabled}
         value={value}

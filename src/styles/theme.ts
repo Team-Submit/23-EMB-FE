@@ -18,3 +18,5 @@ export const color = {
     9: "#E3F2FF",
   },
 };
+
+export const BoxShadow = "0px 2px 4px 0px rgba(0,0,0,0.25)"
