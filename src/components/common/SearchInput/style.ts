@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { color } from "../../../styles/theme";
+import { BoxShadow, color } from "../../../styles/theme";
 
 export const InputFlex = styled.div`
     background-color: ${color.Gray[95]};
@@ -9,4 +9,5 @@ export const InputFlex = styled.div`
     gap: 17px;
     border-radius: 5px;
     min-width: 600px;
+    box-shadow: ${BoxShadow};
 `;
