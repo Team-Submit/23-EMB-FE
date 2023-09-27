@@ -4,6 +4,7 @@ import { DetailPage } from "./pages/Detail";
 import NotFound from "./pages/NotFound";
 import { SearchPage } from "./pages/Search";
 import { SearchListPage } from "./pages/SearchList";
+import { UploadPage } from "./pages/Upload";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/admin/edit" />
         <Route path="/search" element={<SearchListPage />} />
         <Route path="/search/detail" element={<DetailPage />} />
-        <Route path="/upload" />
+        <Route path="/upload" element={<UploadPage />} />
         <Route path="/my/profile" />
         <Route path="/my/password" />
         <Route path="*" element={<NotFound />} />
