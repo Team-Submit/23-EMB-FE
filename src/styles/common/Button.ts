@@ -10,6 +10,10 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 4px;
   border: none;
   font-weight: bold;
