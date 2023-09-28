@@ -35,14 +35,6 @@ export const UploadInput = () => {
         });
     };
 
-    const onClickModal = () => {
-        return (
-            <Modal isOpen>
-                <div>hihi</div>
-            </Modal>
-        );
-    }
-
     return (
         <>
 
