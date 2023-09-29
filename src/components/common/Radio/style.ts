@@ -1,3 +1,6 @@
+import { Button } from "./../../../styles/common/Button";
+import { Check } from "./../../../assets/icons/Check";
+import { TransparentDiv } from "./../Data/style";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { color } from "./../../../styles/theme";
 import {
@@ -15,6 +18,7 @@ export const RadioButton = styled.div<{
 }>`
   border-radius: 20px;
   padding: 12px 20px;
+  gap: 8px;
   background-color: ${color.Gray[95]};
   display: inline-flex;
   justify-content: center;
@@ -45,5 +49,10 @@ export const RadioButton = styled.div<{
         .Solid};
       color: ${color.White};
       cursor: pointer;
+      &:hover {
+        background-color: ${color.Black
+          .Solid};
+        color: ${color.White};
+      }
     `}
 `;
