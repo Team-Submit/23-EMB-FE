@@ -46,7 +46,7 @@ export const Input = ({
         name={name}
       />
       <S.Bind>
-        {error && <Excalmation fill={color.Red} />}
+        {error && <Excalmation fill={color.Red[0]} />}
         <S.BottomMessage error={error}>{bottomMessage}</S.BottomMessage>
       </S.Bind>
     </S.Container>
