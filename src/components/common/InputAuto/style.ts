@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { color } from "../../../styles/theme";
+import { BoxShadow, color } from "../../../styles/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const ListContainer = styled.div`
   width: 100%;
   background-color: ${color.White};
   border: 1px solid ${color.Gray[75]};
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: ${BoxShadow};
   border-radius: 4px;
 
   display: flex;

@@ -10,6 +10,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   width?: string;
+  name?: string;
 
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -28,6 +29,7 @@ export const Input = ({
   onFocus,
   type,
   width = "100%",
+  name,
 }: InputProps) => {
   return (
     <S.Container width={width}>
@@ -41,9 +43,10 @@ export const Input = ({
         value={value}
         onChange={onChange}
         onFocus={onFocus}
+        name={name}
       />
       <S.Bind>
-        {error && <Excalmation fill={color.Red} />}
+        {error && <Excalmation fill={color.Red[0]} />}
         <S.BottomMessage error={error}>{bottomMessage}</S.BottomMessage>
       </S.Bind>
     </S.Container>

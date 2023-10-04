@@ -18,5 +18,5 @@ export const Logo = styled.img`
 
 export const ErrorMessage = styled.div`
     font-size: 20px;
-    color: ${color.Red};
+    color: ${color.Red[0]};
 `;
