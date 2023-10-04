@@ -4,26 +4,33 @@ import * as S from "./style";
 import { hangulIncludes } from "@toss/hangul";
 import { Plus } from "../../../assets/icons/Plus";
 import { color } from "../../../styles/theme";
+import { getDepartment } from "../../../apis/common/department";
 
 interface InputAutoProps {
   label: string;
   placeholder?: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-
-  list: string[];
 }
 
-/** < InputAuto value={값} setValue={set값} list={문자 배열} label={label} placeholder?={placeholder} /> */
+/** < InputAuto value={값} setValue={set값} label={label} placeholder?={placeholder} /> */
 export const InputAuto = ({
   label,
   placeholder,
   value,
-  list,
   setValue,
 }: InputAutoProps) => {
   const selectListRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [list, setList] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getDepartment();
+      setList(res);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const handleOutsideClose = (e: { target: any }) => {
@@ -40,9 +47,7 @@ export const InputAuto = ({
   }, [isOpen]);
 
   return (
-    <S.Container
-      ref={selectListRef}
-    >
+    <S.Container ref={selectListRef}>
       <Input
         label={label}
         placeholder={placeholder}
@@ -50,7 +55,7 @@ export const InputAuto = ({
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
-        onFocus={()=>setIsOpen(true)}
+        onFocus={() => setIsOpen(true)}
       />
       {isOpen && (
         <S.ListContainer>
