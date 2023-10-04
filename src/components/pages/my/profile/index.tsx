@@ -21,12 +21,6 @@ export const Profile = () => {
   });
   const [Department, setDepartment] = useState("");
 
-  // instance.get("/informations", {
-  //   Department: "",
-  //   UserName: "",
-  //   UserNumber: "",
-  // });
-
   const onChangeProfile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
