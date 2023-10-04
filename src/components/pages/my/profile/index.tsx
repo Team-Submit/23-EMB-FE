@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "../../../../styles/common/Button";
 import { Input } from "../../../common/Input";
 import { Tab } from "../../../common/Tab";
 import * as S from "./style";
 import { InputAuto } from "../../../common/InputAuto";
-import { Modal } from "../../../common/Modal";
+import { ProfileModal } from "./modal";
 
 interface changeProfileType {
-  // newDepartment: string;
   UserName: string;
   UserNumber: string;
 }
@@ -15,7 +14,6 @@ interface changeProfileType {
 export const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [changeProfile, setChangeProfile] = useState<changeProfileType>({
-    // newDepartment: "",
     UserName: "",
     UserNumber: "",
   });
@@ -33,11 +31,13 @@ export const Profile = () => {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    console.log(changeProfile);
-  }, [changeProfile]);
   return (
     <S.Background>
+      <ProfileModal
+        cancelClick={openModal}
+        updateClick={() => {}}
+        isOpen={open}
+      />
       <S.profileTabWarp>
         <Tab
           list={[
@@ -85,20 +85,6 @@ export const Profile = () => {
         <Button size="XL" colorType="Point" onClick={openModal}>
           완료
         </Button>
-        {open && (
-          <Modal isOpen>
-            <S.ModifyMoadleTitle>수정하시겠습니까?</S.ModifyMoadleTitle>
-            <S.ModifyBody>이 작업은 되돌릴 수 없습니다</S.ModifyBody>
-            <S.ModifyMoadlBtnFlex>
-              <Button colorType="Point" size="M" onClick={() => {}}>
-                수정
-              </Button>
-              <Button colorType="Gray" size="M" onClick={openModal}>
-                취소
-              </Button>
-            </S.ModifyMoadlBtnFlex>
-          </Modal>
-        )}
       </S.profileInputWarp>
     </S.Background>
   );
