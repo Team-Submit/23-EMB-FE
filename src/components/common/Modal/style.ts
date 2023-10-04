@@ -27,3 +27,8 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
+
+export const Title =styled.p`
+  font-size: 32px;
+  font-weight: bold;
+`

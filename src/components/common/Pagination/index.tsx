@@ -12,7 +12,7 @@ interface PaginaionProps {
 export const Pagination = ({ total, nowPage, setNowPage }: PaginaionProps) => {
   const [page, setPage] = useState<number[]>([]);
   const [selectPage, setSeletPage] = useState<number>(1);
-  const end = Math.ceil(total / 15);
+  const end = Math.ceil(total / 10);
 
   const countPages = () => {
     setPage(
@@ -28,7 +28,7 @@ export const Pagination = ({ total, nowPage, setNowPage }: PaginaionProps) => {
   }, [total, selectPage]);
 
   useEffect(() => {
-    setSeletPage(Math.ceil(nowPage / 15));
+    setSeletPage(Math.ceil(nowPage / 10));
   }, []);
 
   return (
