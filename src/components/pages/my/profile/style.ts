@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BoxShadow, color } from "../../../../styles/theme";
 
 export const Background = styled.div`
   width: 100%;
@@ -9,18 +10,18 @@ export const Background = styled.div`
 
 export const profileInputWarp = styled.div`
   padding: 48px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid ${color.Gray[85]};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  box-shadow: 0px 2px 4px 0px color(display-p3 0 0 0 / 0.25);
   width: 500px;
+  box-shadow: ${BoxShadow};
 `;
 
 export const personalText = styled.p`
   font-size: 40px;
-  color: #4f76d6;
+  color: ${color.Blue[0]};
   font-weight: bold;
   text-align: center;
 `;
@@ -31,24 +32,4 @@ export const profileTabWarp = styled.div`
   margin-top: 20px;
   margin-bottom: 50px;
   gap: 6px;
-`;
-
-export const ModifyMoadleTitle = styled.p`
-  font-size: 32px;
-  font-weight: 700;
-`;
-
-export const ModifyBody = styled.p`
-  font-size: 24px;
-  font-weight: 400;
-`;
-
-export const ModifyMoadlBtnFlex = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 20px;
-
-  & > button {
-    width: 50%;
-  }
 `;
