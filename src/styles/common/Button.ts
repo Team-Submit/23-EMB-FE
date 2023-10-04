@@ -1,8 +1,9 @@
+import { BoxShadow } from './../theme';
 import { css, styled } from "styled-components";
 import { color } from "../theme";
 
 type sizeEnum = "XL" | "M" | "icon";
-type colorEnum = "Point" | "Gray" | "Transparent";
+type colorEnum = "Point" | "Gray" | "Transparent" | "Red";
 
 interface ButtonProps {
   size: sizeEnum;
@@ -20,9 +21,9 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow:${BoxShadow};
   }
-  &:disabled{
+  &:disabled {
     cursor: auto;
   }
 
@@ -70,7 +71,8 @@ export const Button = styled.button<ButtonProps>`
             box-shadow: none;
           }
         `
-      : css`
+      : colorType === "Transparent"
+      ? css`
           background-color: ${color.White};
           color: ${color.Black.Text};
           &:hover {
@@ -83,5 +85,20 @@ export const Button = styled.button<ButtonProps>`
             color: ${color.Gray[75]};
             box-shadow: none;
           }
-        `}
+        `
+      : css`
+        background-color: ${color.Red[0]};
+        color: ${color.White};
+        &:hover{
+          background-color: ${color.Red[1]};
+        }
+        &:active{
+          background-color: ${color.Red[2]};
+          box-shadow: none;
+        }
+        &:disabled{
+          background-color: ${color.Red[3]};
+          box-shadow: none;
+        }
+      `}
 `;
