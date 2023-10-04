@@ -35,18 +35,21 @@ export const FirstLogin = () => {
     setUserDepartment(e.target.value);
   };
 
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8080',
+  });
+  
   const handleLogin = () => {
     if (newPassword.length < 8 || newPassword.length > 30) {
       setPasswordError('길이는 8~30자 이내여야 합니다.');
       return;
     }
-
-    //Axios 요청 to server
-    axios.post('http://localhost:8080/FirstLogin', {
+    
+    axiosInstance.post('/FirstLogin', {
       username,
       newPassword,
       UserPhoneNumber,
-      UserDepartment
+      UserDepartment,
     })
       .then(response => {
         console.log('서버 응답:', response.data);
@@ -55,6 +58,7 @@ export const FirstLogin = () => {
         console.error('서버 요청 오류:', error);
       });
   };
+  
 
   return (
     <Modal isOpen={true}>

@@ -18,14 +18,17 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8080',
+  });
+  
   const handleLogin = () => {
     if (!userID || !password) {
       setError('아이디와 비밀번호를 모두 입력하세요.');
       return;
     }
-
-    //API요청
-    axios.post('http://localhost:8080/login', { userID, password })
+  
+    axiosInstance.post('/login', { userID, password })
       .then(response => {
         console.log('로그인 성공');
       })
@@ -34,6 +37,7 @@ export const Login = () => {
         console.error(error);
       });
   };
+  
 
   return (
     <L.LoginWrapper>
