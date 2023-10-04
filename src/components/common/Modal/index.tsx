@@ -4,10 +4,11 @@ import * as S from "./style";
 interface ModalProps {
   isOpen: boolean;
   children?: ReactNode;
+  title?: string;
 }
 
-/** 사용법 : < Modal isOpen={boolean} > {children} </ Modal > */
-export const Modal = ({ isOpen, children }: ModalProps) => {
+/** 사용법 : < Modal isOpen={boolean} title?="title"> {children} </ Modal > */
+export const Modal = ({ isOpen, children, title }: ModalProps) => {
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
@@ -25,7 +26,10 @@ export const Modal = ({ isOpen, children }: ModalProps) => {
     <>
       {isOpen && (
         <S.BackDrop>
-          <S.Container>{children}</S.Container>
+          <S.Container>
+            {title && <S.Title>{title}</S.Title>}
+            {children}
+            </S.Container>
         </S.BackDrop>
       )}
     </>
