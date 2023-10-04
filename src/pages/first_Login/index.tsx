@@ -3,7 +3,7 @@ import * as L from './style';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
 import { Modal } from '../../components/common/Modal';
-import axios from 'axios';
+import axiosInstance from './Instance';
 
 export const FirstLogin = () => {
   const [username, setUsername] = useState<string>('');
@@ -34,17 +34,13 @@ export const FirstLogin = () => {
   const handleUserDepartment = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserDepartment(e.target.value);
   };
-
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8080',
-  });
   
   const handleLogin = () => {
     if (newPassword.length < 8 || newPassword.length > 30) {
       setPasswordError('길이는 8~30자 이내여야 합니다.');
       return;
     }
-    
+
     axiosInstance.post('/FirstLogin', {
       username,
       newPassword,

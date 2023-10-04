@@ -3,7 +3,7 @@ import * as L from './style';
 import { Logo } from '../../assets';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
-import axios from 'axios';
+import axiosInstance from './instance';
 
 export const Login = () => {
   const [userID, setUserID] = useState<string>('');
@@ -18,10 +18,6 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8080',
-  });
-  
   const handleLogin = () => {
     if (!userID || !password) {
       setError('아이디와 비밀번호를 모두 입력하세요.');
