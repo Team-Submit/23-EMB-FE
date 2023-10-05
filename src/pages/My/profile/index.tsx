@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Button } from "../../../../styles/common/Button";
-import { Input } from "../../../common/Input";
-import { Tab } from "../../../common/Tab";
+import { Button } from "../../../styles/common/Button";
+import { Input } from "../../../components/common/Input";
+import { Tab } from "../../../components/common/Tab";
 import * as S from "./style";
-import { InputAuto } from "../../../common/InputAuto";
-import { ProfileModal } from "./modal";
+import { InputAuto } from "../../../components/common/InputAuto";
+import { ProfileModal } from "./Modal";
 
 interface changeProfileType {
   UserName: string;

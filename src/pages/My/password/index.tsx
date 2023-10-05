@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Button } from "../../../../styles/common/Button";
+import { Button } from "../../../styles/common/Button";
 import * as S from "./style";
-import { Input } from "../../../common/Input";
-import { Tab } from "../../../common/Tab";
+import { Input } from "../../../components/common/Input";
+import { Tab } from "../../../components/common/Tab";
 
 interface changePasswordType {
   password: string;
