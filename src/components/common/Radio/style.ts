@@ -1,7 +1,3 @@
-import { Button } from "./../../../styles/common/Button";
-import { Check } from "./../../../assets/icons/Check";
-import { TransparentDiv } from "./../Data/style";
-import { hover } from "@testing-library/user-event/dist/hover";
 import { BoxShadow, color } from "./../../../styles/theme";
 import { styled, css } from "styled-components";
 
