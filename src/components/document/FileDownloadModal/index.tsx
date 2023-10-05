@@ -3,9 +3,23 @@ import { Modal } from "../../common/Modal";
 import { Button } from "../../../styles/common/Button";
 import { ButtonHorizonal, RadioContainer, Text24 } from "./style";
 import Radio from "../../common/Radio";
+import { usePDF } from "@react-pdf/renderer";
+import CerificationOfCareerPDF from "../CerificationOfCareerPDF.tsx";
 
 export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, setIsOpen: Dispatch<React.SetStateAction<boolean>>}){
     const [RadioSelect, setRadioSelect] = useState<string>('CerificationOfCareer');
+    const [instance] = usePDF({
+        document: <CerificationOfCareerPDF name="성명박" address="여기" birthdate="어제" firstTenure="내일" lastTenure="내일모래" occupation="지구정복"/>,
+    });
+
+    function DownloadHandler(){
+        console.log(instance)
+
+        const aElement = document.createElement('a');
+        aElement.href = instance.url as string;
+        aElement.download = '경력증명서_성명박';
+        aElement.click()
+    }
 
     return(
         <Modal isOpen={IsOpen} title="다운로드">
@@ -18,7 +32,7 @@ export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, s
                 <Radio text="테스트" selected={RadioSelect === 'testing'} onClick={()=>setRadioSelect('testing')}/>
             </RadioContainer>
             <ButtonHorizonal>
-                <Button size='M' colorType="Point">다운로드</Button>
+                <Button size='M' colorType="Point" onClick={DownloadHandler}>다운로드</Button>
                 <Button size='M' colorType="Gray" onClick={()=> setIsOpen(false)}>닫기</Button>
             </ButtonHorizonal>
         </Modal>
