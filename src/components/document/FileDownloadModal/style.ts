@@ -9,3 +9,7 @@ export const ButtonHorizonal = styled.div`
         flex: 1 1 0;
     }
 `
+
+export const Text24 = styled.div`
+    font-size: 24px;
+`
