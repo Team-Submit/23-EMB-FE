@@ -1,5 +1,5 @@
-import { Button } from "../../../../../styles/common/Button";
-import { Modal } from "../../../../common/Modal";
+import { Button } from "../../../../styles/common/Button";
+import { Modal } from "../../../../components/common/Modal";
 import * as S from "./style";
 
 interface ProfileProp {
