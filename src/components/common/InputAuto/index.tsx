@@ -15,7 +15,7 @@ interface InputAutoProps {
 }
 
 /** < InputAuto value={값} setValue={set값} list={문자 배열} label={label} placeholder?={placeholder} /> */
-export const InputAuto = ({
+export const InputAuto =({
   label,
   placeholder,
   value,
@@ -40,9 +40,7 @@ export const InputAuto = ({
   }, [isOpen]);
 
   return (
-    <S.Container
-      ref={selectListRef}
-    >
+    <S.Container ref={selectListRef}>
       <Input
         label={label}
         placeholder={placeholder}
@@ -50,7 +48,7 @@ export const InputAuto = ({
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
-        onFocus={()=>setIsOpen(true)}
+        onFocus={() => setIsOpen(true)}
       />
       {isOpen && (
         <S.ListContainer>

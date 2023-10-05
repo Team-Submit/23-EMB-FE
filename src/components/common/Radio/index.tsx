@@ -1,23 +1,24 @@
 import * as S from "./style";
+import { Check } from "../../../assets/icons/Check";
 
 interface RadioProps {
   disabled?: boolean;
-  selected: boolean;
+  selected?: boolean;
+  text: string;
+  onClick?: () => void;
 }
 
 export const Radio = ({
   disabled = false,
-  selected,
+  selected = false,
+  text,
+  onClick,
 }: RadioProps) => {
   return (
-    <S.Container>
-      <S.RadioButton
-        disabled={disabled}
-        selected={selected}
-      >
-        워싱턴어쩌고저쩌고
-      </S.RadioButton>
-    </S.Container>
+    <S.RadioButton disabled={disabled} selected={selected} onClick={onClick}>
+      {selected && <Check fill="white" />}
+      {text}
+    </S.RadioButton>
   );
 };
 

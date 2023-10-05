@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ChevronLeft20 } from "../../../assets/icons/ChevronLeft20";
 import { ChevronRight20 } from "../../../assets/icons/ChevronRight20";
 import * as S from "./style";
@@ -9,19 +10,46 @@ interface PaginaionProps {
 }
 
 export const Pagination = ({ total, nowPage, setNowPage }: PaginaionProps) => {
+  const [page, setPage] = useState<number[]>([]);
+  const [selectPage, setSeletPage] = useState<number>(1);
+  const end = Math.ceil(total / 10);
+
+  const countPages = () => {
+    setPage(
+      Array.from(
+        { length: Math.min(5, end - (selectPage - 1) * 5) },
+        (_, i) => i + (selectPage - 1) * 5 + 1
+      )
+    );
+  };
+
+  useEffect(() => {
+    countPages();
+  }, [total, selectPage]);
+
+  useEffect(() => {
+    setSeletPage(Math.ceil(nowPage / 10));
+  }, []);
+
   return (
     <S.Container>
-      <S.Arrow>
+      <S.Arrow
+        disabled={selectPage === 1}
+        onClick={() => setSeletPage(selectPage - 1)}
+      >
         <ChevronLeft20 />
       </S.Arrow>
       <S.PagesContainer>
-        <S.Page>1</S.Page>
-        <S.Page>2</S.Page>
-        <S.Page>3</S.Page>
-        <S.Page>4</S.Page>
-        <S.Page>5</S.Page>
+        {page.map((v) => (
+          <S.Page selected={nowPage === v} onClick={() => setNowPage(v)}>
+            {v}
+          </S.Page>
+        ))}
       </S.PagesContainer>
-      <S.Arrow>
+      <S.Arrow
+        disabled={selectPage === Math.ceil(end / 5)}
+        onClick={() => setSeletPage(selectPage + 1)}
+      >
         <ChevronRight20 />
       </S.Arrow>
     </S.Container>
