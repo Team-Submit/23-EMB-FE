@@ -13,6 +13,7 @@ export const RadioButton = styled.button<{
   justify-content: center;
   align-items: center;
   border: none;
+  font-size: 24px;
 
   ${({ disabled }) =>
     !disabled
