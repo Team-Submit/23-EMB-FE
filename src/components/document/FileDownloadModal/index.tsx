@@ -13,8 +13,6 @@ export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, s
     });
 
     function DownloadHandler(){
-        console.log(instance)
-
         const aElement = document.createElement('a');
         aElement.href = instance.url as string;
         aElement.download = '경력증명서_성명박';
