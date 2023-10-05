@@ -5,11 +5,7 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { BoxShadow, color } from "./../../../styles/theme";
 import { styled, css } from "styled-components";
 
-export const Container = styled.div<{
-  disabled?: boolean;
-}>``;
-
-export const RadioButton = styled.div<{
+export const RadioButton = styled.button<{
   disabled?: boolean;
   selected: boolean;
 }>`
@@ -20,6 +16,7 @@ export const RadioButton = styled.div<{
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  border: none;
 
   ${({ disabled }) =>
     !disabled
