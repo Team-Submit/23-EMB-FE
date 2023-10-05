@@ -79,6 +79,11 @@ export const PassWord = () => {
           label="새 비밀번호 확인"
           type="password"
           name="rePassword"
+          bottomMessage={
+            changePassword.newPassword !== changePassword.rePassword
+              ? "비밀번호가 일치하지 않습니다"
+              : undefined
+          }
         />
         <Button size="XL" colorType="Point">
           완료
