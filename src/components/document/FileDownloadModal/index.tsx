@@ -18,7 +18,7 @@ export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, s
         const aElement = document.createElement('a');
         aElement.href = instance.url as string;
         aElement.download = '경력증명서_성명박';
-        aElement.click()
+        aElement.click();
     }
 
     return(
@@ -32,8 +32,12 @@ export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, s
                 <Radio text="테스트" selected={RadioSelect === 'testing'} onClick={()=>setRadioSelect('testing')}/>
             </RadioContainer>
             <ButtonHorizonal>
-                <Button size='M' colorType="Point" onClick={DownloadHandler}>다운로드</Button>
-                <Button size='M' colorType="Gray" onClick={()=> setIsOpen(false)}>닫기</Button>
+                <Button size='M' colorType="Point" disabled={instance.loading} onClick={DownloadHandler}>
+                    {instance.loading ? '불러오는 중' : '다운로드' }
+                </Button>
+                <Button size='M' colorType="Gray" onClick={()=> setIsOpen(false)}>
+                    닫기
+                </Button>
             </ButtonHorizonal>
         </Modal>
     )
