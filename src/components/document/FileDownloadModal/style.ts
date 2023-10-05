@@ -13,3 +13,13 @@ export const ButtonHorizonal = styled.div`
 export const Text24 = styled.div`
     font-size: 24px;
 `
+
+export const RadioContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    &>button{
+        width: calc(50% - 16px);
+    }
+`
