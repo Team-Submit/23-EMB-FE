@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { Dispatch, useState } from "react";
 import { Modal } from "../../common/Modal";
 import { Button } from "../../../styles/common/Button";
 import { ButtonHorizonal, RadioContainer, Text24 } from "./style";
 import Radio from "../../common/Radio";
 
-export default function FileDownloadModal(){
-    const [IsOpen, setIsOpen] = useState<boolean>(true);
+export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, setIsOpen: Dispatch<React.SetStateAction<boolean>>}){
     const [RadioSelect, setRadioSelect] = useState<string>('CerificationOfCareer');
 
     return(
