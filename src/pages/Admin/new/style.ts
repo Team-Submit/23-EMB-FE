@@ -1,6 +1,5 @@
-//admin/style.ts
 import styled from "styled-components";
-import { color } from "../../../styles/theme";
+import { BoxShadow, color } from "../../../styles/theme";
 
 export const NewBackground = styled.div`
   width: 100%;
@@ -14,12 +13,10 @@ export const NewWarp = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   border-radius: 16px;
   border: 1px solid ${color.Gray[85]};
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 2px 4px 0px color(display-p3 0 0 0 / 0.25);
-`;
+  box-shadow: ${BoxShadow};
+  `;
 
 export const NewText = styled.p`
   font-weight: bold;

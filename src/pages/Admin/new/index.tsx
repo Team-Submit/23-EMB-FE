@@ -1,9 +1,8 @@
-//pages/admin/new/index.tsx
-import { useEffect, useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { Input } from "../../../components/common/Input";
 import { Button } from "../../../styles/common/Button";
 import { Tab } from "../../../components/common/Tab";
-import { Modal } from "../../../components/common/Modal";
+import { LssudeModal } from "../../../components/pages/admin/new";
 import * as S from "./style";
 
 interface changeNewType {
@@ -29,13 +28,8 @@ export const New = () => {
   };
 
   const handleModalToggle = () => {
-    setOpen(!open); 
+    setOpen(!open);
   };
-
-
-  useEffect(() => {
-    console.log(changeNew);
-  }, [changeNew]);
 
   return (
     <S.NewBackground>
@@ -71,15 +65,11 @@ export const New = () => {
           발급
         </Button>
 
-        {open && 
-          <Modal isOpen>
-            <S.LssuedMoadleTitle>계정을 발급하시겠습니까?</S.LssuedMoadleTitle>
-            <S.LssuedMoadlBtnFlex>
-                <Button colorType="Point" size="M" onClick={() => {}}>발급</Button>
-                <Button colorType="Gray" size="M" onClick={handleModalToggle}>취소</Button>
-            </S.LssuedMoadlBtnFlex>
-          </Modal>
-        }
+        <LssudeModal
+          updateClick={()=>{}}
+          cancelClick={handleModalToggle}
+          isOpen={open}
+        />
       </S.NewWarp>
     </S.NewBackground>
   );
