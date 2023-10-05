@@ -20,6 +20,6 @@ export const RadioContainer = styled.div`
     justify-content: space-between;
     gap: 16px;
     &>button{
-        width: calc(50% - 16px);
+        width: calc(50% - 8px);
     }
 `
