@@ -1,8 +1,25 @@
 import { styled } from "styled-components";
+import { color } from "../../styles/theme";
 
 export const Background = styled.div`
   width: 100%;
   height: calc(100vh - 9vh);
+`;
+
+export const DangerBox = styled.p`
+  display: flex;
+  align-items: center;
+`;
+
+export const Danger = styled.p`
+  color: ${color.Red[0]};
+  font-size: 24px;
+  margin-left: 7px;
+`;
+
+export const BottonBox = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const TabBox = styled.div`
