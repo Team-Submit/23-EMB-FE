@@ -4,9 +4,13 @@ import { Button } from "../../../styles/common/Button";
 import { ButtonHorizonal, RadioContainer, Text24 } from "./style";
 import Radio from "../../common/Radio";
 import { usePDF } from "@react-pdf/renderer";
-import CerificationOfCareerPDF from "../CerificationOfCareerPDF.tsx";
+import CerificationOfCareerPDF from "../CerificationOfCareerPDF";
 
-export default function FileDownloadModal({IsOpen, setIsOpen}:{IsOpen:boolean, setIsOpen: Dispatch<React.SetStateAction<boolean>>}){
+interface FileDownloadModalType{
+    IsOpen:boolean, setIsOpen: Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function FileDownloadModal({IsOpen, setIsOpen}:FileDownloadModalType){
     const [RadioSelect, setRadioSelect] = useState<string>('CerificationOfCareer');
     const [instance] = usePDF({
         document: <CerificationOfCareerPDF name="성명박" address="여기" birthdate="어제" firstTenure="내일" lastTenure="내일모래" occupation="지구정복"/>,
