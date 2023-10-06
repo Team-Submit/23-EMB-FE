@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PostUpload } from "../../../apis/common/Upload";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../Input";
 import { UploadModal } from "../UploadModal";
@@ -34,6 +35,10 @@ export const UploadInput = () => {
             [name]: value,
         });
     };
+
+    const onUploadData = () => {
+        PostUpload({ ...upload });
+    }
 
     return (
         <>
@@ -112,7 +117,11 @@ export const UploadInput = () => {
                     >업로드</Button>
                 </S.BtnFlex>
             </S.Warpper>
-            <UploadModal OpenProps={Open} SetOpenProps={setOpen} />
+            <UploadModal
+                OpenProps={Open}
+                SetOpenProps={setOpen}
+                UploadFuntion={() => onUploadData()}
+            />
         </>
     );
 }
