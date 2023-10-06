@@ -20,10 +20,7 @@ export const PassWord = () => {
 
   const putData = () => {
     try {
-      UserPasswordPut({
-        password: changePassword.password,
-        newPassword: changePassword.newPassword,
-      });
+      UserPasswordPut({ ...changePassword });
     } catch (err) {
       console.log("비밀번호 변경을 실패했습니다");
     }
