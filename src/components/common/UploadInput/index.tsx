@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../Input";
-import { Modal } from "../Modal";
+import { UploadModal } from "../UploadModal";
 import * as S from "./style"
 
 interface uploadData {
@@ -24,7 +24,7 @@ export const UploadInput = () => {
         occupation: "",
     });
 
-    const [Open, setOpen] = useState<Boolean>(false);
+    const [Open, setOpen] = useState<boolean>(false);
 
     const onChangeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -112,14 +112,7 @@ export const UploadInput = () => {
                     >업로드</Button>
                 </S.BtnFlex>
             </S.Warpper>
-            {Open &&
-                <Modal isOpen>
-                    <S.ModalTitle>인적사항을 업로드할까요?</S.ModalTitle>
-                    <S.MoadlBtnFlex>
-                        <Button colorType="Point" size="XL" onClick={() => { }}>업로드</Button>
-                        <Button colorType="Gray" size="XL" onClick={() => setOpen(false)}>취소</Button>
-                    </S.MoadlBtnFlex>
-                </Modal>}
+            <UploadModal OpenProps={Open} SetOpenProps={setOpen} />
         </>
     );
 }
