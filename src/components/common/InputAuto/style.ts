@@ -7,17 +7,16 @@ export const Container = styled.div`
 `;
 
 export const ListContainer = styled.div`
-  overflow: hidden;
   position: absolute;
   top: 100%;
   width: 100%;
+  z-index: 1;
   background-color: ${color.White};
   border: 1px solid ${color.Gray[75]};
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 
   display: flex;
-  z-index: 1;
   flex-direction: column;
   gap: 4px;
   padding: 4px;
@@ -36,14 +35,13 @@ export const ListValue = styled.div`
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background-color: ${color.Gray[95]};
   }
-  &:active{
+  &:active {
     background-color: ${color.Gray[85]};
   }
 `;
-
 
 export const ListNewValue = styled.div`
   display: flex;
@@ -51,9 +49,8 @@ export const ListNewValue = styled.div`
   padding: 8px;
   align-items: center;
   cursor: pointer;
-  >p{
+  > p {
     font-size: 24px;
-    color: ${color.Gray[75]}
+    color: ${color.Gray[75]};
   }
-  
-`
+`;
