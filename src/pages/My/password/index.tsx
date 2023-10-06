@@ -3,7 +3,7 @@ import { Button } from "../../../styles/common/Button";
 import * as S from "./style";
 import { Input } from "../../../components/common/Input";
 import { Tab } from "../../../components/common/Tab";
-import { UserPasswordPut } from "../../../apis/my";
+import { UserPasswordPut } from "../../../apis/my/index";
 
 interface changePasswordType {
   password: string;
@@ -25,7 +25,7 @@ export const PassWord = () => {
         newPassword: changePassword.newPassword,
       });
     } catch (err) {
-      console.log("err발생하였습다");
+      console.log("비밀번호 변경을 실패했습니다");
     }
   };
 
