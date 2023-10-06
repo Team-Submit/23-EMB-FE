@@ -36,7 +36,7 @@ export const Profile = () => {
     try {
       UserInfoGet();
     } catch (err) {
-      console.log("에러ㅓ에러 발생");
+      console.log("정보를 갖고 오는데 에러가 발생했습니다");
     }
   }, []);
 
@@ -48,7 +48,7 @@ export const Profile = () => {
         newUserNumber: changeProfile.UserNumber,
       });
     } catch (err) {
-      console.log("에엥러러러러발생");
+      console.log("정보수정 중 오류가 발생했습니다");
     }
   };
 

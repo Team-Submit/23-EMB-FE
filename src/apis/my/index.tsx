@@ -1,6 +1,5 @@
-//api
-
-import { instance } from "../../apis/index";
+import { UserInfoPutDataProp, UserPasswordPutProp } from "./my.type";
+import { instance } from "../index";
 
 export const UserInfoGet = async () => {
   try {
@@ -10,17 +9,6 @@ export const UserInfoGet = async () => {
     console.log("데이터를 갖고 오는 중에 오류가 발생하였습니다");
   }
 };
-
-export interface UserInfoPutDataProp {
-  newDepartment: string;
-  newUserName: string;
-  newUserNumber: string;
-}
-
-export interface UserPasswordPutProp {
-  password: string;
-  newPassword: string;
-}
 
 export const UserInfoPut = async ({
   newDepartment,
@@ -35,7 +23,7 @@ export const UserInfoPut = async ({
     });
     return data;
   } catch (err) {
-    console.log("데이터를 보내는데 실패하였습니다ㅋ");
+    console.log("데이터를 보내는데 실패하였습니다");
   }
 };
 
@@ -49,6 +37,6 @@ export const UserPasswordPut = async ({
       newPassword,
     });
   } catch (err) {
-    console.log("비밀번호 데이터 이상해짐");
+    console.log("비밀번호 변경 중 오류가 발생하였습니다");
   }
 };
