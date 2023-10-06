@@ -3,6 +3,7 @@ import { Button } from "../../../styles/common/Button";
 import * as S from "./style";
 import { Input } from "../../../components/common/Input";
 import { Tab } from "../../../components/common/Tab";
+import { UserPasswordPut } from "../../../apis/my";
 
 interface changePasswordType {
   password: string;
@@ -16,6 +17,17 @@ export const PassWord = () => {
     newPassword: "",
     rePassword: "",
   });
+
+  const putData = () => {
+    try {
+      UserPasswordPut({
+        password: changePassword.password,
+        newPassword: changePassword.newPassword,
+      });
+    } catch (err) {
+      console.log("err발생하였습다");
+    }
+  };
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -85,7 +97,7 @@ export const PassWord = () => {
               : undefined
           }
         />
-        <Button size="XL" colorType="Point">
+        <Button size="XL" colorType="Point" onClick={putData}>
           완료
         </Button>
       </S.PassWordWarp>
