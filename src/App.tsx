@@ -15,8 +15,8 @@ function App() {
         <Route path="/admin/new" />
         <Route path="/admin/edit" />
         <Route path="/search" element={<SearchListPage />} />
-        <Route path="/search/detail" element={<DetailPage />} />
-        <Route path="/upload" />
+        <Route path="/search/detail/:id" element={<DetailPage />} />
+        <Route path="/upload" element={<UploadPage />} />
         <Route path="/my/profile" />
         <Route path="/my/password" />
         <Route path="*" element={<NotFound />} />
