@@ -5,10 +5,11 @@ interface ModalProps {
   isOpen: boolean;
   children?: ReactNode;
   title?: string;
+  nonAcquireResponse?: boolean;
 }
 
 /** 사용법 : < Modal isOpen={boolean} title?="title"> {children} </ Modal > */
-export const Modal = ({ isOpen, children, title }: ModalProps) => {
+export const Modal = ({ isOpen, children, title, nonAcquireResponse }: ModalProps) => {
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
