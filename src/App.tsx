@@ -19,7 +19,7 @@ function App() {
         <Route path="/admin/new" element={<New/>}/>
         <Route path="/admin/edit" element={<Edit/>} />
         <Route path="/search" element={<SearchListPage />} />
-        <Route path="/search/detail/:id" element={<DetailPage />} />
+        <Route path="/search/detail:id" element={<DetailPage />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="/my/profile" />
         <Route path="/my/password" />
