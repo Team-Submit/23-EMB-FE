@@ -8,7 +8,6 @@ import { NowData } from "../../components/common/DetailData/Now";
 import { WorkData } from "../../components/common/DetailData/Work";
 import FileDownloadModal from "../../components/document/FileDownloadModal";
 import { Button } from "../../styles/common/Button";
-import FileDownloadModal from "../../components/document/FileDownloadModal";
 import * as S from "./style";
 
 interface DetailType {
