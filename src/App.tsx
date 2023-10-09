@@ -4,6 +4,8 @@ import { DetailPage } from "./pages/Detail";
 import NotFound from "./pages/NotFound";
 import { SearchPage } from "./pages/Search";
 import { SearchListPage } from "./pages/SearchList";
+import { AdminPage } from "./pages/Admin";
+import { UploadPage } from "./pages/Upload";
 
 function App() {
   return (
@@ -11,11 +13,11 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" />
         <Route path="/home" element={<SearchPage />} />
-        <Route path="/admin" />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/new" />
         <Route path="/admin/edit" />
         <Route path="/search" element={<SearchListPage />} />
-        <Route path="/search/detail/:id" element={<DetailPage />} />
+        <Route path="/search/detail" element={<DetailPage />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="/my/profile" />
         <Route path="/my/password" />
