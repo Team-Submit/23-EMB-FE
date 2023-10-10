@@ -17,15 +17,24 @@ export const Modal = ({ isOpen, setOpen, children, title, lowImportance }: Modal
       top: -${window.scrollY}px;
       overflow-y: scroll;
       width: 100%;`;
+    document.addEventListener('keydown', LowImportanceKeydownHandler)
+
     return () => {
       const scrollY = document.body.style.top;
       document.body.style.cssText = "";
       window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      document.removeEventListener('keydown', LowImportanceKeydownHandler)
     };
   }, []);
 
   function LowImportanceBackgroudClickHandler(e:React.MouseEvent<HTMLDivElement>){
     if(setOpen && lowImportance && e.currentTarget.id === "ModalBackdrop"){
+      setOpen(false)
+    }
+  }
+
+  function LowImportanceKeydownHandler(e:any){
+    if(setOpen && lowImportance && e.key === 'Escape'){
       setOpen(false)
     }
   }
