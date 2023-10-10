@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../../../components/common/Input";
 import { Tab } from "../../../components/common/Tab";
 import * as S from "./style";
-import { InputAuto } from "../../../components/common/InputAuto";
 import { ProfileModal } from "./Modal";
+import { UserInfoGet } from "../../../apis/my/index";
+import { UserInfoPut } from "../../../apis/my/index";
+import { DepartmentInput } from "../../../components/common/DepartmentInput";
 
 interface changeProfileType {
   UserName: string;
@@ -17,7 +19,7 @@ export const Profile = () => {
     UserName: "",
     UserNumber: "",
   });
-  const [Department, setDepartment] = useState("");
+  const [NewDepartment, setNewDepartment] = useState("");
 
   const onChangeProfile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,12 +32,31 @@ export const Profile = () => {
   const openModal = () => {
     setOpen(!open);
   };
+  useEffect(() => {
+    try {
+      UserInfoGet();
+    } catch (err) {
+      console.log("정보를 갖고 오는데 에러가 발생했습니다");
+    }
+  }, []);
+
+  const putData = () => {
+    try {
+      UserInfoPut({
+        newDepartment: NewDepartment,
+        newUserName: changeProfile.UserName,
+        newUserNumber: changeProfile.UserNumber,
+      });
+    } catch (err) {
+      console.log("정보수정 중 오류가 발생했습니다");
+    }
+  };
 
   return (
     <S.Background>
       <ProfileModal
         cancelClick={openModal}
-        updateClick={() => {}}
+        updateClick={putData}
         isOpen={open}
       />
       <S.profileTabWarp>
@@ -76,12 +97,7 @@ export const Profile = () => {
           name="newUserNumber"
           placeholder="연락처를 입력해주세요"
         />
-        <InputAuto
-          value={Department}
-          setValue={setDepartment}
-          label="부서"
-          placeholder="부서를 입력해주세요"
-        />
+        <DepartmentInput value={NewDepartment} setValue={setNewDepartment} />
         <Button size="XL" colorType="Point" onClick={openModal}>
           완료
         </Button>
