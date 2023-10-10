@@ -1,15 +1,16 @@
-import { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import * as S from "./style";
 
 interface ModalProps {
   isOpen: boolean;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   children?: ReactNode;
   title?: string;
   nonAcquireResponse?: boolean;
 }
 
 /** 사용법 : < Modal isOpen={boolean} title?="title"> {children} </ Modal > */
-export const Modal = ({ isOpen, children, title, nonAcquireResponse }: ModalProps) => {
+export const Modal = ({ isOpen, setOpen, children, title, nonAcquireResponse }: ModalProps) => {
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
