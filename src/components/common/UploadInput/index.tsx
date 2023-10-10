@@ -37,7 +37,7 @@ export const UploadInput = () => {
     };
 
     const onUploadData = () => {
-        PostUpload({ ...upload });
+        PostUpload(upload);
     }
 
     return (
