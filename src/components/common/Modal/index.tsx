@@ -24,10 +24,16 @@ export const Modal = ({ isOpen, setOpen, children, title, lowImportance }: Modal
     };
   }, []);
 
+  function LowImportanceBackgroudClickHandler(){
+    if(setOpen && lowImportance){
+      setOpen(false)
+    }
+  }
+
   return (
     <>
       {isOpen && (
-        <S.BackDrop>
+        <S.BackDrop onClick={LowImportanceBackgroudClickHandler}>
           <S.Container>
             {title && <S.Title>{title}</S.Title>}
             {children}
