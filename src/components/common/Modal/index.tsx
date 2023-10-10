@@ -24,8 +24,8 @@ export const Modal = ({ isOpen, setOpen, children, title, lowImportance }: Modal
     };
   }, []);
 
-  function LowImportanceBackgroudClickHandler(){
-    if(setOpen && lowImportance){
+  function LowImportanceBackgroudClickHandler(e:React.MouseEvent<HTMLDivElement>){
+    if(setOpen && lowImportance && e.currentTarget.id === "ModalBackdrop"){
       setOpen(false)
     }
   }
@@ -33,7 +33,7 @@ export const Modal = ({ isOpen, setOpen, children, title, lowImportance }: Modal
   return (
     <>
       {isOpen && (
-        <S.BackDrop onClick={LowImportanceBackgroudClickHandler}>
+        <S.BackDrop id="ModalBackdrop" onClick={LowImportanceBackgroudClickHandler}>
           <S.Container>
             {title && <S.Title>{title}</S.Title>}
             {children}
