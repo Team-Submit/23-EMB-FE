@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchInput } from '../../components/common/SearchInput';
 import { IndexData } from '../../components/common/Data';
 import * as S from './style'
 import { SearchData } from '../../components/common/Data/SearchData';
 import { Pagination } from '../../components/common/Pagination';
-import { Modal } from '../../components/common/Modal';
-import { Button } from '../../styles/common/Button';
+import { SearchModal } from '../../components/common/SearchListModal';
+import { getSearchList } from '../../apis/common/searchList';
+import { useSearchParams } from 'react-router-dom';
 
 const testData = [{
+    id: 1,
     name: "홍길동",
     department: "방가루부",
     birthdate: "0611",
@@ -16,6 +18,7 @@ const testData = [{
     tenure: "직종",
 },
 {
+    id: 2,
     name: "어썸드래곤",
     department: "방가루부",
     birthdate: "0611",
@@ -31,6 +34,17 @@ export const SearchListPage = () => {
     const [pageData, setPageData] = useState<number>(1);
     const [open, setOpen] = useState<boolean>(false);
     const [modalName, setModalName] = useState<string>("");
+    const [modalId, setModalId] = useState<number>();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [listData, setListData] = useState();
+
+    const ParamName = searchParams.get('name');
+    const Parambirthdate = searchParams.get('birthdate');
+
+    useEffect(() => {
+        // const data = getSearchList(ParamName, Parambirthdate);
+        // setListData(data); api연동시 변경 예정
+    }, [])
 
     return (
         <S.Background>
@@ -44,6 +58,7 @@ export const SearchListPage = () => {
                     testData.map((v) => {
                         return (
                             < SearchData
+                                key={v.id}
                                 name={v.name}
                                 department={v.department}
                                 birthdate={v.birthdate}
@@ -53,6 +68,7 @@ export const SearchListPage = () => {
                                 onClick={(e) => {
                                     setOpen(true);
                                     setModalName(v.name);
+                                    setModalId(v.id);
                                 }} />
                         );
                     })
@@ -62,17 +78,12 @@ export const SearchListPage = () => {
             <S.PaginationFlex>
                 <Pagination total={total} nowPage={pageData} setNowPage={setPageData} />
             </S.PaginationFlex>
-            {open &&
-                <Modal isOpen>
-                    <S.ModalTitle>정말 열람하시겠습니까?</S.ModalTitle>
-                    <S.ModalBody>{modalName}</S.ModalBody>
-                    <S.ModalBody>개인 정보 보호를 위해 열람 전 정보가 정확한지 확인하세요</S.ModalBody>
-                    <S.MoadlBtnFlex>
-                        <Button colorType="Point" size="M" onClick={() => { }}>열람</Button>
-                        <Button colorType="Gray" size="M" onClick={() => setOpen(false)}>취소</Button>
-                    </S.MoadlBtnFlex>
-                </Modal>
-            }
+            <SearchModal
+                OpenProps={open}
+                SetOpenProps={setOpen}
+                ModalName={modalName}
+                ModalId={modalId}
+            />
         </S.Background>
     );
 }

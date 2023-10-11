@@ -26,21 +26,3 @@ export const PaginationFlex = styled.div`
     display: flex;
     justify-content: center;
 `;
-
-export const ModalTitle = styled.div`
-    font-size: 32px;
-    font-weight: bold;
-`;
-
-export const ModalBody = styled.div`
-    font-size: 24px;
-`;
-
-export const MoadlBtnFlex = styled.div`
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    & > button{
-        width: 50%;
-    }
-`;
