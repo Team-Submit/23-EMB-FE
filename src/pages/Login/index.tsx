@@ -1,65 +1,97 @@
 import React, { useState } from 'react';
 import * as L from './style';
-import { Logo } from '../../assets';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
-import axiosInstance from './instance';
+import { Modal } from '../../components/common/Modal';
+import { DepartmentInput } from '../../components/common/DepartmentInput';
 
-export const Login = () => {
-  const [userID, setUserID] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+import { instance } from '..';
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserID(e.target.value);
+export const Firstlogin = () => {
+  const [username, setUsername] = useState<string>('');
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [UserPhoneNumber, setUserContact] = useState<string>('');
+  const [UserDepartment, setDepartment] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
+
+  const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
   };
   
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPasswordValue = e.target.value;
+    setNewPassword(newPasswordValue);
+
+    if (newPasswordValue.length < 8 || newPasswordValue.length > 30) {
+      setPasswordError('비밀번호는 8자에서 30자여야 합니다.');
+    } else {
+      setPasswordError('');
+    }
   };
 
+  const handleUserContact = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserContact(e.target.value);
+  };
+
+  const handleUserDepartment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDepartment(e.target.value);
+  };
+  
   const handleLogin = () => {
-    if (!userID || !password) {
-      setError('아이디와 비밀번호를 모두 입력하세요.');
+    if (newPassword.length < 8 || newPassword.length > 30) {
+      setPasswordError('길이는 8~30자 이내여야 합니다.');
       return;
     }
-  
-    axiosInstance.post('/login', { userID, password })
+
+    instance.post('/Firstlogin', {
+      username,
+      newPassword,
+      UserPhoneNumber,
+      UserDepartment,
+    })
       .then(response => {
-        console.log('로그인 성공');
+        console.log('서버 응답:', response.data);
       })
       .catch(error => {
-        setError('아이디 또는 비밀번호를 다시 입력해주세요.');
-        console.error(error);
+        console.error('서버 요청 오류:', error);
       });
   };
-  
 
   return (
-    <L.LoginWrapper>
-      <L.LogoImage src={Logo} alt="로고" />
-      <L.LoginContainer>
-        <L.TitleLogin>로그인</L.TitleLogin>
-        <L.FormGroup>
-          <Input
-            value={userID}
-            onChange={handleUsernameChange}
-            label="아이디"
-          />
-        </L.FormGroup>
-        <L.FormGroup>
-          <Input
-            value={password}
-            onChange={handlePasswordChange}
-            label="비밀번호"
-          />
-          {error && <p>{error}</p>}
-        </L.FormGroup>
-        
-        <Button size="XL" colorType="Point" onClick={handleLogin}>로그인</Button>
-      </L.LoginContainer>
-    </L.LoginWrapper>
+    <Modal isOpen={true}>
+      <L.Welcome>환영합니다!</L.Welcome>
+      <L.Paragraph>emb 사용을 시작하기 전, 정보 입력이 필요합니다</L.Paragraph>
+      <L.FormGroup>
+        <Input
+          value={username}
+          onChange={handleUsername}
+          label="이름"
+        />
+      </L.FormGroup>
+      <L.FormGroup>
+        <Input
+          value={newPassword}
+          onChange={handleNewPasswordChange}
+          label="새 비밀번호"
+        />
+        <p>보안을 위해 지급된 비밀번호를 변경하세요</p>
+        {passwordError}
+      </L.FormGroup>
+      <L.FormGroup>
+        <Input
+          value={UserPhoneNumber}
+          onChange={handleUserContact}
+          label="연락처"
+          placeholder="010-0000-0000"
+        />
+      </L.FormGroup>
+      <L.FormGroup>
+        <DepartmentInput
+          value={UserDepartment}
+          setValue={setDepartment}
+        />
+      </L.FormGroup>
+      <Button size="XL" colorType="Point" onClick={handleLogin}>완료</Button>
+    </Modal>
   );
 };
-
-export default Login;

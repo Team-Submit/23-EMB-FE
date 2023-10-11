@@ -3,13 +3,13 @@ import * as L from './style';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
 import { Modal } from '../../components/common/Modal';
-import axiosInstance from './Instance';
+import { DepartmentInput } from '../../components/common/DepartmentInput';
 
 export const FirstLogin = () => {
   const [username, setUsername] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [UserPhoneNumber, setUserContact] = useState<string>('');
-  const [UserDepartment, setUserDepartment] = useState<string>('');
+  const [UserDepartment, setDepartment] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +32,7 @@ export const FirstLogin = () => {
   };
 
   const handleUserDepartment = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserDepartment(e.target.value);
+    setDepartment(e.target.value);
   };
   
   const handleLogin = () => {
@@ -41,7 +41,7 @@ export const FirstLogin = () => {
       return;
     }
 
-    axiosInstance.post('/FirstLogin', {
+    axiosInstance.post('/Firstlogin', {
       username,
       newPassword,
       UserPhoneNumber,
@@ -85,10 +85,9 @@ export const FirstLogin = () => {
         />
       </L.FormGroup>
       <L.FormGroup>
-        <Input
+        <DepartmentInput
           value={UserDepartment}
-          onChange={handleUserDepartment}
-          label="부서"
+          setValue={setDepartment}
         />
       </L.FormGroup>
       <Button size="XL" colorType="Point" onClick={handleLogin}>완료</Button>
