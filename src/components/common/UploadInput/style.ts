@@ -48,16 +48,3 @@ export const BtnFlex = styled.div`
     justify-content: flex-end;
 `;
 
-export const ModalTitle = styled.div`
-    font-size: 32px;
-    font-weight: 800;
-`;
-
-export const MoadlBtnFlex = styled.div`
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    & > button{
-        width: 50%;
-    }
-`;
