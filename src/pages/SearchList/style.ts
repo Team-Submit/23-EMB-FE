@@ -16,3 +16,9 @@ export const TotalList = styled.div`
     font-size: 30px;
     height: 100%;
 `;
+
+export const PaginationFlex = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
