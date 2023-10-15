@@ -1,4 +1,4 @@
-import { instance } from "..";
+import { instance } from "../common";
 import { issuedDateProps } from "./admin.type";
 import { modifyDateProps } from "./admin.type";
 
@@ -36,3 +36,4 @@ export const deleteDate = async () => {
     console.log("삭제하는데 실패하였습니다.");
   }
 };
+export { instance };

@@ -81,6 +81,7 @@ export const Profile = () => {
           setValue={setDepartment}
           label="부서"
           placeholder="부서를 입력해주세요"
+          list={[]}
         />
         <Button size="XL" colorType="Point" onClick={openModal}>
           완료
