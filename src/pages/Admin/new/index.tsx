@@ -2,7 +2,8 @@ import { useState, ChangeEvent } from "react";
 import { Input } from "../../../components/common/Input";
 import { Button } from "../../../styles/common/Button";
 import { Tab } from "../../../components/common/Tab";
-import { LssudeModal } from "../../../components/pages/admin/new";
+import { IssudeModal } from "../../../components/pages/admin/new";
+import { issuedDate } from "../../../apis/admin/index";
 import * as S from "./style";
 
 interface changeNewType {
@@ -29,6 +30,13 @@ export const New = () => {
 
   const handleModalToggle = () => {
     setOpen(!open);
+  };
+
+  const issuedUpDate = async () => {
+    await issuedDate({
+      id: changeNew.newUserId,
+      password: changeNew.newPassword,
+    });
   };
 
   return (
@@ -65,8 +73,8 @@ export const New = () => {
           발급
         </Button>
 
-        <LssudeModal
-          updateClick={()=>{}}
+        <IssudeModal
+          updateClick={issuedUpDate}
           cancelClick={handleModalToggle}
           isOpen={open}
         />

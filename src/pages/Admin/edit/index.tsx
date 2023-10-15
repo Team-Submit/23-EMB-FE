@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../../../components/common/Input";
-import { InputAuto } from "../../../components/common/InputAuto";
 import { Check } from "../../../assets/icons/Check";
 import { color } from "../../../styles/theme";
 import { ModifyModal } from "../../../components/pages/admin/edit/modal";
+import { DepartmentInput } from "../../../components/common/DepartmentInput";
+import { modifyDate } from "../../../apis/admin/index";
 import * as S from "./style";
 import React from "react";
 
@@ -35,6 +36,13 @@ export const Edit = () => {
     setOpen(!open);
   };
 
+  const modifyUpDate = async () => {
+    await modifyDate({
+      newDepartment: department,
+      ...changeEdit,
+    });
+  };
+
   return (
     <div>
       <S.EditWrap>
@@ -52,13 +60,7 @@ export const Edit = () => {
             placeholder="연락처를 입력하세요"
             onChange={onChangeEdit}
           />
-          <InputAuto
-            value={department}
-            setValue={setDepartment}
-            list={[]}
-            label="부서"
-            placeholder="부서를 입력하세요"
-          />
+          <DepartmentInput value={department} setValue={setDepartment} />
 
           <Button size="XL" colorType="Point" onClick={handleModalToggle}>
             <Check fill={color.White} />
@@ -66,7 +68,7 @@ export const Edit = () => {
           </Button>
 
           <ModifyModal
-            updateClick={() => {}}
+            updateClick={modifyUpDate}
             cancelClick={handleModalToggle}
             isOpen={open}
           />
