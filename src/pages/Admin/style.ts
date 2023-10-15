@@ -18,8 +18,11 @@ export const Danger = styled.p`
 `;
 
 export const BottonBox = styled.div`
+  width: 100%;
+
   display: flex;
   justify-content: center;
+  gap: 10px;
 `;
 
 export const TabBox = styled.div`

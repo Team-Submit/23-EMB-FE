@@ -7,19 +7,31 @@ import { Excalmation } from "../../assets/icons/Exclamation";
 import { color } from "../../styles/theme";
 import { useState, useEffect } from "react";
 import { Button } from "../../styles/common/Button";
-import { getUserData } from "../../apis/admin";
+import { getUserData } from "../../apis/common/getUserData";
+import { delAccounts } from "../../apis/common/delAccounts";
+
+interface userListType {
+  userName: string;
+  department: string;
+  userNumber: string;
+}
 
 export const AdminPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [list, setList] = useState<string[]>([]);
+  const [list, setList] = useState<userListType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getUserData();
-      setList(res);
+      setList(res.list);
     };
     fetchData();
   }, []);
+
+  const delAccount = async () => {
+    const res = await delAccounts();
+    // setList();
+  };
 
   return (
     <S.Background>
@@ -29,10 +41,14 @@ export const AdminPage = () => {
           <S.Danger>삭제한 계정은 복구할 수 없습니다</S.Danger>
         </S.DangerBox>
         <S.BottonBox>
-          <Button size="M" colorType="Red">
+          <Button size="M" colorType="Red" onClick={delAccount}>
             삭제
           </Button>
-          <Button size="M" colorType="Gray">
+          <Button
+            size="M"
+            colorType="Gray"
+            onClick={() => setIsOpenModal(false)}
+          >
             취소
           </Button>
         </S.BottonBox>
@@ -48,11 +64,12 @@ export const AdminPage = () => {
       </S.TabBox>
       <S.Content>
         <IndexData type={"user"} />
-        <>
+
+        {list.map((data) => (
           <UserData
-            name="김수한무 거북이와 두루미 삼천갑자 동박삭"
-            department="서브밋이당께"
-            phoneNumber="010-4077-2937"
+            name={data.userName}
+            department={data.department}
+            phoneNumber={data.userNumber}
             userUpdate={() => {
               alert(1);
             }}
@@ -60,7 +77,7 @@ export const AdminPage = () => {
               setIsOpenModal(true);
             }}
           />
-        </>
+        ))}
       </S.Content>
     </S.Background>
   );

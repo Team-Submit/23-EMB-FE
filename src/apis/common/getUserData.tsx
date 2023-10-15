@@ -2,7 +2,7 @@ import { instance } from ".";
 
 export const getUserData = async () => {
   try {
-    const { data } = await instance.get("/users/informations");
+    const { data } = await instance.get("/manager/lists");
     return data;
   } catch (err) {
     console.log(
