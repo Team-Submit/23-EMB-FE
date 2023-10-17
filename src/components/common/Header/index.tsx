@@ -4,6 +4,13 @@ import { DepartmentBadge } from "../DepartmentBadge";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "../Tab";
+import { getDepartment } from "../../../apis/common/department";
+
+interface userInfoType {
+  Department: string;
+  UserName: string;
+  UserNumber: string;
+}
 
 /** 사용법 : < Header /> */
 export const Header = () => {
@@ -12,20 +19,20 @@ export const Header = () => {
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
+  const [department, setDepartment] = useState<string[]>([]);
+  const [userinfo, setUserinfo] = useState<userInfoType>({
+    Department: "",
+    UserName: "",
+    UserNumber: "",
+  });
 
   useEffect(() => {
-    const handleOutsideClose = (e: { target: any }) => {
-      if (
-        isOpen &&
-        dropMenuRef.current &&
-        !dropMenuRef.current.contains(e.target)
-      )
-        setIsOpen(false);
+    const getData = async () => {
+      const res = await getDepartment();
+      setUserinfo(res);
     };
-    document.addEventListener("click", handleOutsideClose);
-
-    return () => document.removeEventListener("click", handleOutsideClose);
-  }, [isOpen]);
+    getData();
+  }, []);
 
   return (
     <S.Container>
@@ -33,8 +40,16 @@ export const Header = () => {
         <S.MenuContainer>
           <Tab
             list={[
-              { text: "검색", link: "/home", path: "home" },
-              { text: "인적사항 업로드", link: "/upload", path: "upload" },
+              {
+                text: "검색",
+                link: "/home",
+                path: "home",
+              },
+              {
+                text: "인적사항 업로드",
+                link: "/upload",
+                path: "upload",
+              },
             ]}
             selected={pathname}
           />
@@ -43,8 +58,16 @@ export const Header = () => {
         <S.MenuContainer>
           <Tab
             list={[
-              { text: "검색", link: "/home", path: "home" },
-              { text: "계정관리", link: "/admin", path: "admin" },
+              {
+                text: "검색",
+                link: "/home",
+                path: "home",
+              },
+              {
+                text: "계정관리",
+                link: "/admin",
+                path: "admin",
+              },
             ]}
             selected={pathname}
           />
