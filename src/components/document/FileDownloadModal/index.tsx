@@ -7,13 +7,15 @@ import { usePDF } from "@react-pdf/renderer";
 import CerificationOfCareerPDF from "../CerificationOfCareerPDF";
 
 interface FileDownloadModalType{
-    IsOpen:boolean, setIsOpen: Dispatch<React.SetStateAction<boolean>>
+    IsOpen:boolean;
+    setIsOpen: Dispatch<React.SetStateAction<boolean>>;
+    data: DetailType;
 }
 
-export default function FileDownloadModal({IsOpen, setIsOpen}:FileDownloadModalType){
+export default function FileDownloadModal({IsOpen, setIsOpen, data}:FileDownloadModalType){
     const [RadioSelect, setRadioSelect] = useState<string>('CerificationOfCareer');
     const [instance] = usePDF({
-        document: <CerificationOfCareerPDF name="성명박" address="여기" birthdate="어제" firstTenure="내일" lastTenure="내일모래" occupation="지구정복"/>,
+        document: <CerificationOfCareerPDF {...data}/>,
     });
 
     function DownloadHandler(){
