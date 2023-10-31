@@ -3,7 +3,7 @@ import { Button } from "../../../../styles/common/Button";
 import { Input } from "../../../common/Input";
 import { Tab } from "../../../common/Tab";
 import * as S from "./style";
-import { InputAuto } from "../../../common/InputAuto";
+import { DepartmentInput } from "../../../common/DepartmentInput";
 import { ProfileModal } from "./modal";
 
 interface changeProfileType {
@@ -76,12 +76,9 @@ export const Profile = () => {
           name="newUserNumber"
           placeholder="연락처를 입력해주세요"
         />
-        <InputAuto
+        <DepartmentInput
           value={Department}
           setValue={setDepartment}
-          label="부서"
-          placeholder="부서를 입력해주세요"
-          list={[]}
         />
         <Button size="XL" colorType="Point" onClick={openModal}>
           완료
