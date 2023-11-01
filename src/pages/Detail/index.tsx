@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { getDetail } from "../../apis/common/detail";
 import { ChevronLeft20 } from "../../assets/icons/ChevronLeft20";
 import { DownLoad } from "../../assets/icons/DownLoad";
@@ -25,6 +24,8 @@ interface DetailType {
 
 export const DetailPage = () => {
     const [IsDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false);
+    const [detailData, setDetailData] = useState<DetailType>();
+    const param = useParams();
 
     console.log(param.id);
 

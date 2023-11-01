@@ -23,7 +23,7 @@ export const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await getUserData();
-      setList(res.list);
+      setList(res.list ?? []);
     };
     fetchData();
   }, []);

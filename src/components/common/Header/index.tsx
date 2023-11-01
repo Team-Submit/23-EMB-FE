@@ -8,7 +8,7 @@ import { Tab } from "../Tab";
 /** 사용법 : < Header /> */
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<"User" | "Manager">("Manager");
+  const [user, setUser] = useState<"User" | "Manager">("User");
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
