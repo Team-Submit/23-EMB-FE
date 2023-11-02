@@ -6,12 +6,15 @@ import { SearchPage } from "./pages/Search";
 import { SearchListPage } from "./pages/SearchList";
 import { AdminPage } from "./pages/Admin";
 import { UploadPage } from "./pages/Upload";
+import { Login } from "./pages/Login/index"
+import { FirstLogin } from "./pages/FirstLogin/index"
 
 function App() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route path="/" />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/FirstLogin" element={<FirstLogin />} />
         <Route path="/home" element={<SearchPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/new" />
