@@ -10,18 +10,6 @@ import FileDownloadModal from "../../components/document/FileDownloadModal";
 import { Button } from "../../styles/common/Button";
 import * as S from "./style";
 
-interface DetailType {
-    name: string,
-    birthdate: string,
-    address: string,
-    firstTenure: string,
-    lastTenure: string,
-    occupation: string,
-    department: string,
-    userName: string,
-    userNumber: string
-}
-
 export const DetailPage = () => {
     const [IsDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false);
     const [detailData, setDetailData] = useState<DetailType>();
@@ -62,7 +50,7 @@ export const DetailPage = () => {
             /> */}
             </div>
             <Button size="XL" colorType="Point" onClick={() => setIsDownloadModalOpen(true)}><DownLoad fill="white" />다운로드</Button>
-            <FileDownloadModal IsOpen={IsDownloadModalOpen} setIsOpen={setIsDownloadModalOpen} />
+            <FileDownloadModal IsOpen={IsDownloadModalOpen} setIsOpen={setIsDownloadModalOpen} data={detailData}/>
         </S.Backgound>
     );
 }
