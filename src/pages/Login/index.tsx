@@ -3,7 +3,9 @@ import * as L from './style';
 import { Logo } from '../../assets';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
-import { loginAndHandleTokens } from '../../apis/Login/Login'
+import { loginResponse, LoginCredentials, LoginResponse } from '../../apis/Login/Login'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { SearchPage } from '../Search';
 
 export const Login = () => {
   const [userID, setUserID] = useState<string>('');
@@ -18,15 +20,21 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    if (!userID || !password) {
-      setError('아이디와 비밀번호를 모두 입력하세요.');
-      return;
-    }else{
-      setError(`아이디또는 비밀번호가 틀립니다.`)
-    }
-    if(userID || password){
-      loginAndHandleTokens;
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try {
+      const credentials: LoginCredentials = { username: userID, password };
+      const data: LoginResponse = await loginResponse(credentials);
+
+      const { access_token, refresh_token } = data;
+
+      localStorage.setItem("access_token", access_token);
+      localStorage.setItem("refresh_token", refresh_token); 
+
+        navigate('/SearchPage')
+    } catch (error) {
+      throw error
     }
   };
   
