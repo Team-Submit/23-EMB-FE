@@ -4,11 +4,15 @@ import { DepartmentBadge } from "../DepartmentBadge";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "../Tab";
+import { Modal } from "../Modal";
+import { Button } from "../../../styles/common/Button";
+import { logout } from "../../../apis/common/logout";
 
 /** 사용법 : < Header /> */
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<"User" | "Manager">("User");
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
@@ -27,8 +31,32 @@ export const Header = () => {
     return () => document.removeEventListener("click", handleOutsideClose);
   }, [isOpen]);
 
+  const handleLogout = () => {
+    setIsOpenModal(true);
+  };
+
+  const handleConfirmLogout = async () => {
+    const res = await logout();
+    // setList();
+    setIsOpenModal(false);
+  };
+
+  const handleCancelLogout = () => {
+    setIsOpenModal(false);
+  };
+
   return (
     <S.Container>
+      <Modal isOpen={isOpenModal} title="로그아웃 하시겠습니까?">
+        <S.BottonBox>
+          <Button size="M" colorType="Red" onClick={handleConfirmLogout}>
+            로그아웃
+          </Button>
+          <Button size="M" colorType="Gray" onClick={handleCancelLogout}>
+            취소
+          </Button>
+        </S.BottonBox>
+      </Modal>
       {user === "User" ? (
         <S.MenuContainer>
           <Tab
@@ -55,7 +83,7 @@ export const Header = () => {
         <S.Name ref={dropMenuRef} onClick={() => setIsOpen(!isOpen)}>
           {isOpen && (
             <S.SettingDropContainer>
-              <div onClick={() => alert("로그아웃")}>로그아웃</div>
+              <div onClick={handleLogout}>로그아웃</div>
               {user === "User" && (
                 <>
                   <hr />

@@ -14,11 +14,24 @@ export const Container = styled.div`
   z-index: 100;
 `;
 
+export const BottonBox = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  & > button {
+    width: 50%;
+  }
+`;
+
 export const UserContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
 `;
+
 export const Name = styled.div`
   position: relative;
   display: flex;
