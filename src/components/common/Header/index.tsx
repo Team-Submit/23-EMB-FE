@@ -4,9 +4,10 @@ import { DepartmentBadge } from "../DepartmentBadge";
 import { ChevronDown } from "../../../assets/icons/ChevronDown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "../Tab";
-import { Modal } from "../Modal";
 import { Button } from "../../../styles/common/Button";
 import { logout } from "../../../apis/common/logout";
+import { Modal } from "../Modal";
+import { getDepartment } from "../../../apis/common/header";
 
 interface userInfoType {
   Department: string;
@@ -18,11 +19,10 @@ interface userInfoType {
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<"User" | "Manager">("User");
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
-  const [department, setDepartment] = useState<string[]>([]);
   const [userinfo, setUserinfo] = useState<userInfoType>({
     Department: "",
     UserName: "",
@@ -37,9 +37,6 @@ export const Header = () => {
     getData();
   }, []);
 
-    return () => document.removeEventListener("click", handleOutsideClose);
-  }, [isOpen]);
-
   const handleLogout = () => {
     setIsOpenModal(true);
   };
@@ -47,6 +44,7 @@ export const Header = () => {
   const handleConfirmLogout = async () => {
     const res = await logout();
     // setList();
+    console.log(res);
     setIsOpenModal(false);
   };
 

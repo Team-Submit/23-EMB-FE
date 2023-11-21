@@ -1,7 +1,7 @@
 /// localstroage key값 수정 필요함
 import axios, { AxiosError } from "axios";
 
-const BASEURL = "http://localhost:8080";
+const BASEURL = process.env.REACT_APP_BASE_URL;
 
 export const instance = axios.create({
   baseURL: BASEURL,

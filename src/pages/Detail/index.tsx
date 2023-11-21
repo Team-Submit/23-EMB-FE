@@ -14,7 +14,17 @@ import { DetailType } from "../../types/detail";
 export const DetailPage = () => {
   const [IsDownloadModalOpen, setIsDownloadModalOpen] =
     useState<boolean>(false);
-  const [detailData, setDetailData] = useState<DetailType>();
+  const [detailData, setDetailData] = useState<DetailType>({
+    name: "",
+    birthdate: "",
+    address: "",
+    firstTenure: "",
+    lastTenure: "",
+    occupation: "",
+    department: "",
+    userName: "",
+    userNumber: "",
+  });
   const param = useParams();
 
   console.log(param.id);

@@ -10,6 +10,8 @@ import { Edit } from "./pages/Admin/edit";
 import { New } from "./pages/Admin/new";
 import { Profile } from "./pages/My/profile";
 import { PassWord } from "./pages/My/password";
+import Login from "./pages/Login";
+import { FirstLogin } from "./pages/FirstLogin";
 
 function App() {
   return (
@@ -24,8 +26,8 @@ function App() {
         <Route path="/search" element={<SearchListPage />} />
         <Route path="/search/detail/:id" element={<DetailPage />} />
         <Route path="/upload" element={<UploadPage />} />
-        <Route path="/my/profile" element={<Profile/>}/>
-        <Route path="/my/password" element={<PassWord/>}/>
+        <Route path="/my/profile" element={<Profile />} />
+        <Route path="/my/password" element={<PassWord />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
