@@ -8,6 +8,12 @@ import { Modal } from "../Modal";
 import { Button } from "../../../styles/common/Button";
 import { logout } from "../../../apis/common/logout";
 
+interface userInfoType {
+  Department: string;
+  UserName: string;
+  UserNumber: string;
+}
+
 /** 사용법 : < Header /> */
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,17 +22,20 @@ export const Header = () => {
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
+  const [department, setDepartment] = useState<string[]>([]);
+  const [userinfo, setUserinfo] = useState<userInfoType>({
+    Department: "",
+    UserName: "",
+    UserNumber: "",
+  });
 
   useEffect(() => {
-    const handleOutsideClose = (e: { target: any }) => {
-      if (
-        isOpen &&
-        dropMenuRef.current &&
-        !dropMenuRef.current.contains(e.target)
-      )
-        setIsOpen(false);
+    const getData = async () => {
+      const res = await getDepartment();
+      setUserinfo(res);
     };
-    document.addEventListener("click", handleOutsideClose);
+    getData();
+  }, []);
 
     return () => document.removeEventListener("click", handleOutsideClose);
   }, [isOpen]);
@@ -61,8 +70,16 @@ export const Header = () => {
         <S.MenuContainer>
           <Tab
             list={[
-              { text: "검색", link: "/home", path: "home" },
-              { text: "인적사항 업로드", link: "/upload", path: "upload" },
+              {
+                text: "검색",
+                link: "/home",
+                path: "home",
+              },
+              {
+                text: "인적사항 업로드",
+                link: "/upload",
+                path: "upload",
+              },
             ]}
             selected={pathname}
           />
@@ -71,8 +88,16 @@ export const Header = () => {
         <S.MenuContainer>
           <Tab
             list={[
-              { text: "검색", link: "/home", path: "home" },
-              { text: "계정관리", link: "/admin", path: "admin" },
+              {
+                text: "검색",
+                link: "/home",
+                path: "home",
+              },
+              {
+                text: "계정관리",
+                link: "/admin",
+                path: "admin",
+              },
             ]}
             selected={pathname}
           />
