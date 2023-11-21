@@ -1,9 +1,10 @@
 import * as S from './style'
 import { Logo } from '../../assets';
 import { SearchInput } from '../../components/common/SearchInput';
+import useTitle from '../../hooks/useTitle';
 
 export const SearchPage = () => {
-
+    useTitle('검색')
     return (
         <S.Background>
             <S.Logo src={Logo} />

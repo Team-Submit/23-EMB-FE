@@ -8,6 +8,7 @@ import { DepartmentInput } from "../../../components/common/DepartmentInput";
 import { modifyDate } from "../../../apis/admin/index";
 import * as S from "./style";
 import React from "react";
+import useTitle from "../../../hooks/useTitle";
 
 interface changeEditType {
   newUserName: string;
@@ -17,6 +18,8 @@ interface changeEditType {
 export const Edit = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [department, setDepartment] = useState("");
+
+  useTitle('계정 정보 수정')
 
   const [changeEdit, setChangeEdit] = useState<changeEditType>({
     newUserName: "",
