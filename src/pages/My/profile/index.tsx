@@ -7,6 +7,7 @@ import { ProfileModal } from "./Modal";
 import { UserInfoGet } from "../../../apis/my/index";
 import { UserInfoPut } from "../../../apis/my/index";
 import { DepartmentInput } from "../../../components/common/DepartmentInput";
+import useTitle from "../../../hooks/useTitle";
 
 interface changeProfileType {
   UserName: string;
@@ -20,6 +21,8 @@ export const Profile = () => {
     UserNumber: "",
   });
   const [NewDepartment, setNewDepartment] = useState("");
+
+  useTitle('개인정보 수정')
 
   const onChangeProfile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

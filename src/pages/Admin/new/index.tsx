@@ -5,6 +5,7 @@ import { Tab } from "../../../components/common/Tab";
 import { IssudeModal } from "../../../components/pages/admin/new";
 import { issuedDate } from "../../../apis/admin/index";
 import * as S from "./style";
+import useTitle from "../../../hooks/useTitle";
 
 interface changeNewType {
   newUserId: string;
@@ -13,6 +14,8 @@ interface changeNewType {
 
 export const New = () => {
   const [open, setOpen] = useState<boolean>(false);
+
+  useTitle('계정 발급')
 
   const [changeNew, setChangeNew] = useState<changeNewType>({
     newUserId: "",

@@ -8,6 +8,7 @@ import { sendPostRequest } from '../../apis/Login/FirstLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PostDataType } from '../../apis/Login/FirstLogin_Data';
 import { SearchPage } from '../Search';
+import useTitle from '../../hooks/useTitle';
 
 export const FirstLogin = () => {
   const [username, setUsername] = useState<string>('');
@@ -15,6 +16,8 @@ export const FirstLogin = () => {
   const [UserPhoneNumber, setUserContact] = useState<string>('');
   const [UserDepartment, setDepartment] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+
+  useTitle('환영합니다!')
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
