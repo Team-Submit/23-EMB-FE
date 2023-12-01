@@ -13,26 +13,44 @@ export const Label = styled.label`
   font-size: 20px;
 `;
 
-export const Einput = styled.input`
+export const InputContainer = styled.div`
+  display: flex;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid ${color.Gray[85]};
+  &:focus-within {
+    border: 1px solid ${color.Blue[0]};
+  }
+`;
+
+export const Einput = styled.input<{ password?: string }>`
   font-size: 20px;
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 14px 14px 14px 14px;
-  border-radius: 4px;
-  border: 1px solid ${color.Gray[85]};
+  border: ${({ password }) =>
+    password !== "password" ? `1px solid ${color.Gray[85]}` : "none"};
+
   &::placeholder {
     color: ${color.Gray[75]};
   }
-  &:focus {
-    border: 1px solid ${color.Blue[0]};
-  }
+
   &:disabled {
     border: 1px solid ${color.Gray[75]};
     &::placeholder {
       color: ${color.Gray[75]};
     }
   }
+`;
+
+export const EyeCotainer = styled.div`
+  cursor: pointer;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BottomMessage = styled.p<{

@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Excalmation } from "../../../assets/icons/Exclamation";
+import { EyeOffOutline } from "../../../assets/icons/EyeOffOutline";
+import { EyeOnOutline } from "../../../assets/icons/EyeOnOutline";
 import { color } from "../../../styles/theme";
 import * as S from "./style";
 
@@ -31,20 +34,31 @@ export const Input = ({
   width = "100%",
   name,
 }: InputProps) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   return (
     <S.Container width={width}>
       <S.Label htmlFor={label}>{label}</S.Label>
-      <S.Einput
-        autoComplete="off"
-        id={label}
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        value={value}
-        onChange={onChange}
-        onFocus={onFocus}
-        name={name}
-      />
+      <S.InputContainer>
+        <S.Einput
+          autoComplete="off"
+          id={label}
+          type={
+            type === "password" ? (showPassword ? "string" : "password") : type
+          }
+          placeholder={placeholder}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+          onFocus={onFocus}
+          name={name}
+          password={type}
+        />
+        {type === "password" && (
+          <S.EyeCotainer onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <EyeOffOutline /> : <EyeOnOutline />}
+          </S.EyeCotainer>
+        )}
+      </S.InputContainer>
       <S.Bind>
         {error && <Excalmation fill={color.Red[0]} />}
         <S.BottomMessage error={error}>{bottomMessage}</S.BottomMessage>
