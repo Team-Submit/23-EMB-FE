@@ -10,6 +10,7 @@ import FileDownloadModal from "../../components/document/FileDownloadModal";
 import { Button } from "../../styles/common/Button";
 import * as S from "./style";
 import { DetailType } from "../../types/detail";
+import useTitle from "../../hooks/useTitle";
 
 export const DetailPage = () => {
   const [IsDownloadModalOpen, setIsDownloadModalOpen] =
@@ -26,6 +27,8 @@ export const DetailPage = () => {
     userNumber: "",
   });
   const param = useParams();
+
+  useTitle(`${detailData.name} 인적 사항`)
 
   console.log(param.id);
 

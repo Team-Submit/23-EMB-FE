@@ -7,6 +7,7 @@ import { Pagination } from '../../components/common/Pagination';
 import { SearchModal } from '../../components/common/SearchListModal';
 import { getSearchList } from '../../apis/common/searchList';
 import { useSearchParams } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const testData = [{
     id: 1,
@@ -37,9 +38,11 @@ export const SearchListPage = () => {
     const [modalId, setModalId] = useState<number>();
     const [searchParams, setSearchParams] = useSearchParams();
     const [listData, setListData] = useState();
-
+    
     const ParamName = searchParams.get('name');
     const Parambirthdate = searchParams.get('birthdate');
+    
+    useTitle(`'${ParamName}' 검색 결과`)
 
     useEffect(() => {
         // const data = getSearchList(ParamName, Parambirthdate);

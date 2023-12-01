@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Button } from "../../styles/common/Button";
 import { getUserData } from "../../apis/common/getUserData";
 import { delAccounts } from "../../apis/common/delAccounts";
+import useTitle from "../../hooks/useTitle";
 
 interface userListType {
   userName: string;
@@ -19,6 +20,8 @@ interface userListType {
 export const AdminPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [list, setList] = useState<userListType[]>([]);
+
+  useTitle('계정 관리')
 
   useEffect(() => {
     const fetchData = async () => {

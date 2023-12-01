@@ -6,11 +6,14 @@ import { Input } from '../../components/common/Input';
 import { loginResponse, LoginCredentials, LoginResponse } from '../../apis/Login/Login'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchPage } from '../Search';
+import useTitle from '../../hooks/useTitle';
 
 export const Login = () => {
   const [userID, setUserID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
+
+  useTitle('로그인')
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserID(e.target.value);

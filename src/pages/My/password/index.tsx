@@ -4,6 +4,7 @@ import * as S from "./style";
 import { Input } from "../../../components/common/Input";
 import { Tab } from "../../../components/common/Tab";
 import { UserPasswordPut } from "../../../apis/my/index";
+import useTitle from "../../../hooks/useTitle";
 
 interface changePasswordType {
   password: string;
@@ -17,6 +18,8 @@ export const PassWord = () => {
     newPassword: "",
     rePassword: "",
   });
+
+  useTitle('비밀번호 변경')
 
   const putData = () => {
     try {
