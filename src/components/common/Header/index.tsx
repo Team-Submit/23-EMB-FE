@@ -28,6 +28,7 @@ export const Header = () => {
     UserName: "",
     UserNumber: "",
   });
+  console.log(userinfo);
 
   useEffect(() => {
     const getData = async () => {

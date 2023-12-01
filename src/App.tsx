@@ -16,9 +16,9 @@ import { FirstLogin } from "./pages/FirstLogin";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/FirstLogin" element={<FirstLogin />} />
       <Route element={<AppLayout />}>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/FirstLogin" element={<FirstLogin />} />
         <Route path="/home" element={<SearchPage />} />
         <Route path="/admin/new" element={<New />} />
         <Route path="/admin" element={<AdminPage />} />

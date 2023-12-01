@@ -6,15 +6,14 @@ export interface LoginCredentials {
 }
 
 export interface LoginResponse {
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
-export const loginResponse = async (credentials: LoginCredentials): Promise<LoginResponse> => {
+export const loginResponse = async ({username, password}: LoginCredentials):Promise<LoginResponse> => {
   try {
-    const response = await instance.post("/user/login", credentials);
-
-    return response.data as LoginResponse;
+    const response = await instance.post(`/auth/login`, {id: username, password: password});
+    return response.data;
   } catch (error) {
     throw error;
   }

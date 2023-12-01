@@ -12,12 +12,15 @@ instance.interceptors.request.use(
   (config) => {
     // localstroage에서 토큰 가져와 confing.herader.Authorization에 넣어주는 코드
     const accessToken = localStorage.getItem("accessToken");
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    if(accessToken){
+      config.headers.Authorization = `Bearer ${accessToken}`}
 
     return config;
   },
   (error: AxiosError) => Promise.reject(error)
 );
+
+
 
 instance.interceptors.response.use(
   (response) => response,
@@ -32,10 +35,9 @@ instance.interceptors.response.use(
             axios
               .post(
                 `${BASEURL}/auth/reissue/access_token`,
-                {},
                 {
                   headers: {
-                    refreshToken: `Bearer ${refreshToken}`,
+                    Authorization: `Bearer ${refreshToken}`
                   },
                 }
               )

@@ -15,7 +15,7 @@ export const Login = () => {
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserID(e.target.value);
   };
-  
+
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
@@ -24,20 +24,20 @@ export const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const credentials: LoginCredentials = { username: userID, password };
-      const data: LoginResponse = await loginResponse(credentials);
+      const data = await loginResponse({ username: userID, password: password });
 
-      const { access_token, refresh_token } = data;
+      const { accessToken, refreshToken }: LoginResponse = data;
+      console.log(data);
 
-      localStorage.setItem("access_token", access_token);
-      localStorage.setItem("refresh_token", refresh_token); 
+      localStorage.setItem("access_token", accessToken);
+      localStorage.setItem("refresh_token", refreshToken);
 
-        navigate('/SearchPage')
+      // navigate('/home');
     } catch (error) {
       throw error
     }
   };
-  
+
 
   return (
     <L.LoginWrapper>
@@ -59,7 +59,7 @@ export const Login = () => {
           />
           {error && <p>{error}</p>}
         </L.FormGroup>
-        
+
         <Button size="XL" colorType="Point" onClick={handleLogin}>로그인</Button>
       </L.LoginContainer>
     </L.LoginWrapper>
