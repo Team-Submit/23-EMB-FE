@@ -7,12 +7,12 @@ import { Tab } from "../Tab";
 import { Button } from "../../../styles/common/Button";
 import { logout } from "../../../apis/common/logout";
 import { Modal } from "../Modal";
-import { getDepartment } from "../../../apis/common/header";
+import { getHeader } from "../../../apis/common/header";
 
 interface userInfoType {
-  Department: string;
-  UserName: string;
-  UserNumber: string;
+  department: string;
+  userName: string;
+  userNumber: string;
 }
 
 /** 사용법 : < Header /> */
@@ -24,15 +24,16 @@ export const Header = () => {
   const pathname = useLocation().pathname.split("/")[1];
   const navigate = useNavigate();
   const [userinfo, setUserinfo] = useState<userInfoType>({
-    Department: "",
-    UserName: "",
-    UserNumber: "",
+    department: "",
+    userName: "",
+    userNumber: "",
   });
   console.log(userinfo);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await getDepartment();
+      const res = await getHeader();
+      // console.log(res);
       if (res) {
         setUserinfo(res);
         setUser("User");
@@ -49,9 +50,8 @@ export const Header = () => {
 
   const handleConfirmLogout = async () => {
     const res = await logout();
-    // setList();
-    console.log(res);
-    setIsOpenModal(false);
+    localStorage.clear();
+    navigate('/');
   };
 
   const handleCancelLogout = () => {
@@ -102,24 +102,37 @@ export const Header = () => {
           />
         </S.MenuContainer>
       )}
-      <S.UserContainer>
-        <DepartmentBadge department={"분활정복 및 재정8부"} />
+      {user === "User" ? (
+        <S.UserContainer>
+          <DepartmentBadge department={userinfo.department} />
+          <S.Name ref={dropMenuRef} onClick={() => setIsOpen(!isOpen)}>
+            {isOpen && (
+              <S.SettingDropContainer>
+                <div onClick={handleLogout}>로그아웃</div>
+                {user === "User" && (
+                  <>
+                    <hr />
+                    <div onClick={() => navigate("/my/profile")}>마이페이지</div>
+                  </>
+                )}
+              </S.SettingDropContainer>
+            )}
+            <p>{userinfo.userName}</p>
+            <ChevronDown />
+          </S.Name>
+        </S.UserContainer>
+      ) : (<S.UserContainer>
         <S.Name ref={dropMenuRef} onClick={() => setIsOpen(!isOpen)}>
           {isOpen && (
             <S.SettingDropContainer>
               <div onClick={handleLogout}>로그아웃</div>
-              {user === "User" && (
-                <>
-                  <hr />
-                  <div onClick={() => navigate("/my/profile")}>마이페이지</div>
-                </>
-              )}
             </S.SettingDropContainer>
           )}
-          <p>김밥봉</p>
+          <p>관리자</p>
           <ChevronDown />
         </S.Name>
-      </S.UserContainer>
+      </S.UserContainer>)
+      }
     </S.Container>
   );
 };

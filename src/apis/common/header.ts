@@ -1,6 +1,6 @@
 import { instance } from "..";
 
-export const getDepartment = async () => {
+export const getHeader = async () => {
   try {
     const response = await instance.get("/users/informations");
     return response.data;

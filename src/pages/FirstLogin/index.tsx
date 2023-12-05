@@ -36,8 +36,8 @@ export const FirstLogin = () => {
   };
 
   const handleLogin = async () => {
-    const response = await sendPostRequest({ username: username, newPassword: newPassword, UserPhoneNumber: UserPhoneNumber, UserDepartment: UserDepartment });
-    if (response.state === 200) {
+    const response = await sendPostRequest({ userName: username, newPassword: newPassword, userNumber: UserPhoneNumber, department: UserDepartment });
+    if (response) {
       alert("환영합니다!");
       navigate("/home");
     } else {

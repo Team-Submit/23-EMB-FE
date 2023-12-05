@@ -1,6 +1,6 @@
 export interface PostDataType {
-  username: string;
+  userName: string;
   newPassword: string;
-  UserPhoneNumber: string;
-  UserDepartment: string;
+  userNumber: string;
+  department: string;
 }
