@@ -16,7 +16,7 @@ export const DepartmentInput = ({ value, setValue }: DepartmentInputProps) => {
     };
     fetchData()
       .then((data) => {
-        setList(data.deparment);
+        setList(data.departments);
       })
       .catch((err) => alert("오류가 발생하였습니다."));
   }, []);
