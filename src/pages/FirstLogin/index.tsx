@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as L from './style';
 import { Button } from '../../styles/common/Button';
 import { Input } from '../../components/common/Input';
 import { DepartmentInput } from '../../components/common/DepartmentInput';
 import { Modal } from '../../components/common/Modal';
 import { sendPostRequest } from '../../apis/Login/FirstLogin';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { PostDataType } from '../../apis/Login/FirstLogin_Data';
-import { SearchPage } from '../Search';
+import { useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 
 export const FirstLogin = () => {
@@ -16,12 +14,13 @@ export const FirstLogin = () => {
   const [UserPhoneNumber, setUserContact] = useState<string>('');
   const [UserDepartment, setDepartment] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+  const navigate = useNavigate();
 
   useTitle('환영합니다!')
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
-  };  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  }; const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPasswordValue = e.target.value;
     setNewPassword(newPasswordValue);
 
@@ -36,37 +35,16 @@ export const FirstLogin = () => {
     setUserContact(e.target.value);
   };
 
-  const loginAndProcessData = async (postData: PostDataType) => {
-    if (postData.username && postData.newPassword && postData.UserPhoneNumber && postData.UserDepartment) {
-      try {
-        const responseData = await sendPostRequest(postData);
-  
-        localStorage.setItem('access_token', responseData.access);
-        localStorage.setItem('refresh_token', responseData.refresh);
-  
-        console.log('요청이 성공적으로 처리되었습니다.', responseData);
-      } catch (error) {
-        console.error('요청이 실패했습니다.', error);
-      }
+  const handleLogin = async () => {
+    const response = await sendPostRequest({ username: username, newPassword: newPassword, UserPhoneNumber: UserPhoneNumber, UserDepartment: UserDepartment });
+    if (response.state === 200) {
+      alert("환영합니다!");
+      navigate("/home");
+    } else {
+      alert("입력된 정보를 다시 확인해주세요");
     }
   };
 
-    const navigate = useNavigate();
-  
-    const handleLogin = async (postData: { username: string, newPassword: string, UserPhoneNumber: string, UserDepartment: string }) => {
-      try {
-        const response = await sendPostRequest({username: 'string',
-          newPassword: 'string',
-          UserPhoneNumber: 'string',
-          UserDepartment: 'string'});
-  
-        if (response.status === 200) {
-          navigate('/SearchPage');
-        }
-      } catch (error) {
-        console.error('API 요청 실패:', error);
-      }
-  };
   return (
     <Modal isOpen={true}>
       <L.Welcome>환영합니다!</L.Welcome>
@@ -101,7 +79,7 @@ export const FirstLogin = () => {
           setValue={setDepartment}
         />
       </L.FormGroup>
-      <Button size="XL" colorType="Point" onClick={() => handleLogin({username,newPassword,UserPhoneNumber,UserDepartment,})}>
+      <Button size="XL" colorType="Point" onClick={handleLogin}>
         완료
       </Button>
     </Modal>

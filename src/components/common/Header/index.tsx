@@ -33,7 +33,12 @@ export const Header = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await getDepartment();
-      setUserinfo(res);
+      if (res) {
+        setUserinfo(res);
+        setUser("User");
+      } else {
+        setUser("Manager");
+      }
     };
     getData();
   }, []);
@@ -87,11 +92,6 @@ export const Header = () => {
         <S.MenuContainer>
           <Tab
             list={[
-              {
-                text: "검색",
-                link: "/home",
-                path: "home",
-              },
               {
                 text: "계정관리",
                 link: "/admin",
