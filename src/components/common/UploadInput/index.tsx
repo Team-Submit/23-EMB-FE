@@ -1,23 +1,14 @@
 import { useState } from "react";
-import { PostUpload } from "../../../apis/common/Upload";
+import { PostUpload, UploadDataType } from "../../../apis/common/Upload";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../Input";
 import { UploadModal } from "../UploadModal";
 import * as S from "./style"
 
-interface uploadData {
-    uploadName: string;
-    birthdate: string;
-    address: string;
-    firstTenure: string;
-    lastTenure: string;
-    occupation: string;
-}
-
 export const UploadInput = () => {
 
-    const [upload, setUpload] = useState<uploadData>({
-        uploadName: "",
+    const [upload, setUpload] = useState<UploadDataType>({
+        name: "",
         birthdate: "",
         address: "",
         firstTenure: "",
@@ -36,8 +27,8 @@ export const UploadInput = () => {
         });
     };
 
-    const onUploadData = () => {
-        PostUpload(upload);
+    const onUploadData = async () => {
+        await PostUpload(upload);
     }
 
     return (
@@ -50,13 +41,13 @@ export const UploadInput = () => {
                 </S.MattersFlex>
                 <S.InputFlex>
                     <Input
-                        value={upload.uploadName}
+                        value={upload.name}
                         onChange={onChangeUpload}
                         label="성명"
                         placeholder="홍길동"
                         type="string"
                         width="20%"
-                        name="uploadName"
+                        name="name"
                     />
                     <Input
                         value={upload.birthdate}
