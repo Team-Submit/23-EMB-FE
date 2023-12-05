@@ -7,6 +7,7 @@ import { loginResponse, LoginCredentials, LoginResponse } from '../../apis/Login
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchPage } from '../Search';
 import useTitle from '../../hooks/useTitle';
+import { LoginCheck } from '../../apis/Login/FirstLoginCheck';
 
 export const Login = () => {
   const [userID, setUserID] = useState<string>('');
@@ -29,13 +30,22 @@ export const Login = () => {
     try {
       const data = await loginResponse({ username: userID, password: password });
 
-      const { accessToken, refreshToken }: LoginResponse = data;
+      const { accessToken, refreshToken, um }: LoginResponse = data;
       console.log(data);
 
       localStorage.setItem("access_token", accessToken);
       localStorage.setItem("refresh_token", refreshToken);
 
-      // navigate('/home');
+      if (um) {
+        navigate('/admin');
+      } else {
+        const data = await LoginCheck({ username: userID });
+        if (data.firstLogin) {
+          navigate('/FirstLogin');
+        } else {
+          navigate('/home');
+        }
+      }
     } catch (error) {
       throw error
     }
