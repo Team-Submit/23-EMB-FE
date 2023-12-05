@@ -8,7 +8,7 @@ type DepatmentListType = {
 
 export const getDepartment = async (): Promise<DepatmentListType> => {
   try {
-    const { data } = await instance.get(`/token/departmentLists`);
+    const { data } = await instance.get(`${router}/token/departmentLists`);
     return data;
   } catch (err) {
     console.log(
