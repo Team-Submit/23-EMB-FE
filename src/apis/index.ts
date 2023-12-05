@@ -8,12 +8,28 @@ export const instance = axios.create({
   timeout: 10000,
 });
 
+export const refreshInstance = axios.create({
+  baseURL: BASEURL,
+  timeout: 10000,
+});
+
+
 instance.interceptors.request.use(
   (config) => {
-    // localstroage에서 토큰 가져와 confing.herader.Authorization에 넣어주는 코드
     const accessToken = localStorage.getItem("access_token");
     if(accessToken){
       config.headers.Authorization = `Bearer ${accessToken}`}
+
+    return config;
+  },
+  (error: AxiosError) => Promise.reject(error)
+);
+
+refreshInstance.interceptors.request.use(
+  (config) => {
+    const refresgToken = localStorage.getItem("refresh_token");
+    if(refresgToken){
+      config.headers.Authorization = `Bearer ${refresgToken}`}
 
     return config;
   },
