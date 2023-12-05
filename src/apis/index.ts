@@ -11,7 +11,7 @@ export const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // localstroage에서 토큰 가져와 confing.herader.Authorization에 넣어주는 코드
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     if(accessToken){
       config.headers.Authorization = `Bearer ${accessToken}`}
 
