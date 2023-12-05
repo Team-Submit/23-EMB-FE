@@ -2,9 +2,9 @@ import { instance } from "..";
 
 export const getDetail = async (id:string) => {
   try {
-    const { data } = await instance.get(`/information/detail/${id}`); // 아직 api 명세가 안나와서 임시 url 적어둠
-    return data;
+    const data = await instance.get(`/information/details${id}`);
+    return data.data;
   } catch(err) {
-    console.log("상세정보를 불러오는데 오류가 생겼습니다."); // 오류처리는 변경될 가능성 높음
+    console.log("상세정보를 불러오는데 오류가 생겼습니다.");
   }
 };

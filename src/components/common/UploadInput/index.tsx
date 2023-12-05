@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PostUpload, UploadDataType } from "../../../apis/common/Upload";
 import { Button } from "../../../styles/common/Button";
 import { Input } from "../Input";
@@ -17,6 +18,7 @@ export const UploadInput = () => {
     });
 
     const [Open, setOpen] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const onChangeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -29,6 +31,7 @@ export const UploadInput = () => {
 
     const onUploadData = async () => {
         await PostUpload(upload);
+        navigate('/home');
     }
 
     return (
@@ -54,7 +57,7 @@ export const UploadInput = () => {
                         onChange={onChangeUpload}
                         label="생년월일"
                         placeholder="20230926"
-                        type="string"
+                        type="date"
                         width="20%"
                         name="birthdate"
                     />

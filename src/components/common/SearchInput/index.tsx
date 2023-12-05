@@ -1,6 +1,6 @@
 import * as S from './style'
 import { Input } from '../../common/Input';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Button } from '../../../styles/common/Button';
 import { color } from '../../../styles/theme';
 import { Search24 } from '../../../assets/icons/Search24';
@@ -8,13 +8,24 @@ import { useNavigate } from 'react-router-dom';
 
 interface SearchInputProps {
     setError?: Dispatch<SetStateAction<boolean>>;
+    propsName: string;
+    propsDate: string;
 }
 
-export const SearchInput = ({ setError }: SearchInputProps) => {
+export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps) => {
 
     const [nameState, setNameState] = useState<string>("");
     const [birthdateState, setBirthdateState] = useState<string>("");
+    const [inputError, setInputError] = useState<boolean>(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (propsName) {
+            setNameState(propsName);
+        } else if (propsDate) {
+            setBirthdateState(propsDate);
+        }
+    }, []);
 
     const HandleSearch = () => {
         if (nameState && birthdateState) {
@@ -48,8 +59,4 @@ export const SearchInput = ({ setError }: SearchInputProps) => {
             </Button>
         </S.InputFlex>
     );
-}
-
-function setInputError(arg0: boolean) {
-    throw new Error('Function not implemented.');
 }

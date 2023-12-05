@@ -11,7 +11,7 @@ export const SearchPage = () => {
     return (
         <S.Background>
             <S.Logo src={Logo} />
-            <SearchInput setError={setInputError} />
+            <SearchInput setError={setInputError} propsName={''} propsDate={''} />
             {
                 inputError && (
                     <S.ErrorMessage>검색하기 전 정보가 정확한지 확인하세요</S.ErrorMessage>

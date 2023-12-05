@@ -8,7 +8,7 @@ interface SearchDataProps {
   department: string;
   occupation: string;
   tenure: string;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
+  onClick: () => void;
 }
 
 /** 사용법 < SearchData name="이름" department="부서명" birthdate="생년월일" manager="담당자" occupation="재직기간" tenure="직종" onClick={onClick 함수} /> */

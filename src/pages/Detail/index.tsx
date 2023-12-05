@@ -30,11 +30,12 @@ export const DetailPage = () => {
 
   useTitle(`${detailData.name} 인적 사항`)
 
-  console.log(param.id);
-
   useEffect(() => {
-    const data = getDetail(`${param.id}`);
-    // setDetailData(data); api연동시 변경 예정
+    const fetchData = async () => {
+      const data = await getDetail(`${param.id}`);
+      setDetailData(data);
+    };
+    fetchData();
   }, []);
 
   const navigate = useNavigate(); //변수 할당시켜서 사용
@@ -53,25 +54,26 @@ export const DetailPage = () => {
         <S.BackName>홍길동이</S.BackName>
       </S.BackPage>
       <div>
-        {/* <WorkData
-                name={detailData.name}
-                birthdate={detailData.birthdate}
-                firstTenure={detailData.firstTenure}
-                lastTenure={detailData.lastTenure}
-                occupation={detailData.occupation}
-            /> */}
+        <WorkData
+          name={detailData.name}
+          birthdate={detailData.birthdate}
+          firstTenure={detailData.firstTenure}
+          lastTenure={detailData.lastTenure}
+          occupation={detailData.occupation}
+          address={detailData.address}
+        />
         <S.Line />
-        {/* <LastData 
-                userName={detailData.userName}
-                department={detailData.department}
-                userNumber={detailData.userNumber}
-            /> */}
+        <LastData
+          userName={detailData.userName}
+          department={detailData.department}
+          userNumber={detailData.userNumber}
+        />
         <S.Line />
-        {/* <NowData 
-                userName={detailData.userName}
-                department={detailData.department}
-                userNumber={detailData.userNumber}
-            /> */}
+        <NowData
+          userName={detailData.userName}
+          department={detailData.department}
+          userNumber={detailData.userNumber}
+        />
       </div>
       <Button
         size="XL"
