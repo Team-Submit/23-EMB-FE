@@ -10,15 +10,15 @@ import { DepartmentInput } from "../../../components/common/DepartmentInput";
 import useTitle from "../../../hooks/useTitle";
 
 interface changeProfileType {
-  UserName: string;
-  UserNumber: string;
+  newUserName: string;
+  newUserNumber: string;
 }
 
 export const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [changeProfile, setChangeProfile] = useState<changeProfileType>({
-    UserName: "",
-    UserNumber: "",
+    newUserName: "",
+    newUserNumber: "",
   });
   const [NewDepartment, setNewDepartment] = useState("");
 
@@ -35,20 +35,24 @@ export const Profile = () => {
   const openModal = () => {
     setOpen(!open);
   };
+  async function GetInfoData() {
+    const res = await UserInfoGet();
+    setNewDepartment(res.department);
+    setChangeProfile({
+      newUserName: res.userName,
+      newUserNumber: res.userNumber
+    });
+  }
   useEffect(() => {
-    try {
-      UserInfoGet();
-    } catch (err) {
-      console.log("정보를 갖고 오는데 에러가 발생했습니다");
-    }
+    GetInfoData();
   }, []);
 
   const putData = () => {
     try {
       UserInfoPut({
         newDepartment: NewDepartment,
-        newUserName: changeProfile.UserName,
-        newUserNumber: changeProfile.UserNumber,
+        newUserName: changeProfile.newUserName,
+        newUserNumber: changeProfile.newUserNumber,
       });
     } catch (err) {
       console.log("정보수정 중 오류가 발생했습니다");
@@ -88,14 +92,14 @@ export const Profile = () => {
         <S.personalText>개인정보 수정</S.personalText>
         <Input
           onChange={onChangeProfile}
-          value={changeProfile.UserName}
+          value={changeProfile.newUserName}
           label="이름"
           name="newUserName"
           placeholder="이름을 입력해주세요"
         />
         <Input
           onChange={onChangeProfile}
-          value={changeProfile.UserNumber}
+          value={changeProfile.newUserNumber}
           label="연락처"
           name="newUserNumber"
           placeholder="연락처를 입력해주세요"

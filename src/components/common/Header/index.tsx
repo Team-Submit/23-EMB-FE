@@ -28,12 +28,10 @@ export const Header = () => {
     userName: "",
     userNumber: "",
   });
-  console.log(userinfo);
 
   useEffect(() => {
     const getData = async () => {
       const res = await getHeader();
-      // console.log(res);
       if (res) {
         setUserinfo(res);
         setUser("User");
