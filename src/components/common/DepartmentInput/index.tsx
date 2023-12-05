@@ -8,14 +8,17 @@ interface DepartmentInputProps {
 }
 
 export const DepartmentInput = ({ value, setValue }: DepartmentInputProps) => {
-  const [list, setList] = useState<string[]>(["dsf", "ASDf"]);
+  const [list, setList] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await getDepartment();
-      if (typeof res === "object") setList(res);
+      return await getDepartment();
     };
-    fetchData();
+    fetchData()
+      .then((data) => {
+        setList(data.deparment);
+      })
+      .catch((err) => alert("오류가 발생하였습니다."));
   }, []);
 
   return (
