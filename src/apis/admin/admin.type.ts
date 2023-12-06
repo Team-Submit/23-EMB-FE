@@ -1,10 +1,10 @@
 export interface issuedDateProps {
-    id: string;
-    password: string;
-};
+  id: string;
+  password: string;
+}
 
 export interface modifyDateProps {
-	newDepartment: string;
-	newUserName: string;
-	newUserNumber: string;
+  userName: string;
+  userNumber: string;
+  department: string;
 }

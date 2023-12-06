@@ -1,4 +1,4 @@
-import { BoxShadow } from './../theme';
+import { BoxShadow } from "./../theme";
 import { css, styled } from "styled-components";
 import { color } from "../theme";
 
@@ -8,6 +8,7 @@ type colorEnum = "Point" | "Gray" | "Transparent" | "Red";
 interface ButtonProps {
   size: sizeEnum;
   colorType: colorEnum;
+  width100?: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -21,12 +22,17 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
 
   &:hover {
-    box-shadow:${BoxShadow};
+    box-shadow: ${BoxShadow};
   }
   &:disabled {
     cursor: auto;
   }
 
+  ${({ width100 }) =>
+    width100 &&
+    css`
+      width: 100%;
+    `}
   ${({ size }) =>
     size === "XL"
       ? css`
@@ -87,18 +93,18 @@ export const Button = styled.button<ButtonProps>`
           }
         `
       : css`
-        background-color: ${color.Red[0]};
-        color: ${color.White};
-        &:hover{
-          background-color: ${color.Red[1]};
-        }
-        &:active{
-          background-color: ${color.Red[2]};
-          box-shadow: none;
-        }
-        &:disabled{
-          background-color: ${color.Red[3]};
-          box-shadow: none;
-        }
-      `}
+          background-color: ${color.Red[0]};
+          color: ${color.White};
+          &:hover {
+            background-color: ${color.Red[1]};
+          }
+          &:active {
+            background-color: ${color.Red[2]};
+            box-shadow: none;
+          }
+          &:disabled {
+            background-color: ${color.Red[3]};
+            box-shadow: none;
+          }
+        `}
 `;

@@ -1,8 +1,8 @@
-import { instance } from "..";
+import { noTokenInstance } from "..";
 
 export const getUserData = async () => {
   try {
-    const { data } = await instance.get(
+    const { data } = await noTokenInstance.get(
       "http://43.202.152.109:8080/manager/lists"
     );
     return data;

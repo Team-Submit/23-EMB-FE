@@ -22,7 +22,7 @@ function App() {
         <Route path="/home" element={<SearchPage />} />
         <Route path="/admin/new" element={<New />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/edit" element={<Edit />} />
+        <Route path="/admin/edit/:id" element={<Edit />} />
         <Route path="/search" element={<SearchListPage />} />
         <Route path="/search/detail/:id" element={<DetailPage />} />
         <Route path="/upload" element={<UploadPage />} />

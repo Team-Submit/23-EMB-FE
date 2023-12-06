@@ -10,35 +10,46 @@ import { Button } from "../../styles/common/Button";
 import { getUserData } from "../../apis/common/getUserData";
 import { delAccounts } from "../../apis/common/delAccounts";
 import useTitle from "../../hooks/useTitle";
+import { useNavigate } from "react-router-dom";
 
 interface userListType {
   userName: string;
   department: string;
   userNumber: string;
+  user_id: string;
 }
 
 export const AdminPage = () => {
+  const nav = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [list, setList] = useState<userListType[]>([]);
 
   useTitle("계정 관리");
 
+  const fetchData = async () => {
+    const res = await getUserData();
+    try {
+      setList(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getUserData();
-      try {
-        setList(res);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
   }, []);
 
   const delAccount = async () => {
-    const res = await delAccounts();
-    // setList();
+    try {
+      await delAccounts(delId);
+      setIsOpenModal(false);
+      fetchData();
+    } catch {
+      alert("error");
+    }
   };
+
+  const [delId, setDelId] = useState<string>("");
 
   return (
     <S.Background>
@@ -48,18 +59,20 @@ export const AdminPage = () => {
           <S.Danger>삭제한 계정은 복구할 수 없습니다</S.Danger>
         </S.DangerBox>
         <S.BottonBox>
-          <Button size="M" colorType="Red" onClick={delAccount}>
+          <Button size="M" colorType="Red" onClick={delAccount} width100>
             삭제
           </Button>
           <Button
             size="M"
             colorType="Gray"
             onClick={() => setIsOpenModal(false)}
+            width100
           >
             취소
           </Button>
         </S.BottonBox>
       </Modal>
+
       <S.TabBox>
         <Tab
           list={[
@@ -78,10 +91,11 @@ export const AdminPage = () => {
             department={data.department}
             phoneNumber={data.userNumber}
             userUpdate={() => {
-              alert(1);
+              nav(`/admin/edit/${data.user_id}`);
             }}
             userDelete={() => {
               setIsOpenModal(true);
+              setDelId(data.user_id);
             }}
           />
         ))}
