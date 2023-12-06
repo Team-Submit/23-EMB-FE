@@ -2,7 +2,9 @@ import { instance } from "..";
 
 export const getUserData = async () => {
   try {
-    const { data } = await instance.get("/manager/lists");
+    const { data } = await instance.get(
+      "http://43.202.152.109:8080/manager/lists"
+    );
     return data;
   } catch (err) {
     console.log(

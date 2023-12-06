@@ -5,23 +5,18 @@ import { Check } from "../../../assets/icons/Check";
 import { color } from "../../../styles/theme";
 import { ModifyModal } from "../../../components/pages/admin/edit/modal";
 import { DepartmentInput } from "../../../components/common/DepartmentInput";
-import { modifyDate } from "../../../apis/admin/index";
+import { modifyDate, changeEditType } from "../../../apis/admin/index";
 import * as S from "./style";
 import React from "react";
 import useTitle from "../../../hooks/useTitle";
-
-interface changeEditType {
-  newUserName: string;
-  newUserNumber: string;
-}
 
 export const Edit = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [department, setDepartment] = useState("");
 
-  useTitle('계정 정보 수정')
+  useTitle("계정 정보 수정");
 
-  const [changeEdit, setChangeEdit] = useState<changeEditType>({
+  const [edit, setEdit] = useState<changeEditType>({
     newUserName: "",
     newUserNumber: "",
   });
@@ -29,8 +24,8 @@ export const Edit = () => {
   const onChangeEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setChangeEdit({
-      ...changeEdit,
+    setEdit({
+      ...edit,
       [name]: value,
     });
   };
@@ -42,7 +37,7 @@ export const Edit = () => {
   const modifyUpDate = async () => {
     await modifyDate({
       newDepartment: department,
-      ...changeEdit,
+      ...edit,
     });
   };
 
@@ -52,15 +47,17 @@ export const Edit = () => {
         <S.EditWrapContainer>
           <S.EditText>개인정보 수정</S.EditText>
           <Input
-            value={changeEdit.newUserName}
+            value={edit.newUserName}
             label="이름"
             placeholder="이름을 입력하세요"
+            name="newUserName"
             onChange={onChangeEdit}
           />
           <Input
-            value={changeEdit.newUserNumber}
+            value={edit.newUserNumber}
             label="연락처"
             placeholder="연락처를 입력하세요"
+            name="newUserNumber"
             onChange={onChangeEdit}
           />
           <DepartmentInput value={department} setValue={setDepartment} />
@@ -71,7 +68,7 @@ export const Edit = () => {
           </Button>
 
           <ModifyModal
-            updateClick={modifyUpDate}
+            updateClick={() => modifyUpDate()}
             cancelClick={handleModalToggle}
             isOpen={open}
           />

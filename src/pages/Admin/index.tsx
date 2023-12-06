@@ -21,13 +21,13 @@ export const AdminPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [list, setList] = useState<userListType[]>([]);
 
-  useTitle('계정 관리')
+  useTitle("계정 관리");
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getUserData();
       try {
-        setList(res.list);
+        setList(res);
       } catch (err) {
         console.log(err);
       }
