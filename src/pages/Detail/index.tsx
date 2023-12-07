@@ -83,11 +83,13 @@ export const DetailPage = () => {
         <DownLoad fill="white" />
         다운로드
       </Button>
-      <FileDownloadModal
-        IsOpen={IsDownloadModalOpen}
-        setIsOpen={setIsDownloadModalOpen}
-        data={detailData}
-      />
+      {IsDownloadModalOpen &&
+        <FileDownloadModal
+          IsOpen={IsDownloadModalOpen}
+          setIsOpen={setIsDownloadModalOpen}
+          data={detailData}
+        />
+      }
     </S.Backgound>
   );
 };
