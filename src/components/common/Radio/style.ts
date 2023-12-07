@@ -15,6 +15,8 @@ export const RadioButton = styled.button<{
   border: none;
   font-size: 24px;
 
+  transition: 100ms all ease-in-out;
+
   ${({ disabled }) =>
     !disabled
       ? css`
