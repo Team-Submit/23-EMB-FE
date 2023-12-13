@@ -87,13 +87,13 @@ export const SearchListPage = () => {
                     })
                 }
             </S.ListDataFlex>
-            <S.PaginationFlex>
+            {/* <S.PaginationFlex>
                 {
                     total && (
                         <Pagination total={total} nowPage={pageData} setNowPage={setPageData} />
                     )
                 }
-            </S.PaginationFlex>
+            </S.PaginationFlex> */}
             <SearchModal
                 OpenProps={open}
                 SetOpenProps={setOpen}

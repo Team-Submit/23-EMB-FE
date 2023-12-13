@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const Background = styled.div`
     width: 60%;
-    height: 91vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -14,15 +14,15 @@ export const InputFlex = styled.div`
 `;
 
 export const ListDataFlex = styled.div`
-    height: 65%;
+    height: auto;
 `;
 
 export const TotalList = styled.div`
     font-size: 30px;
 `;
 
-export const PaginationFlex = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`;
+// export const PaginationFlex = styled.div`
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+// `;
