@@ -11,6 +11,7 @@ import React from "react";
 import useTitle from "../../../hooks/useTitle";
 import { changeEditType } from "./type";
 import { useNavigate, useParams } from "react-router-dom";
+import { getOneUserData } from "../../../apis/common/getUserData";
 
 export const Edit = () => {
   const { id } = useParams();
@@ -26,6 +27,20 @@ export const Edit = () => {
     userNumber: "",
     department: "",
   });
+
+  const fetchData = async () => {
+    const res = await getOneUserData((id ?? "").toString());
+    try {
+      setEdit(res);
+      setDepartment(res.department);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setEdit({ ...edit, department: department });
@@ -46,7 +61,7 @@ export const Edit = () => {
 
   const modifyUpDate = async () => {
     try {
-      await modifyDate(edit);
+      await modifyDate(edit, id ?? "");
       nav("/admin");
     } catch {
       alert("err");

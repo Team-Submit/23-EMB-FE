@@ -13,9 +13,9 @@ export const issuedDate = async ({ id, password }: issuedDateProps) => {
   }
 };
 
-export const modifyDate = async (edit: modifyDateProps) => {
+export const modifyDate = async (edit: modifyDateProps, id: string) => {
   try {
-    await instance.put("/users/managers", edit);
+    await instance.patch(`/manager/accounts/${id}`, edit);
   } catch (err) {
     console.log("수정하는데 오류가 발생했습니다. 관리자에게 문의해주세요.");
   }

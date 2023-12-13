@@ -36,10 +36,16 @@ export const New = () => {
   };
 
   const issuedUpDate = async () => {
-    await issuedDate({
-      id: changeNew.newUserId,
-      password: changeNew.newPassword,
-    });
+    try{
+      await issuedDate({
+        id: changeNew.newUserId,
+        password: changeNew.newPassword,
+      });
+      setOpen(false);
+      setChangeNew({newUserId:"",newPassword:""})
+    }catch{
+      console.log("오류 발생")
+    }
   };
 
   return (
