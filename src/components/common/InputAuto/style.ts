@@ -35,6 +35,9 @@ export const ListValue = styled.div`
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
+
+  transition: 100ms all ease-in-out;
+
   &:hover {
     background-color: ${color.Gray[95]};
   }

@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { Modal } from "../../common/Modal";
 import { Button } from "../../../styles/common/Button";
 import { ButtonHorizonal, RadioContainer, Text24 } from "./style";
@@ -28,10 +28,10 @@ export default function FileDownloadModal({
   function DownloadHandler() {
     const aElement = document.createElement("a");
     aElement.href = instance.url as string;
-    aElement.download = "경력증명서_성명박";
+    aElement.download = `경력증명서_${data.name}`;
     aElement.click();
   }
-
+  
   return (
     <Modal isOpen={IsOpen} title="다운로드">
       <Text24>박씨(2077/09/23)</Text24>

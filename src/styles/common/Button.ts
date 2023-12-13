@@ -21,6 +21,8 @@ export const Button = styled.button<ButtonProps>`
   font-weight: bold;
   cursor: pointer;
 
+  transition: 100ms all ease-in-out;
+
   &:hover {
     box-shadow: ${BoxShadow};
   }

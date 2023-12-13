@@ -13,6 +13,7 @@ export const Container = styled.div<{
   display: flex;
   flex-direction: column;
   border-radius: 4px;
+  transition: 100ms all ease-in-out;
   ${({ disabled }) =>
     !disabled &&
     css`
