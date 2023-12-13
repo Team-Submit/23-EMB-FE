@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "../../../styles/common/Button";
 import * as S from "./style";
 import { Input } from "../../../components/common/Input";
 import { Tab } from "../../../components/common/Tab";
 import { UserPasswordPut } from "../../../apis/my/index";
 import useTitle from "../../../hooks/useTitle";
+import { useNavigate } from "react-router-dom";
 
 interface changePasswordType {
   password: string;
@@ -18,29 +19,27 @@ export const PassWord = () => {
     newPassword: "",
     rePassword: "",
   });
+  const navigate = useNavigate();
 
   useTitle('비밀번호 변경')
 
   const putData = () => {
     try {
       UserPasswordPut({ ...changePassword });
-    } catch (err) {
-      console.log("비밀번호 변경을 실패했습니다");
+      navigate('/');
+    } catch (error) {
+      alert("비밀번호 변경을 실패했습니다. 비밀번호를 다시 확인해주세요");
     }
   };
 
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangePassword = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setChangePassword({
+    await setChangePassword({
       ...changePassword,
       [name]: value,
     });
   };
-
-  useEffect(() => {
-    console.log(changePassword);
-  }, [changePassword]);
 
   return (
     <S.Background>
@@ -74,7 +73,6 @@ export const PassWord = () => {
           label="현재 비밀번호"
           bottomMessage="비밀번호 다시 확인 바람"
           name="password"
-          error
         />
         <Input
           value={changePassword.newPassword}
@@ -91,6 +89,7 @@ export const PassWord = () => {
           label="새 비밀번호 확인"
           type="password"
           name="rePassword"
+          error={changePassword.newPassword !== changePassword.rePassword}
           bottomMessage={
             changePassword.newPassword !== changePassword.rePassword
               ? "비밀번호가 일치하지 않습니다"

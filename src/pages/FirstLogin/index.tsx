@@ -13,34 +13,47 @@ export const FirstLogin = () => {
   const [newPassword, setNewPassword] = useState<string>('');
   const [UserPhoneNumber, setUserContact] = useState<string>('');
   const [UserDepartment, setDepartment] = useState<string>('');
-  const [passwordError, setPasswordError] = useState<string>('');
+  const [nameError, setnameError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [numberError, setNumberError] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useTitle('환영합니다!')
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
-  }; const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setnameError(true);
+    }
+  };
+  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPasswordValue = e.target.value;
     setNewPassword(newPasswordValue);
 
-    if (newPasswordValue.length < 8 || newPasswordValue.length > 30) {
-      setPasswordError('비밀번호는 8자에서 30자 사이어야 합니다.');
+    if (newPasswordValue.length < 8) {
+      setPasswordError(true);
+    } else if (newPasswordValue.length > 30) {
+      setPasswordError(true);
     } else {
-      setPasswordError('');
+      setPasswordError(false);
     }
   };
 
   const handleUserContact = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserContact(e.target.value);
+
+    if (!e.target.value) {
+      setNumberError(true);
+    }
   };
 
   const handleLogin = async () => {
-    const response = await sendPostRequest({ userName: username, newPassword: newPassword, userNumber: UserPhoneNumber, department: UserDepartment });
-    if (response) {
+    try {
+      const response = await sendPostRequest({ userName: username, newPassword: newPassword, userNumber: UserPhoneNumber, department: UserDepartment });
       alert("환영합니다!");
       navigate("/home");
-    } else {
+    }
+    catch (error) {
       alert("입력된 정보를 다시 확인해주세요");
     }
   };
@@ -54,6 +67,8 @@ export const FirstLogin = () => {
           value={username}
           onChange={handleUsername}
           label="이름"
+          error={nameError}
+          bottomMessage="이름을 입력해주세요"
         />
       </L.FormGroup>
       <L.FormGroup>
@@ -61,6 +76,9 @@ export const FirstLogin = () => {
           value={newPassword}
           onChange={handleNewPasswordChange}
           label="새 비밀번호"
+          type='password'
+          bottomMessage='비밀번호는 8자에서 30자 사이어야 합니다.'
+          error={passwordError}
         />
         <p>보안을 위해 지급된 비밀번호를 변경하세요</p>
         {passwordError}
@@ -71,6 +89,8 @@ export const FirstLogin = () => {
           onChange={handleUserContact}
           label="연락처"
           placeholder="010-0000-0000"
+          error={numberError}
+          bottomMessage="전화번호를 입력해주세요"
         />
       </L.FormGroup>
       <L.FormGroup>

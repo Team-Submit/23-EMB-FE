@@ -9,6 +9,6 @@ export const LoginCheck = async ({username}: LoginCredentials) =>{
         const response = await instance.patch('/users/firstLoginCheck', {userid: username});
         return response.data;
     }catch(error){
-        throw error;
+        alert("관리자에게 문의해주세요");
     }
 }

@@ -8,6 +8,7 @@ interface SearchDataProps {
   department: string;
   occupation: string;
   tenure: string;
+  id: number;
   onClick: () => void;
 }
 
@@ -20,9 +21,11 @@ export const SearchData = ({
   occupation,
   tenure,
   onClick,
+  id,
 }: SearchDataProps) => {
   return (
     <S.UserSearchContainer type="search" onClick={onClick}>
+      <S.Id style={{ paddingLeft: "5px" }}>{id}</S.Id>
       <S.Name>{name}</S.Name>
       <S.BirthDay>{birthdate}</S.BirthDay>
       <S.Name>{manager}</S.Name>

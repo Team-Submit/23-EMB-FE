@@ -5,10 +5,8 @@ export const UserInfoGet = async () => {
   try {
     const response = await instance.get("/users/informations");
     return response.data;
-  } catch (err) {
-    console.log(
-      "개인 정보를 불러오는데 오류가 발생했습니다. 관리자에게 문의해주세요"
-    );
+  } catch (error) {
+    throw error
   }
 };
 
@@ -24,8 +22,8 @@ export const UserInfoPut = async ({
       userNumber: newUserNumber,
     });
     return data;
-  } catch (err) {
-    console.log("데이터를 보내는데 실패하였습니다");
+  } catch (error) {
+    throw error
   }
 };
 
@@ -38,7 +36,7 @@ export const UserPasswordPut = async ({
       password: password,
       newPassword: newPassword,
     });
-  } catch (err) {
-    console.log("비밀번호 변경 중 오류가 발생하였습니다");
+  } catch (error) {
+    throw error;
   }
 };

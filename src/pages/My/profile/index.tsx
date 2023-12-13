@@ -8,6 +8,7 @@ import { UserInfoGet } from "../../../apis/my/index";
 import { UserInfoPut } from "../../../apis/my/index";
 import { DepartmentInput } from "../../../components/common/DepartmentInput";
 import useTitle from "../../../hooks/useTitle";
+import { useNavigate } from "react-router-dom";
 
 interface changeProfileType {
   newUserName: string;
@@ -21,6 +22,7 @@ export const Profile = () => {
     newUserNumber: "",
   });
   const [NewDepartment, setNewDepartment] = useState("");
+  const navigate = useNavigate();
 
   useTitle('개인정보 수정')
 
@@ -54,6 +56,7 @@ export const Profile = () => {
         newUserName: changeProfile.newUserName,
         newUserNumber: changeProfile.newUserNumber,
       });
+      navigate('/home');
     } catch (err) {
       console.log("정보수정 중 오류가 발생했습니다");
     }
