@@ -31,7 +31,7 @@ export const UserSearchContainer = styled(DataContainer)<{
 `;
 
 export const IndexContainer = styled(DataContainer)<{
-  type: "search" | "user";
+  type: "search" | "user" | "ect";
 }>`
   padding: 4px 20px;
   background-color: ${color.Gray[95]};
@@ -66,11 +66,11 @@ export const Icon = styled(TransparentDiv)`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const SettingDropContainer = styled.div`
   position: absolute;
-  top:30px;
+  top: 30px;
   left: 40px;
   z-index: 10;
 
@@ -84,10 +84,10 @@ export const SettingDropContainer = styled.div`
   border: 1px solid ${color.Gray[75]};
   border-radius: 4px;
 
-  >div{
+  > div {
     cursor: pointer;
   }
-  >hr{
+  > hr {
     border: 1px solid ${color.Gray[85]};
   }
-`
+`;

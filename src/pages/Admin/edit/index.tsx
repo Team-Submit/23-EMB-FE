@@ -32,7 +32,7 @@ export const Edit = () => {
     const res = await getOneUserData((id ?? "").toString());
     try {
       setEdit(res);
-      setDepartment(res.department);
+      setDepartment(res.department ?? "");
     } catch (err) {
       console.log(err);
     }

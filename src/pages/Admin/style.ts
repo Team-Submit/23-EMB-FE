@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 import { color } from "../../styles/theme";
 
 export const Background = styled.div`
-  width: 100%;
-  height: calc(100vh - 9vh);
+  width: 100vw;
 `;
 
 export const DangerBox = styled.p`
@@ -29,14 +28,31 @@ export const TabBox = styled.div`
   margin: 40px;
 `;
 
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 70px;
+  align-items: center;
+`;
+
 export const Content = styled.div`
   & > div {
-    width: 1200px;
+    width: 80vw;
+    min-width: 480px;
   }
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  margin-bottom: 10px;
 `;
 
 export const UserData = styled.div``;
+
+
+export const Title =styled.p`
+  font-size: 25px;
+  font-weight: bold;
+  width: 80vw;
+    min-width: 480px;
+`
