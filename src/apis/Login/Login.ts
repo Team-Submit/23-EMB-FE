@@ -11,7 +11,7 @@ export interface LoginResponse {
   um: boolean;
 }
 
-export const loginResponse = async ({username, password}: LoginCredentials):Promise<LoginResponse> => {
+export const loginResponse = async ({username, password}: LoginCredentials) => {
   try {
     const response = await instance.post(`/auth/login`, {id: username, password: password});
     return response.data;

@@ -10,6 +10,7 @@ export const IndexData = ({ type }: IndexDataProps) => {
     <S.IndexContainer type={type}>
       {type === "search" ? (
         <>
+          <S.Id>순서</S.Id>
           <S.Name>성명</S.Name>
           <S.BirthDay>생년월일</S.BirthDay>
           <S.Name>담당자</S.Name>

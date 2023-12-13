@@ -47,7 +47,7 @@ export const Login = () => {
         }
       }
     } catch (error) {
-      throw error
+      alert("아이디, 비밀번호를 다시 확인해주세요");
     }
   };
 
@@ -69,6 +69,7 @@ export const Login = () => {
             value={password}
             onChange={handlePasswordChange}
             label="비밀번호"
+            type='password'
           />
           {error && <p>{error}</p>}
         </L.FormGroup>

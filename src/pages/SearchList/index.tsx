@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchInput } from '../../components/common/SearchInput';
 import { IndexData } from '../../components/common/Data';
 import * as S from './style'
@@ -75,6 +75,7 @@ export const SearchListPage = () => {
                         return (
                             < SearchData
                                 key={v.term_id}
+                                id={v.term_id}
                                 name={v.name}
                                 department={v.department}
                                 birthdate={v.birthdate}
@@ -86,13 +87,13 @@ export const SearchListPage = () => {
                     })
                 }
             </S.ListDataFlex>
-            <S.PaginationFlex>
+            {/* <S.PaginationFlex>
                 {
                     total && (
                         <Pagination total={total} nowPage={pageData} setNowPage={setPageData} />
                     )
                 }
-            </S.PaginationFlex>
+            </S.PaginationFlex> */}
             <SearchModal
                 OpenProps={open}
                 SetOpenProps={setOpen}

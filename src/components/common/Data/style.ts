@@ -38,6 +38,10 @@ export const IndexContainer = styled(DataContainer)<{
   min-width: ${({ type }) => (type === "search" ? "1004px" : "488px")};
 `;
 
+export const Id = styled.div`
+  width: 50px;
+`;
+
 export const Name = styled.div`
   width: 80px;
 `;

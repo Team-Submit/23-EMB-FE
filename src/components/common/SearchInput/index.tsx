@@ -16,7 +16,6 @@ export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps
 
     const [nameState, setNameState] = useState<string>("");
     const [birthdateState, setBirthdateState] = useState<string>("");
-    const [inputError, setInputError] = useState<boolean>(false);
     const navigate = useNavigate();
 
     useEffect(() => {
