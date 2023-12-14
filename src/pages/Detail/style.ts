@@ -12,10 +12,22 @@ export const BackPage = styled.div`
   display: flex;
   align-items: center;
   margin-top: 40px;
+  gap: 8px;
 `;
 
 export const BackIcon = styled.div`
   cursor: pointer;
+
+  height: 48px;
+  width: 48px;
+  padding: 12px;
+  border-radius: 4px;
+
+  transition: 100ms all ease-in-out;
+
+  &:hover{
+    background-color: ${color.Gray[95]};
+  }
 `;
 
 export const BackName = styled.div`

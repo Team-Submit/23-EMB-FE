@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDetail } from "../../apis/common/detail";
-import { ChevronLeft20 } from "../../assets/icons/ChevronLeft20";
+import { ChevronLeft24 } from "../../assets/icons/ChevronLeft24";
 import { DownLoad } from "../../assets/icons/DownLoad";
 import { LastData } from "../../components/common/DetailData/Last";
 import { NowData } from "../../components/common/DetailData/Now";
@@ -46,10 +46,8 @@ export const DetailPage = () => {
   return (
     <S.Backgound>
       <S.BackPage>
-        <S.BackIcon>
-          <div onClick={onClickBtn}>
-            <ChevronLeft20 />
-          </div>
+        <S.BackIcon onClick={onClickBtn}>
+          <ChevronLeft24 />
         </S.BackIcon>
         <S.BackName>{detailData.name}</S.BackName>
       </S.BackPage>
