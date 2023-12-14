@@ -15,6 +15,9 @@ export const UserSearchContainer = styled(DataContainer)<{
   padding: 8px 20px;
   background-color: ${color.White};
   font-size: 16px;
+
+  transition: 100ms all ease-in-out;
+
   ${({ type }) =>
     type === "search"
       ? css`
