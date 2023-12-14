@@ -51,7 +51,7 @@ export const DetailPage = () => {
             <ChevronLeft20 />
           </div>
         </S.BackIcon>
-        <S.BackName>홍길동이</S.BackName>
+        <S.BackName>{detailData.name}</S.BackName>
       </S.BackPage>
       <div>
         <WorkData

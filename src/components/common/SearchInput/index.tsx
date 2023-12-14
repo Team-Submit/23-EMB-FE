@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 interface SearchInputProps {
     setError?: Dispatch<SetStateAction<boolean>>;
     propsName: string;
-    propsDate: string;
+    propsDate?: string;
 }
 
 export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps) => {
@@ -21,17 +21,17 @@ export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps
     useEffect(() => {
         if (propsName) {
             setNameState(propsName);
-        } else if (propsDate) {
+        }
+        if (propsDate) {
             setBirthdateState(propsDate);
         }
     }, []);
 
     const HandleSearch = () => {
-        if (nameState && birthdateState) {
+        if (nameState) {
             navigate(`/search?name=${nameState}&birthdate=${birthdateState}`);
         } else {
             setError && setError(true);
-            console.log(123);
         }
     }
 

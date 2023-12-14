@@ -41,11 +41,19 @@ export const SearchListPage = () => {
 
     useEffect(() => {
         const getData = async () => {
-            if (ParamName && Parambirthdate) {
-                const data = await getSearchList({ name: ParamName, birthdate: Parambirthdate });
-                setListData(data);
-                if (data) {
-                    setTotal(data.length);
+            if (ParamName) {
+                if (Parambirthdate) {
+                    const data = await getSearchList({ name: ParamName, birthdate: Parambirthdate });
+                    setListData(data);
+                    if (data) {
+                        setTotal(data.length);
+                    }
+                } else {
+                    const data = await getSearchList({ name: ParamName, birthdate: "" });
+                    setListData(data);
+                    if (data) {
+                        setTotal(data.length);
+                    }
                 }
             }
         };
@@ -62,8 +70,8 @@ export const SearchListPage = () => {
         <S.Background>
             <S.InputFlex>
                 {
-                    ParamName && Parambirthdate && (
-                        <SearchInput propsName={ParamName} propsDate={Parambirthdate} />
+                    ParamName && (
+                        <SearchInput propsName={ParamName} propsDate={Parambirthdate ? Parambirthdate : ""} />
                     )
                 }
             </S.InputFlex>
@@ -80,7 +88,7 @@ export const SearchListPage = () => {
                                 department={v.department}
                                 birthdate={v.birthdate}
                                 manager={v.userName}
-                                occupation={v.occupation}
+                                occupation={v.firstTenure + " ~ " + v.lastTenure}
                                 tenure={v.occupation}
                                 onClick={() => HandleDetail(v.term_id, v.name)} />
                         );
