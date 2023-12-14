@@ -96,7 +96,7 @@ export const PassWord = () => {
               : undefined
           }
         />
-        <Button size="XL" colorType="Point" onClick={putData}>
+        <Button size="XL" colortype="Point" onClick={putData}>
           완료
         </Button>
       </S.PassWordWarp>

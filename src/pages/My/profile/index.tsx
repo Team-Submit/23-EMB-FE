@@ -108,7 +108,7 @@ export const Profile = () => {
           placeholder="연락처를 입력해주세요"
         />
         <DepartmentInput value={NewDepartment} setValue={setNewDepartment} />
-        <Button size="XL" colorType="Point" onClick={openModal}>
+        <Button size="XL" colortype="Point" onClick={openModal}>
           완료
         </Button>
       </S.profileInputWarp>

@@ -17,10 +17,10 @@ export const IssudeModal = ({
     <Modal isOpen={isOpen}>
       <S.IssuedMoadleTitle>계정을 발급하시겠습니까?</S.IssuedMoadleTitle>
       <S.IssuedMoadlBtnFlex>
-        <Button colorType="Point" size="M" onClick={updateClick}>
+        <Button colortype="Point" size="M" onClick={updateClick}>
           발급
         </Button>
-        <Button colorType="Gray" size="M" onClick={cancelClick}>
+        <Button colortype="Gray" size="M" onClick={cancelClick}>
           취소
         </Button>
       </S.IssuedMoadlBtnFlex>

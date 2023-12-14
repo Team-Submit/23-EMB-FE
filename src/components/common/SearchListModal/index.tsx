@@ -20,8 +20,8 @@ export const SearchModal = ({ OpenProps, SetOpenProps, ModalName, ModalId }: Ope
             <S.ModalBody>{ModalName}</S.ModalBody>
             <S.ModalBody>개인 정보 보호를 위해 열람 전 정보가 정확한지 확인하세요</S.ModalBody>
             <S.MoadlBtnFlex>
-                <Button colorType="Point" size="M" onClick={() => { navigate(`/search/detail/${ModalId}`) }}>열람</Button>
-                <Button colorType="Gray" size="M" onClick={() => SetOpenProps(false)}>취소</Button>
+                <Button colortype="Point" size="M" onClick={() => { navigate(`/search/detail/${ModalId}`) }}>열람</Button>
+                <Button colortype="Gray" size="M" onClick={() => SetOpenProps(false)}>취소</Button>
             </S.MoadlBtnFlex>
         </Modal>
     );

@@ -27,7 +27,7 @@ export function ErrorProvider({children}:ErrorProviderType){
                 <Modal isOpen title="오류" lowImportance>
                     {message}
                     <ButtonHorizonal>
-                        <Button size="M" colorType="Gray" onClick={()=>setMessage('')}>닫기</Button>
+                        <Button size="M" colortype="Gray" onClick={()=>setMessage('')}>닫기</Button>
                     </ButtonHorizonal>
                 </Modal>
             }
