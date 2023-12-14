@@ -51,7 +51,7 @@ export const Input = ({
           onChange={onChange}
           onFocus={onFocus}
           name={name}
-          password={type}
+          $password={type}
         />
         {type === "password" && (
           <S.EyeCotainer onClick={() => setShowPassword(!showPassword)}>

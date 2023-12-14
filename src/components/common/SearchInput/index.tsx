@@ -53,7 +53,7 @@ export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps
                 onChange={(e) => setBirthdateState(e.target.value)}
                 disabled={false}
             />
-            <Button size='icon' colorType="Point" onClick={HandleSearch}>
+            <Button size='icon' $colortype="Point" onClick={HandleSearch}>
                 <Search24 fill={color.White} />
             </Button>
         </S.InputFlex>

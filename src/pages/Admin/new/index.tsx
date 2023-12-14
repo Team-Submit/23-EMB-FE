@@ -78,7 +78,7 @@ export const New = () => {
           error
         />
 
-        <Button size="XL" colorType="Point" onClick={handleModalToggle}>
+        <Button size="XL" $colortype="Point" onClick={handleModalToggle}>
           발급
         </Button>
 

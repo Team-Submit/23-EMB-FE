@@ -60,10 +60,10 @@ export const Header = () => {
     <S.Container>
       <Modal isOpen={isOpenModal} title="로그아웃 하시겠습니까?">
         <S.BottonBox>
-          <Button size="M" colorType="Red" onClick={handleConfirmLogout}>
+          <Button size="M" $colortype="Red" onClick={handleConfirmLogout}>
             로그아웃
           </Button>
-          <Button size="M" colorType="Gray" onClick={handleCancelLogout}>
+          <Button size="M" $colortype="Gray" onClick={handleCancelLogout}>
             취소
           </Button>
         </S.BottonBox>

@@ -55,13 +55,13 @@ export default function FileDownloadModal({
       <ButtonHorizonal>
         <Button
           size="M"
-          colorType="Point"
+          $colortype="Point"
           disabled={instance.loading}
           onClick={DownloadHandler}
         >
           {instance.loading ? "불러오는 중" : "다운로드"}
         </Button>
-        <Button size="M" colorType="Gray" onClick={() => setIsOpen(false)}>
+        <Button size="M" $colortype="Gray" onClick={() => setIsOpen(false)}>
           닫기
         </Button>
       </ButtonHorizonal>

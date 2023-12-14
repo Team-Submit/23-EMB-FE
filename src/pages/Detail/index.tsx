@@ -77,7 +77,7 @@ export const DetailPage = () => {
       </div>
       <Button
         size="XL"
-        colorType="Point"
+        $colortype="Point"
         onClick={() => setIsDownloadModalOpen(true)}
       >
         <DownLoad fill="white" />

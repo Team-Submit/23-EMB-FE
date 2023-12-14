@@ -89,7 +89,7 @@ export const Edit = () => {
           />
           <DepartmentInput value={department} setValue={setDepartment} />
 
-          <Button size="XL" colorType="Point" onClick={handleModalToggle}>
+          <Button size="XL" $colortype="Point" onClick={handleModalToggle}>
             <Check fill={color.White} />
             완료
           </Button>
