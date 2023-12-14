@@ -7,7 +7,7 @@ const ErrorContext = createContext({} as ContextPropsType);
 
 interface ContextPropsType{
     state: string;
-    setState: Dispatch<SetStateAction<string>>
+    set: Dispatch<SetStateAction<string>>
 }
 
 interface ErrorProviderType{
@@ -18,7 +18,7 @@ export function ErrorProvider({children}:ErrorProviderType){
     const [message, setMessage] = useState<string>('');
     const ProviderValue = {
         state: message,
-        setState: setMessage
+        set: setMessage
     };
 
     return(
@@ -37,5 +37,9 @@ export function ErrorProvider({children}:ErrorProviderType){
 };
 
 export function useError(){
-    return useContext(ErrorContext);
+    const provider = useContext(ErrorContext);
+    if(!provider){
+        console.error('ErrorProvider를 찾을 수 없음')
+    }
+    return provider
 }

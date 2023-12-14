@@ -8,11 +8,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchPage } from '../Search';
 import useTitle from '../../hooks/useTitle';
 import { LoginCheck } from '../../apis/Login/FirstLoginCheck';
+import { useError } from '../../utils/ErrorProvider';
 
 export const Login = () => {
   const [userID, setUserID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const provider = useError();
 
   useTitle('로그인')
 
@@ -47,7 +49,7 @@ export const Login = () => {
         }
       }
     } catch (error) {
-      alert("아이디, 비밀번호를 다시 확인해주세요");
+      provider.set('계정 정보를 다시 확인하세요')
     }
   };
 
