@@ -14,7 +14,7 @@ export default function NotFound(){
                 <br/>
                 접근 권한이 없을 수 있습니다
             </Description>
-            <Button colortype="Point" size="M" >
+            <Button $colortype="Point" size="M" >
                 <Home20 fill={color.White}/>
                 처음으로
             </Button>

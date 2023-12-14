@@ -99,7 +99,7 @@ export const FirstLogin = () => {
           setValue={setDepartment}
         />
       </L.FormGroup>
-      <Button size="XL" colortype="Point" onClick={handleLogin}>
+      <Button size="XL" $colortype="Point" onClick={handleLogin}>
         완료
       </Button>
     </Modal>

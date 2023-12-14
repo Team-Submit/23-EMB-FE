@@ -7,7 +7,7 @@ type colorEnum = "Point" | "Gray" | "Transparent" | "Red";
 
 interface ButtonProps {
   size: sizeEnum;
-  colortype: colorEnum;
+  $colortype: colorEnum;
   width100?: boolean;
 }
 
@@ -50,8 +50,8 @@ export const Button = styled.button<ButtonProps>`
           padding: 12px;
         `}
 
-  ${({ colortype }) =>
-    colortype === "Point"
+  ${({ $colortype }) =>
+    $colortype === "Point"
       ? css`
           background-color: ${color.Blue[0]};
           color: ${color.White};
@@ -67,7 +67,7 @@ export const Button = styled.button<ButtonProps>`
             box-shadow: none;
           }
         `
-      : colortype === "Gray"
+      : $colortype === "Gray"
       ? css`
           background-color: ${color.Gray[95]};
           color: ${color.Black.Text};
@@ -79,7 +79,7 @@ export const Button = styled.button<ButtonProps>`
             box-shadow: none;
           }
         `
-      : colortype === "Transparent"
+      : $colortype === "Transparent"
       ? css`
           background-color: ${color.White};
           color: ${color.Black.Text};

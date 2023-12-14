@@ -60,12 +60,12 @@ export const AdminPage = () => {
             <S.Danger>삭제한 계정은 복구할 수 없습니다</S.Danger>
           </S.DangerBox>
           <S.BottonBox>
-            <Button size="M" colortype="Red" onClick={delAccount} width100>
+            <Button size="M" $colortype="Red" onClick={delAccount} width100>
               삭제
             </Button>
             <Button
               size="M"
-              colortype="Gray"
+              $colortype="Gray"
               onClick={() => setIsOpenModal(false)}
               width100
             >

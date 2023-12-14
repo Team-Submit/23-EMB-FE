@@ -18,10 +18,10 @@ export const ProfileModal = ({
       <S.ModifyMoadleTitle>수정하시겠습니까?</S.ModifyMoadleTitle>
       <S.ModifyBody>이 작업은 되돌릴 수 없습니다</S.ModifyBody>
       <S.ModifyMoadlBtnFlex>
-        <Button colortype="Point" size="M" onClick={updateClick}>
+        <Button $colortype="Point" size="M" onClick={updateClick}>
           수정
         </Button>
-        <Button colortype="Gray" size="M" onClick={cancelClick}>
+        <Button $colortype="Gray" size="M" onClick={cancelClick}>
           취소
         </Button>
       </S.ModifyMoadlBtnFlex>

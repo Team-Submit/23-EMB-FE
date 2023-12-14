@@ -106,7 +106,7 @@ export const UploadInput = () => {
                 <S.BtnFlex>
                     <Button
                         size="M"
-                        colortype="Point"
+                        $colortype="Point"
                         onClick={() => setOpen(true)}
                     >업로드</Button>
                 </S.BtnFlex>

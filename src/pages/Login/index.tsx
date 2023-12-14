@@ -76,7 +76,7 @@ export const Login = () => {
           {error && <p>{error}</p>}
         </L.FormGroup>
 
-        <Button size="XL" colortype="Point" onClick={handleLogin} disabled={!password || !userID}>로그인</Button>
+        <Button size="XL" $colortype="Point" onClick={handleLogin} disabled={!password || !userID}>로그인</Button>
       </L.LoginContainer>
     </L.LoginWrapper>
   );
