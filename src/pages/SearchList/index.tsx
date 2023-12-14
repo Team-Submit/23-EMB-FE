@@ -27,7 +27,7 @@ interface ListData {
 export const SearchListPage = () => {
 
     const [total, setTotal] = useState<number>(0);
-    const [pageData, setPageData] = useState<number>(1);
+    // const [pageData, setPageData] = useState<number>(1);
     const [open, setOpen] = useState<boolean>(false);
     const [modalName, setModalName] = useState<string>("");
     const [modalId, setModalId] = useState<number>();
@@ -43,13 +43,15 @@ export const SearchListPage = () => {
         const getData = async () => {
             if (ParamName) {
                 if (Parambirthdate) {
+                    console.log(1);
                     const data = await getSearchList({ name: ParamName, birthdate: Parambirthdate });
                     setListData(data);
                     if (data) {
                         setTotal(data.length);
                     }
                 } else {
-                    const data = await getSearchList({ name: ParamName, birthdate: "" });
+                    console.log(2);
+                    const data = await getSearchList({ name: ParamName, birthdate: "''" });
                     setListData(data);
                     if (data) {
                         setTotal(data.length);

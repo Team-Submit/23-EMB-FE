@@ -15,7 +15,7 @@ interface SearchInputProps {
 export const SearchInput = ({ setError, propsName, propsDate }: SearchInputProps) => {
 
     const [nameState, setNameState] = useState<string>("");
-    const [birthdateState, setBirthdateState] = useState<string>("");
+    const [birthdateState, setBirthdateState] = useState<string>('');
     const navigate = useNavigate();
 
     useEffect(() => {

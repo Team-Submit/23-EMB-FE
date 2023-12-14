@@ -6,6 +6,7 @@ export interface SearchList{
 }
 
 export const getSearchList = async ({name, birthdate}:SearchList) => {
+  console.log(birthdate);
   try {
     const response = await instance.get(`/information/search?name=${name}&birthdate=${birthdate}`);
     return response.data;
