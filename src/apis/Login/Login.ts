@@ -1,4 +1,4 @@
-import { instance } from '..';
+import { noTokenIstance } from "..";
 
 export interface LoginCredentials {
   username: string;
@@ -11,9 +11,15 @@ export interface LoginResponse {
   um: boolean;
 }
 
-export const loginResponse = async ({username, password}: LoginCredentials) => {
+export const loginResponse = async ({
+  username,
+  password,
+}: LoginCredentials) => {
   try {
-    const response = await instance.post(`/auth/login`, {id: username, password: password});
+    const response = await noTokenIstance.post(`/auth/login`, {
+      id: username,
+      password: password,
+    });
     return response.data;
   } catch (error) {
     throw error;

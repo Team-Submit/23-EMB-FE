@@ -7,6 +7,10 @@ export const instance = axios.create({
   baseURL: BASEURL,
   timeout: 10000,
 });
+export const noTokenIstance = axios.create({
+  baseURL: BASEURL,
+  timeout: 10000,
+})
 
 export const refreshInstance = axios.create({
   baseURL: BASEURL,

@@ -53,26 +53,27 @@ export const AdminPage = () => {
 
   return (
     <S.Background>
-      <Modal isOpen={isOpenModal} title="정말 삭제하시겠습니까?">
-        <S.DangerBox>
-          <Excalmation fill={color.Red[0]} />
-          <S.Danger>삭제한 계정은 복구할 수 없습니다</S.Danger>
-        </S.DangerBox>
-        <S.BottonBox>
-          <Button size="M" colorType="Red" onClick={delAccount} width100>
-            삭제
-          </Button>
-          <Button
-            size="M"
-            colorType="Gray"
-            onClick={() => setIsOpenModal(false)}
-            width100
-          >
-            취소
-          </Button>
-        </S.BottonBox>
-      </Modal>
-
+      {isOpenModal && (
+        <Modal isOpen={isOpenModal} title="정말 삭제하시겠습니까?">
+          <S.DangerBox>
+            <Excalmation fill={color.Red[0]} />
+            <S.Danger>삭제한 계정은 복구할 수 없습니다</S.Danger>
+          </S.DangerBox>
+          <S.BottonBox>
+            <Button size="M" colorType="Red" onClick={delAccount} width100>
+              삭제
+            </Button>
+            <Button
+              size="M"
+              colorType="Gray"
+              onClick={() => setIsOpenModal(false)}
+              width100
+            >
+              취소
+            </Button>
+          </S.BottonBox>
+        </Modal>
+      )}
       <S.TabBox>
         <Tab
           list={[
@@ -82,24 +83,54 @@ export const AdminPage = () => {
           selected="/"
         />
       </S.TabBox>
-      <S.Content>
-        <IndexData type={"user"} />
+      <S.InfoContainer>
+      <S.Title>부서 관계자 계정</S.Title>
 
-        {list.map((data) => (
-          <UserData
-            name={data.userName}
-            department={data.department}
-            phoneNumber={data.userNumber}
-            userUpdate={() => {
-              nav(`/admin/edit/${data.user_id}`);
-            }}
-            userDelete={() => {
-              setIsOpenModal(true);
-              setDelId(data.user_id);
-            }}
-          />
-        ))}
-      </S.Content>
+        <S.Content>
+          <IndexData type={"user"} />
+
+          {list.map(
+            (data) =>
+              data.userName && (
+                <>
+                  <UserData
+                    name={data.userName}
+                    department={data.department}
+                    phoneNumber={data.userNumber}
+                    userUpdate={() => {
+                      nav(`/admin/edit/${data.user_id}`);
+                    }}
+                    userDelete={() => {
+                      setIsOpenModal(true);
+                      setDelId(data.user_id);
+                    }}
+                  />
+                </>
+              )
+          )}
+        </S.Content>
+
+<S.Title>최초 로그인이 진행되지 않은 계정</S.Title>
+        <S.Content>
+          <IndexData type={"ect"} />
+
+          {list.map(
+            (data) =>
+              !data.userName && (
+                <UserData
+                  ect={data.user_id}
+                  userUpdate={() => {
+                    nav(`/admin/edit/${data.user_id}`);
+                  }}
+                  userDelete={() => {
+                    setIsOpenModal(true);
+                    setDelId(data.user_id);
+                  }}
+                />
+              )
+          )}
+        </S.Content>
+      </S.InfoContainer>
     </S.Background>
   );
 };
