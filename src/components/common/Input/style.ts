@@ -23,15 +23,15 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Einput = styled.input<{ password?: string }>`
+export const Einput = styled.input<{ $password?: string }>`
   font-size: 20px;
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 14px 14px 14px 14px;
-  border: ${({ password }) =>
-    password !== "password" ? `1px solid ${color.Gray[85]}` : "none"};
+  border: ${({ $password }) =>
+    $password !== "password" ? `1px solid ${color.Gray[85]}` : "none"};
 
   &::placeholder {
     color: ${color.Gray[75]};
