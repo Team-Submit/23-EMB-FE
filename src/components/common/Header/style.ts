@@ -62,7 +62,7 @@ export const SettingDropContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  padding: 6px 12px;
+  padding: 6px 6px;
   gap: 4px;
   width: 120px;
 
@@ -72,6 +72,12 @@ export const SettingDropContainer = styled.div`
 
   > div {
     cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 2px;
+    &:hover{
+      background-color: ${color.Gray[95]};
+      transition: 100ms all ease-in-out;
+    }
   }
   > hr {
     border: 1px solid ${color.Gray[85]};
