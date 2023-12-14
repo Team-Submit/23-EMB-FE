@@ -88,7 +88,7 @@ export const FirstLogin = () => {
           value={UserPhoneNumber}
           onChange={handleUserContact}
           label="연락처"
-          placeholder="010-0000-0000"
+          placeholder="01000000000"
           error={numberError}
           bottomMessage="전화번호를 입력해주세요"
         />
