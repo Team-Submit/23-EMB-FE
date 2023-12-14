@@ -8,6 +8,8 @@ import { Button } from "../../../styles/common/Button";
 import { logout } from "../../../apis/common/logout";
 import { Modal } from "../Modal";
 import { getHeader } from "../../../apis/common/header";
+import LogoutModal from "./LogoutModal";
+import { isModuleNamespaceObject } from "util/types";
 
 interface userInfoType {
   department: string;
@@ -58,44 +60,18 @@ export const Header = () => {
 
   return (
     <S.Container>
-      <Modal isOpen={isOpenModal} title="로그아웃 하시겠습니까?">
-        <S.BottonBox>
-          <Button size="M" $colortype="Red" onClick={handleConfirmLogout}>
-            로그아웃
-          </Button>
-          <Button size="M" $colortype="Gray" onClick={handleCancelLogout}>
-            취소
-          </Button>
-        </S.BottonBox>
-      </Modal>
+      <LogoutModal close={handleCancelLogout} logout={handleConfirmLogout} isOpen={isOpenModal}/>
       {user === "User" ? (
         <S.MenuContainer>
           <Tab
-            list={[
-              {
-                text: "검색",
-                link: "/home",
-                path: "home",
-              },
-              {
-                text: "인적사항 업로드",
-                link: "/upload",
-                path: "upload",
-              },
-            ]}
+            list={TabData.user}
             selected={pathname}
           />
         </S.MenuContainer>
       ) : (
         <S.MenuContainer>
           <Tab
-            list={[
-              {
-                text: "계정관리",
-                link: "/admin",
-                path: "admin",
-              },
-            ]}
+            list={TabData.admin}
             selected={pathname}
           />
         </S.MenuContainer>
@@ -134,3 +110,25 @@ export const Header = () => {
     </S.Container>
   );
 };
+
+const TabData = {
+  user: [
+    {
+      text: "검색",
+      link: "/home",
+      path: "home",
+    },
+    {
+      text: "인적사항 업로드",
+      link: "/upload",
+      path: "upload",
+    },
+  ],
+  admin: [
+    {
+      text: "계정관리",
+      link: "/admin",
+      path: "admin",
+    },
+  ]
+}
