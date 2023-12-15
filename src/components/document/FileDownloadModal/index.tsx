@@ -34,22 +34,12 @@ export default function FileDownloadModal({
   
   return (
     <Modal isOpen={IsOpen} title="다운로드">
-      <Text24>박씨(2077/09/23)</Text24>
+      <Text24>{data.name}({data.birthdate.replaceAll('-','.')}.)</Text24>
       <RadioContainer>
         <Radio
           text="경력증명서"
           selected={RadioSelect === "CerificationOfCareer"}
           onClick={() => setRadioSelect("CerificationOfCareer")}
-        />
-        <Radio
-          text="애플캣"
-          selected={RadioSelect === "applecat"}
-          onClick={() => setRadioSelect("applecat")}
-        />
-        <Radio
-          text="테스트"
-          selected={RadioSelect === "testing"}
-          onClick={() => setRadioSelect("testing")}
         />
       </RadioContainer>
       <ButtonHorizonal>
