@@ -74,6 +74,7 @@ export const AdminPage = () => {
           </S.BottonBox>
         </Modal>
       )}
+
       <S.TabBox>
         <Tab
           list={[
@@ -83,37 +84,34 @@ export const AdminPage = () => {
           selected="/"
         />
       </S.TabBox>
+      
       <S.InfoContainer>
-      <S.Title>부서 관계자 계정</S.Title>
-
+        <S.Title>부서 관계자 계정</S.Title>
         <S.Content>
           <IndexData type={"user"} />
-
           {list.map(
             (data) =>
               data.userName && (
-                <>
-                  <UserData
-                    name={data.userName}
-                    department={data.department}
-                    phoneNumber={data.userNumber}
-                    userUpdate={() => {
-                      nav(`/admin/edit/${data.user_id}`);
-                    }}
-                    userDelete={() => {
-                      setIsOpenModal(true);
-                      setDelId(data.user_id);
-                    }}
-                  />
-                </>
+                <UserData
+                  name={data.userName}
+                  department={data.department}
+                  phoneNumber={data.userNumber}
+                  userUpdate={() => {
+                    nav(`/admin/edit/${data.user_id}`);
+                  }}
+                  userDelete={() => {
+                    setIsOpenModal(true);
+                    setDelId(data.user_id);
+                  }}
+                  key={data.user_id}
+                />
               )
           )}
         </S.Content>
 
-<S.Title>최초 로그인이 진행되지 않은 계정</S.Title>
+        <S.Title>최초 로그인이 진행되지 않은 계정</S.Title>
         <S.Content>
           <IndexData type={"ect"} />
-
           {list.map(
             (data) =>
               !data.userName && (
@@ -126,6 +124,7 @@ export const AdminPage = () => {
                     setIsOpenModal(true);
                     setDelId(data.user_id);
                   }}
+                  key={data.user_id}
                 />
               )
           )}

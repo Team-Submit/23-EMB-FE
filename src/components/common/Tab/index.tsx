@@ -16,8 +16,8 @@ export const Tab = ({ list, selected }: TabProps) => {
   return (
     <S.Container>
       {list.map((v) => (
-        <S.TabLink to={v.link}>
-          <EachTab selected={v.path === selected} value={v.text} />
+        <S.TabLink to={v.link} key={v.path}>
+          <EachTab selected={v.path === selected} value={v.text}/>
         </S.TabLink>
       ))}
     </S.Container>

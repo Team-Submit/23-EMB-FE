@@ -92,7 +92,8 @@ export const SearchListPage = () => {
                                 manager={v.userName}
                                 occupation={v.firstTenure + " ~ " + v.lastTenure}
                                 tenure={v.occupation}
-                                onClick={() => HandleDetail(v.term_id, v.name)} />
+                                onClick={() => HandleDetail(v.term_id, v.name)}
+                            />
                         );
                     })
                 }

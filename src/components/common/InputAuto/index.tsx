@@ -75,6 +75,7 @@ export const InputAuto =({
                       setValue(v);
                       setIsOpen(false);
                     }}
+                    key={v}
                   >
                     {v}
                   </S.ListValue>

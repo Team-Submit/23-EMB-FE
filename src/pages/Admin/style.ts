@@ -54,5 +54,5 @@ export const Title =styled.p`
   font-size: 25px;
   font-weight: bold;
   width: 80vw;
-    min-width: 480px;
+  min-width: 480px;
 `

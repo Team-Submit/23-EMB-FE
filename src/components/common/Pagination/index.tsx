@@ -41,7 +41,7 @@ export const Pagination = ({ total, nowPage, setNowPage }: PaginaionProps) => {
       </S.Arrow>
       <S.PagesContainer>
         {page.map((v) => (
-          <S.Page selected={nowPage === v} onClick={() => setNowPage(v)}>
+          <S.Page selected={nowPage === v} onClick={() => setNowPage(v)} key={v}>
             {v}
           </S.Page>
         ))}
