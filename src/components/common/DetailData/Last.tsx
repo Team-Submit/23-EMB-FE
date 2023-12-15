@@ -13,7 +13,7 @@ export const LastData = ({ department, userName, userNumber }: LastType) => {
             <S.Title>등록당시</S.Title>
             <S.SmallFlex>
                 <S.Label>발급 부서</S.Label>
-                <DepartmentBadge department={department} widthAuto />
+                <DepartmentBadge department={department} $widthAuto />
             </S.SmallFlex>
             <S.SmallFlex>
                 <S.Label>담당자 이름</S.Label>

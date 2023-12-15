@@ -3,8 +3,8 @@ import { color } from "../../../styles/theme";
 
 const BACKGROUND_COLOR = "#5EBF3B";
 
-export const Container = styled.div<{ widthAuto: boolean }>`
-  width: ${({ widthAuto }) => (widthAuto ? "fit-content" : "144px")};
+export const Container = styled.div<{ $widthAuto: boolean }>`
+  width: ${({ $widthAuto }) => ($widthAuto ? "fit-content" : "144px")};
   display: flex;
 
   > p {
