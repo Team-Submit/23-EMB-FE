@@ -8,4 +8,7 @@ export interface DetailType {
   department: string;
   userName: string;
   userNumber: string;
+  currentDepartment: string;
+  currentUserName: string;
+  currentUserNumber: string;
 }

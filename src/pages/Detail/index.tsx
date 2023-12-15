@@ -25,6 +25,9 @@ export const DetailPage = () => {
     department: "",
     userName: "",
     userNumber: "",
+    currentDepartment: "",
+    currentUserName: "",
+    currentUserNumber: "",
   });
   const param = useParams();
 
@@ -68,9 +71,9 @@ export const DetailPage = () => {
         />
         <S.Line />
         <NowData
-          userName={detailData.userName}
-          department={detailData.department}
-          userNumber={detailData.userNumber}
+          userName={detailData.currentUserName}
+          department={detailData.currentDepartment}
+          userNumber={detailData.currentUserNumber}
         />
       </div>
       <Button
