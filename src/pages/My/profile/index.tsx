@@ -57,6 +57,9 @@ export const Profile = () => {
         newUserNumber: changeProfile.newUserNumber,
       });
       navigate('/home');
+      setTimeout(() => {
+        window.location.reload();
+      }, 10);
     } catch (err) {
       console.log("정보수정 중 오류가 발생했습니다");
     }
