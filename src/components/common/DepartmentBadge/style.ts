@@ -6,6 +6,7 @@ const BACKGROUND_COLOR = "#5EBF3B";
 export const Container = styled.div<{ $widthAuto: boolean }>`
   width: ${({ $widthAuto }) => ($widthAuto ? "fit-content" : "144px")};
   display: flex;
+  justify-content: end;
 
   > p {
     width: fit-content;
