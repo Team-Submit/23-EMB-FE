@@ -37,6 +37,13 @@ export const Name = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 4px;
+  border-radius: 4px;
+
+  transition: 100ms all ease-in-out;
+  &:hover{
+    background-color: ${color.Gray[95]};
+  }
 
   cursor: pointer;
 
