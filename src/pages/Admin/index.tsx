@@ -94,6 +94,7 @@ export const AdminPage = () => {
             (data) =>
               data.userName && (
                 <UserData
+                  id={data.id}
                   name={data.userName}
                   department={data.department}
                   phoneNumber={data.userNumber}

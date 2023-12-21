@@ -11,14 +11,16 @@ interface UserDataProps {
   userUpdate: React.MouseEventHandler<HTMLDivElement>;
   userDelete: React.MouseEventHandler<HTMLDivElement>;
   ect?: string;
+  id?: string;
 }
 /** 사용법 < UserData name="이름" department="부서명" phoneNumber="전화번호" userUpdate={계정수정함수} userDelete={계정삭제함수}/> */
 export const UserData = ({
-  name="",
-  department="",
-  phoneNumber="",
+  name = "",
+  department = "",
+  phoneNumber = "",
   userUpdate,
   userDelete,
+  id = "",
   ect,
 }: UserDataProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -55,6 +57,7 @@ export const UserData = ({
         <S.OccipationTenure>{ect}</S.OccipationTenure>
       ) : (
         <>
+          <S.Name>{id}</S.Name>
           <S.Name>{name}</S.Name>
           <DepartmentBadge department={department} />
           <S.PhoneNumber>{phoneNumber}</S.PhoneNumber>

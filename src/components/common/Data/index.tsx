@@ -21,6 +21,7 @@ export const IndexData = ({ type }: IndexDataProps) => {
       ) : type === "user" ? (
         <>
           <S.TransparentDiv />
+          <S.Name>유저 아이디</S.Name>
           <S.Name>성명</S.Name>
           <S.Department>부서</S.Department>
           <S.PhoneNumber>전화번호</S.PhoneNumber>
