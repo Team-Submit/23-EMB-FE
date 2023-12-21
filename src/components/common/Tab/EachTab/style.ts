@@ -30,7 +30,7 @@ export const Container = styled.div<{
     border-radius: 8px;
     width: 100%;
     border: 2px solid ${color.Gray[75]};
-    opacity: 0;
+    transition: 100ms all ease-in-out;
     background-color: ${color.Gray[75]};
     border: 2px solid
       ${({ selected }) =>

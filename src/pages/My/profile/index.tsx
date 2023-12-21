@@ -59,7 +59,7 @@ export const Profile = () => {
       navigate('/home');
       setTimeout(() => {
         window.location.reload();
-      }, 10);
+      }, 100);
     } catch (err) {
       console.log("정보수정 중 오류가 발생했습니다");
     }

@@ -17,11 +17,13 @@ export const InputContainer = styled.div`
   display: flex;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid ${color.Gray[85]};
+  border: 2px solid ${color.Gray[85]};
+
+  transition: 100ms all ease-in-out;
   &:focus-within {
-    border: 1px solid ${color.Blue[0]};
+    border: 2px solid ${color.Blue[0]};
   }
-`;
+  `;
 
 export const Einput = styled.input<{ $password?: string }>`
   font-size: 20px;
@@ -30,8 +32,9 @@ export const Einput = styled.input<{ $password?: string }>`
   align-items: center;
   justify-content: center;
   padding: 14px 14px 14px 14px;
-  border: ${({ $password }) =>
-    $password !== "password" ? `1px solid ${color.Gray[85]}` : "none"};
+  border: none;
+  outline: none;
+  background-color: transparent;
 
   &::placeholder {
     color: ${color.Gray[75]};

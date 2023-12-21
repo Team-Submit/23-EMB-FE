@@ -60,7 +60,7 @@ export const Department = styled.div`
 `;
 
 export const OccipationTenure = styled.div`
-  width: 220px;
+  width: 250px;
 `;
 
 export const TransparentDiv = styled.div`
