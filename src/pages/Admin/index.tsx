@@ -17,6 +17,7 @@ interface userListType {
   department: string;
   userNumber: string;
   user_id: string;
+  id: string;
 }
 
 export const AdminPage = () => {
@@ -84,7 +85,7 @@ export const AdminPage = () => {
           selected="/"
         />
       </S.TabBox>
-      
+
       <S.InfoContainer>
         <S.Title>부서 관계자 계정</S.Title>
         <S.Content>
@@ -101,7 +102,7 @@ export const AdminPage = () => {
                   }}
                   userDelete={() => {
                     setIsOpenModal(true);
-                    setDelId(data.user_id);
+                    setDelId(data.id);
                   }}
                   key={data.user_id}
                 />
@@ -116,7 +117,7 @@ export const AdminPage = () => {
             (data) =>
               !data.userName && (
                 <UserData
-                  ect={data.user_id}
+                  ect={data.id}
                   userUpdate={() => {
                     nav(`/admin/edit/${data.user_id}`);
                   }}

@@ -14,7 +14,7 @@ export const InputFlex = styled.div`
 `;
 
 export const ListDataFlex = styled.div`
-    height: auto;
+    overflow: scroll;
 `;
 
 export const TotalList = styled.div`
