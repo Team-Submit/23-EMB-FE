@@ -6,6 +6,7 @@ import { IssudeModal } from "../../../components/pages/admin/new";
 import { issuedDate } from "../../../apis/admin/index";
 import * as S from "./style";
 import useTitle from "../../../hooks/useTitle";
+import { useError } from "../../../utils/ErrorProvider";
 
 interface changeNewType {
   newUserId: string;
@@ -14,6 +15,7 @@ interface changeNewType {
 
 export const New = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const provider = useError();
 
   useTitle('계정 발급')
 
@@ -36,15 +38,17 @@ export const New = () => {
   };
 
   const issuedUpDate = async () => {
-    try{
+    try {
       await issuedDate({
         id: changeNew.newUserId,
         password: changeNew.newPassword,
       });
       setOpen(false);
-      setChangeNew({newUserId:"",newPassword:""})
-    }catch{
-      console.log("오류 발생")
+      setChangeNew({ newUserId: "", newPassword: "" })
+    } catch {
+      console.log(123);
+      provider.set('발급 계정을 다시 확인해주세요');
+      setOpen(!open);
     }
   };
 

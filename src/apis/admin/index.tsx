@@ -9,7 +9,7 @@ export const issuedDate = async ({ id, password }: issuedDateProps) => {
       password,
     });
   } catch (err) {
-    console.log("발급하는데 오류가 발생했습니다. 관리자에게 문의해주세요.");
+    throw err
   }
 };
 
